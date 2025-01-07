@@ -13,5 +13,13 @@ UCLASS()
 class UNKNOWN_API AUnknownGameModeBase : public AGameModeBase
 {
 	GENERATED_BODY()
+
+protected:
+	// FUNCTIONS
+	// -----------------------------
+	
+	AUnknownGameModeBase(const FObjectInitializer& ObjectInitializer);
+
+	virtual void BeginPlay() override;
 	
 };
