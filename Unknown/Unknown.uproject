@@ -1,11 +1,11 @@
 {
 	"FileVersion": 3,
-	"EngineAssociation": "5.5",
+	"EngineAssociation": "5.2",
 	"Category": "",
 	"Description": "",
 	"Modules": [
 		{
-			"Name": "ToUO",
+			"Name": "Unknown",
 			"Type": "Runtime",
 			"LoadingPhase": "Default"
 		}
