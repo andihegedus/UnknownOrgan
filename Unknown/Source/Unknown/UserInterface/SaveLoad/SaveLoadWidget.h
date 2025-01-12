@@ -5,6 +5,8 @@
 #include "SaveLoadWidget.generated.h"
 
 class APCharacter;
+class APController;
+class UButton;
 
 UCLASS()
 class USaveLoadWidget : public UUserWidget
@@ -21,6 +23,9 @@ public:
 
 	UPROPERTY()
 	APCharacter* PlayerCharacter;
+
+	UPROPERTY()
+	APController* PlayerController;
 	
 
 
@@ -34,5 +39,15 @@ protected:
 
 	// PROPERTIES & VARIABLES
 	// -----------------------------
+	
+	UPROPERTY(VisibleAnywhere, meta = (BindWidget))
+	UButton* NewGameButton;
+
+	UPROPERTY(VisibleAnywhere, meta = (BindWidget))
+	UButton* LoadGameButton;
+	
+	UPROPERTY(VisibleAnywhere, meta = (BindWidget))
+	UButton* SettingsButton;
+	
 	
 };

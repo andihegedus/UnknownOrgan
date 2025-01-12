@@ -6,8 +6,10 @@
 #include "GameFramework/Character.h"
 #include "PCharacter.generated.h"
 
-
 class AUnknownHUD;
+class APController;
+class USpringArmComponent;
+class UCameraComponent;
 
 UCLASS()
 class UNKNOWN_API APCharacter: public ACharacter
@@ -30,9 +32,24 @@ public:
 	
 	void OpenShelfInventory();
 
+	void RotatePlayerCameraLeft();
+
+	void RotatePlayerCameraRight();
+
 	// PROPERTIES & VARIABLES
 	// -----------------------------
-
+	
+	UPROPERTY()
+	APController* PlayerController;
+	
 	UPROPERTY(EditAnywhere)
 	AUnknownHUD* HUD;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Camera");
+	USpringArmComponent* SpringArmComp;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Camera");
+	UCameraComponent* CameraComp;
+
+	FRotator PlayerRotation;
 };
