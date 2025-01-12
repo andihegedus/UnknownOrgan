@@ -2,8 +2,12 @@
 
 #include "CoreMinimal.h"
 #include "Engine/Engine.h"
+#include "InputActionValue.h"
 #include "GameFramework/Character.h"
 #include "PCharacter.generated.h"
+
+
+class AUnknownHUD;
 
 UCLASS()
 class UNKNOWN_API APCharacter: public ACharacter
@@ -22,4 +26,13 @@ public:
 
 	virtual void SetupPlayerInputComponent(UInputComponent* PlayerInputComponent) override;
 	
+	void OpenCloseWidget();
+	
+	void OpenShelfInventory();
+
+	// PROPERTIES & VARIABLES
+	// -----------------------------
+
+	UPROPERTY(EditAnywhere)
+	AUnknownHUD* HUD;
 };

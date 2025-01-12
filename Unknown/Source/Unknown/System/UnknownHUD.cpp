@@ -18,7 +18,7 @@ void AUnknownHUD::BeginPlay()
 	{
 		SaveLoadWidget = CreateWidget<USaveLoadWidget>(GetWorld(), SaveLoadWidgetClass);
 		SaveLoadWidget->AddToViewport();
-		SaveLoadWidget->SetVisibility(ESlateVisibility::Collapsed);
+		SaveLoadWidget->SetVisibility(ESlateVisibility::Visible);
 	}
 	if (SettingsWidgetClass)
 	{
@@ -36,7 +36,7 @@ void AUnknownHUD::BeginPlay()
 	{
 		PlayerInventoryWidget = CreateWidget<UPlayerInventoryWidget>(GetWorld(), PlayerInventoryWidgetClass);
 		PlayerInventoryWidget->AddToViewport();
-		PlayerInventoryWidget->SetVisibility(ESlateVisibility::Visible);
+		PlayerInventoryWidget->SetVisibility(ESlateVisibility::Collapsed);
 	}
 	if (ShelfInventoryWidgetClass)
 	{
@@ -46,19 +46,23 @@ void AUnknownHUD::BeginPlay()
 	}
 }
 
-void AUnknownHUD::ShowSaveLoadWidget()
+void AUnknownHUD::ShowHideSaveLoadWidget()
 {
 	if (SaveLoadWidget)
 	{
-		SaveLoadWidget->SetVisibility(ESlateVisibility::Visible);
-	}
-}
+		if (SaveLoadWidget->IsVisible())
+		{
+			SaveLoadWidget->SetVisibility(ESlateVisibility::Collapsed);
 
-void AUnknownHUD::HideSaveLoadWidget()
-{
-	if (SaveLoadWidget)
-	{
-		SaveLoadWidget->SetVisibility(ESlateVisibility::Collapsed);
+			ShowPlayerInventoryWidget();
+		}
+		else
+		{
+			SaveLoadWidget->SetVisibility(ESlateVisibility::Visible);
+
+			HidePlayerInventoryWidget();
+		}
+		
 	}
 }
 
@@ -115,10 +119,25 @@ void AUnknownHUD::ShowPlayerInventoryWidget()
 
 void AUnknownHUD::HidePlayerInventoryWidget()
 {
-	/*if (PlayerInventoryWidget)
+	if (PlayerInventoryWidget)
 	{
 		PlayerInventoryWidget->SetVisibility(ESlateVisibility::Collapsed);
-	}*/
+	}
+}
+
+void AUnknownHUD::ShowShelfInventoryWidget()
+{
+	if (ShelfInventoryWidget)
+	{
+		ShelfInventoryWidget->SetVisibility(ESlateVisibility::Visible);
+
+		SaveLoadWidget->SetVisibility(ESlateVisibility::Collapsed);
+
+		WidgetTags.Empty();
+		
+		CurrentTag = "ShelfInventory";
+		WidgetTags.Add(CurrentTag);
+	}
 }
 
 void AUnknownHUD::HideShelfInventoryWidget()
@@ -126,6 +145,8 @@ void AUnknownHUD::HideShelfInventoryWidget()
 	if (ShelfInventoryWidget)
 	{
 		ShelfInventoryWidget->SetVisibility(ESlateVisibility::Collapsed);
+
+		WidgetTags.Empty();
 	}
 }
 

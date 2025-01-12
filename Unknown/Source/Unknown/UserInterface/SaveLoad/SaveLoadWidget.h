@@ -4,6 +4,8 @@
 #include "Blueprint/UserWidget.h"
 #include "SaveLoadWidget.generated.h"
 
+class APCharacter;
+
 UCLASS()
 class USaveLoadWidget : public UUserWidget
 {
@@ -12,6 +14,25 @@ class USaveLoadWidget : public UUserWidget
 public:
 	// FUNCTIONS
 	// -----------------------------
+	void UpdateWidget();
+
+	// PROPERTIES & VARIABLES
+	// -----------------------------
+
+	UPROPERTY()
+	APCharacter* PlayerCharacter;
 	
+
+
+protected:
+	// FUNCTIONS
+	// -----------------------------
+
+	virtual void NativeOnInitialized() override;
+
+	virtual void NativeConstruct() override;
+
+	// PROPERTIES & VARIABLES
+	// -----------------------------
 	
 };

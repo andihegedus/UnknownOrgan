@@ -24,5 +24,11 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	class UInputMappingContext* PCMappingContext;
+
+	UPROPERTY()
+	class UInputAction* EscapeAction;
+
+	UPROPERTY()
+	class UInputAction* ShelfInventoryAction;
 	
 };

@@ -24,8 +24,8 @@ public:
 
 	virtual void BeginPlay() override;
 
-	void ShowSaveLoadWidget();
-	void HideSaveLoadWidget();
+	void ShowHideSaveLoadWidget();
+	//void HideSaveLoadWidget();
 
 	void ShowSettingsWidget();
 	void HideSettingsWidget();
@@ -36,6 +36,7 @@ public:
 	void ShowPlayerInventoryWidget();
 	void HidePlayerInventoryWidget();
 
+	void ShowShelfInventoryWidget();
 	void HideShelfInventoryWidget();
 	void UpdateShelfInventoryWidget();
 	
@@ -45,6 +46,12 @@ public:
 
 	UPROPERTY()
 	APCharacter* PlayerCharacter;
+
+	UPROPERTY(VisibleAnywhere, Category="Widgets")
+	TArray<FName> WidgetTags;
+
+	UPROPERTY(VisibleAnywhere, Category="Widgets")
+	FName CurrentTag;
 
 	bool bIsMenuVisible;
 	bool bIsWidgetVisible;
