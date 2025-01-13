@@ -1,6 +1,7 @@
 #include "UnknownHUD.h"
 
 #include "Unknown/UserInterface/Interaction/InteractionWidget.h"
+#include "Unknown/UserInterface/Interaction/OrganCutterWidget.h"
 #include "Unknown/UserInterface/Inventory/PlayerInventoryWidget.h"
 #include "Unknown/UserInterface/Inventory/ShelfInventoryWidget.h"
 #include "Unknown/UserInterface/SaveLoad/SaveLoadWidget.h"
@@ -19,6 +20,14 @@ void AUnknownHUD::BeginPlay()
 		SaveLoadWidget = CreateWidget<USaveLoadWidget>(GetWorld(), SaveLoadWidgetClass);
 		SaveLoadWidget->AddToViewport();
 		SaveLoadWidget->SetVisibility(ESlateVisibility::Visible);
+	}
+	if (OrganCutterWidgetClass)
+	{
+		OrganCutterWidget = CreateWidget<UOrganCutterWidget>(GetWorld(), OrganCutterWidgetClass);
+		OrganCutterWidget->AddToViewport();
+		OrganCutterWidget->SetVisibility(ESlateVisibility::Visible);
+
+		UE_LOG(LogTemp, Warning, TEXT("UUnknownHUD: ShowOrganCutterWidget valid."));
 	}
 	if (SettingsWidgetClass)
 	{
@@ -44,6 +53,7 @@ void AUnknownHUD::BeginPlay()
 		ShelfInventoryWidget->AddToViewport();
 		ShelfInventoryWidget->SetVisibility(ESlateVisibility::Collapsed);
 	}
+	
 }
 
 void AUnknownHUD::ShowHideSaveLoadWidget()
@@ -55,12 +65,14 @@ void AUnknownHUD::ShowHideSaveLoadWidget()
 			SaveLoadWidget->SetVisibility(ESlateVisibility::Collapsed);
 
 			ShowPlayerInventoryWidget();
+			ShowOrganCutterWidget();
 		}
 		else
 		{
 			SaveLoadWidget->SetVisibility(ESlateVisibility::Visible);
 
 			HidePlayerInventoryWidget();
+			HideOrganCutterWidget();
 		}
 		
 	}
@@ -92,6 +104,8 @@ void AUnknownHUD::HideInteractionWidget()
 
 void AUnknownHUD::UpdateInteractionWidget()
 {
+	UE_LOG(LogTemp, Warning, TEXT("UUnknownHUD: UpdateInterationWidget triggered."));
+	
 	if (InteractionWidget)
 	{
 		if (InteractionWidget->GetVisibility() == ESlateVisibility::Collapsed)
@@ -152,6 +166,28 @@ void AUnknownHUD::HideShelfInventoryWidget()
 
 void AUnknownHUD::UpdateShelfInventoryWidget()
 {
+}
+
+void AUnknownHUD::ShowOrganCutterWidget()
+{
+	if (OrganCutterWidget)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("UUnknownHUD: ShowOrganCutterWidget valid."));
+		OrganCutterWidget->SetVisibility(ESlateVisibility::Visible);
+	}
+}
+
+void AUnknownHUD::UpdateOrganCutterWidget()
+{
+	
+}
+
+void AUnknownHUD::HideOrganCutterWidget()
+{
+	if (OrganCutterWidget)
+	{
+		OrganCutterWidget->SetVisibility(ESlateVisibility::Collapsed);
+	}
 }
 
 

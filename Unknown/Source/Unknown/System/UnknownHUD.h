@@ -4,13 +4,14 @@
 #include "GameFramework/HUD.h"
 #include "UnknownHUD.generated.h"
 
-class APCharacter;
 
+class APCharacter;
 class USaveLoadWidget;
 class USettingsWidget;
 class UInteractionWidget;
 class UPlayerInventoryWidget;
 class UShelfInventoryWidget;
+class UOrganCutterWidget;
 
 UCLASS()
 class UNKNOWN_API AUnknownHUD : public AHUD
@@ -39,6 +40,10 @@ public:
 	void ShowShelfInventoryWidget();
 	void HideShelfInventoryWidget();
 	void UpdateShelfInventoryWidget();
+
+	void ShowOrganCutterWidget();
+	void UpdateOrganCutterWidget();
+	void HideOrganCutterWidget();
 	
 
 	// PROPERTIES & VARIABLES
@@ -71,6 +76,9 @@ public:
 	UPROPERTY(EditDefaultsOnly, Category="Widgets")
 	TSubclassOf<UShelfInventoryWidget> ShelfInventoryWidgetClass;
 
+	UPROPERTY(EditDefaultsOnly, Category="Widgets")
+	TSubclassOf<UOrganCutterWidget> OrganCutterWidgetClass;
+
 protected:
 	// PROPERTIES & VARIABLES
 	// -----------------------------
@@ -89,4 +97,7 @@ protected:
 
 	UPROPERTY()
 	UShelfInventoryWidget* ShelfInventoryWidget;
+
+	UPROPERTY()
+	UOrganCutterWidget* OrganCutterWidget;
 };

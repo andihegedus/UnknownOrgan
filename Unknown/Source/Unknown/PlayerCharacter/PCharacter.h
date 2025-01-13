@@ -51,5 +51,5 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Camera");
 	UCameraComponent* CameraComp;
 
-	FRotator PlayerRotation;
+	FRotator PlayerCameraRotation;
 };

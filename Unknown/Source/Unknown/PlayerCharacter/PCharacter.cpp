@@ -24,8 +24,6 @@ APCharacter::APCharacter()
 
 	// Take control of the default player
 	AutoPossessPlayer = EAutoReceiveInput::Player0;
-
-	PlayerRotation = CameraComp->GetComponentRotation();
 }
 
 void APCharacter::Tick(float DeltaSeconds)
@@ -88,16 +86,28 @@ void APCharacter::RotatePlayerCameraLeft()
 {
 	UE_LOG(LogTemp, Warning, TEXT("APCharacter: Rotate Left!"));
 
-	const FRotator NewActorRotation(PlayerRotation.Pitch, PlayerRotation.Yaw + 90.f, PlayerRotation.Roll);
+	PlayerCameraRotation = CameraComp->GetComponentRotation();
 
-	CameraComp->SetRelativeRotation(NewActorRotation);
+	const FRotator NewRotation(PlayerCameraRotation.Pitch, PlayerCameraRotation.Yaw - 90.f, PlayerCameraRotation.Roll);
 
-	FString PrintCurrentRotaion = NewActorRotation.ToString();
+	CameraComp->SetRelativeRotation(NewRotation);
 
-	UE_LOG(LogTemp, Warning, TEXT("%s"), *PrintCurrentRotaion);
+	FString PrintCurrentRotation = NewRotation.ToString();
+
+	UE_LOG(LogTemp, Warning, TEXT("%s"), *PrintCurrentRotation);
 }
 
 void APCharacter::RotatePlayerCameraRight()
 {
-	UE_LOG(LogTemp, Warning, TEXT("APCharacter: Rotate Right!")); 
+	UE_LOG(LogTemp, Warning, TEXT("APCharacter: Rotate Right!"));
+
+	PlayerCameraRotation = CameraComp->GetComponentRotation();
+
+	const FRotator NewRotation(PlayerCameraRotation.Pitch, PlayerCameraRotation.Yaw + 90.f, PlayerCameraRotation.Roll);
+
+	CameraComp->SetRelativeRotation(NewRotation);
+
+	FString PrintCurrentRotation = NewRotation.ToString();
+
+	UE_LOG(LogTemp, Warning, TEXT("%s"), *PrintCurrentRotation);
 }
