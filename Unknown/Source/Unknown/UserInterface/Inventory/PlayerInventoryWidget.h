@@ -4,6 +4,7 @@
 #include "Blueprint/UserWidget.h"
 #include "PlayerInventoryWidget.generated.h"
 
+class UOrganCutterWidget;
 class APCharacter;
 class APController;
 class UButton;
@@ -50,5 +51,8 @@ protected:
 
 	UPROPERTY(VisibleAnywhere, meta = (BindWidget))
 	UButton* RightArrowButton;
+
+	UPROPERTY(VisibleAnywhere, meta = (BindWidget))
+	UOrganCutterWidget* WBP_OrganCutter;
 	
 };

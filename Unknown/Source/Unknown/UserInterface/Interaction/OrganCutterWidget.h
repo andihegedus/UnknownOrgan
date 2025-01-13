@@ -22,6 +22,9 @@ public:
 	// -----------------------------
 	
 	void UpdateWidget();
+
+	UFUNCTION()
+	void CloseAndDestroy(float Value);
 	
 
 	// PROPERTIES & VARIABLES
@@ -35,15 +38,12 @@ public:
 
 	UPROPERTY(VisibleAnywhere, meta = (BindWidget))
 	USlider* OrganCutterSlider;
-	
-	UPROPERTY(VisibleAnywhere)
-	USlider* AltSlider1;
-	
-	UPROPERTY(VisibleAnywhere)
-	USlider* AltSlider2;
-	
-	UPROPERTY(VisibleAnywhere)
-	USlider* AltSlider3;
+
+	UPROPERTY(VisibleAnywhere, meta = (BindWidget))
+	USlider* OrganSlider2;
+
+	UPROPERTY(VisibleAnywhere, meta = (BindWidget))
+	USlider* OrganSlider3;
 
 	protected:
 	// FUNCTIONS
@@ -63,6 +63,9 @@ public:
 	UPROPERTY(VisibleAnywhere, meta = (BindWidget))
 	UImage* OrganImage;
 
-	UPROPERTY(VisibleAnywhere)
-	TArray<UImage*> AltOrganImages;
+	UPROPERTY(VisibleAnywhere, meta = (BindWidget))
+	UImage* OrganImage2;
+
+	UPROPERTY(VisibleAnywhere, meta = (BindWidget))
+	UImage* OrganImage3;
 };

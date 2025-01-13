@@ -21,14 +21,6 @@ void AUnknownHUD::BeginPlay()
 		SaveLoadWidget->AddToViewport();
 		SaveLoadWidget->SetVisibility(ESlateVisibility::Visible);
 	}
-	if (OrganCutterWidgetClass)
-	{
-		OrganCutterWidget = CreateWidget<UOrganCutterWidget>(GetWorld(), OrganCutterWidgetClass);
-		OrganCutterWidget->AddToViewport();
-		OrganCutterWidget->SetVisibility(ESlateVisibility::Visible);
-
-		UE_LOG(LogTemp, Warning, TEXT("UUnknownHUD: ShowOrganCutterWidget valid."));
-	}
 	if (SettingsWidgetClass)
 	{
 		SettingsWidget = CreateWidget<USettingsWidget>(GetWorld(), SettingsWidgetClass);
@@ -53,6 +45,14 @@ void AUnknownHUD::BeginPlay()
 		ShelfInventoryWidget->AddToViewport();
 		ShelfInventoryWidget->SetVisibility(ESlateVisibility::Collapsed);
 	}
+	if (OrganCutterWidgetClass)
+	{
+		OrganCutterWidget = CreateWidget<UOrganCutterWidget>(GetWorld(), OrganCutterWidgetClass);
+		OrganCutterWidget->AddToViewport();
+		OrganCutterWidget->SetVisibility(ESlateVisibility::Collapsed);
+
+		UE_LOG(LogTemp, Warning, TEXT("UUnknownHUD: ShowOrganCutterWidget valid."));
+	}
 	
 }
 
@@ -65,14 +65,12 @@ void AUnknownHUD::ShowHideSaveLoadWidget()
 			SaveLoadWidget->SetVisibility(ESlateVisibility::Collapsed);
 
 			ShowPlayerInventoryWidget();
-			ShowOrganCutterWidget();
 		}
 		else
 		{
 			SaveLoadWidget->SetVisibility(ESlateVisibility::Visible);
 
 			HidePlayerInventoryWidget();
-			HideOrganCutterWidget();
 		}
 		
 	}

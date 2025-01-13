@@ -1,5 +1,6 @@
 ﻿#include "OrganCutterWidget.h"
 
+#include "Components/Image.h"
 #include "Components/Slider.h"
 #include "GameFramework/PlayerController.h"
 #include "Unknown/PlayerCharacter/PCharacter.h"
@@ -32,6 +33,18 @@ void UOrganCutterWidget::NativeOnInitialized()
 	{
 		UE_LOG(LogTemp, Warning, TEXT("UOrganCutterWidget: PlayerCharacter not valid."));
 	}
+
+	OrganCutterSlider->OnValueChanged.AddDynamic(this, &UOrganCutterWidget::CloseAndDestroy);
+	OrganSlider2->OnValueChanged.AddDynamic(this, &UOrganCutterWidget::CloseAndDestroy);
+	OrganSlider3->OnValueChanged.AddDynamic(this, &UOrganCutterWidget::CloseAndDestroy);
+
+	OrganImage->SetVisibility(ESlateVisibility::Visible);
+	OrganImage2->SetVisibility(ESlateVisibility::Collapsed);
+	OrganImage3->SetVisibility(ESlateVisibility::Collapsed);
+
+	OrganCutterSlider->SetVisibility(ESlateVisibility::Visible);
+	OrganSlider2->SetVisibility(ESlateVisibility::Collapsed);
+	OrganSlider3->SetVisibility(ESlateVisibility::Collapsed);
 }
 
 void UOrganCutterWidget::NativeConstruct()
@@ -41,4 +54,34 @@ void UOrganCutterWidget::NativeConstruct()
 
 void UOrganCutterWidget::UpdateWidget()
 {
+}
+
+void UOrganCutterWidget::CloseAndDestroy(float Value)
+{
+	if (OrganCutterSlider->GetValue() >= 1 && OrganImage->IsVisible())
+	{
+		OrganImage->SetVisibility(ESlateVisibility::Collapsed);
+		OrganImage2->SetVisibility(ESlateVisibility::Visible);
+		
+		OrganCutterSlider->SetVisibility(ESlateVisibility::Collapsed);
+		OrganSlider2->SetVisibility(ESlateVisibility::Visible);
+		OrganSlider3->SetVisibility(ESlateVisibility::Visible);
+	}
+	if (OrganSlider2->GetValue() >= 1 && OrganImage2->IsVisible())
+	{
+		OrganSlider2->SetVisibility(ESlateVisibility::Collapsed);
+	}
+	if (OrganSlider3->GetValue() >= 1 && OrganImage2->IsVisible())
+	{
+		OrganSlider3->SetVisibility(ESlateVisibility::Collapsed);
+	}
+	if (!OrganSlider2->IsVisible() && !OrganSlider3->IsVisible() && OrganImage2->IsVisible())
+	{
+		OrganImage2->SetVisibility(ESlateVisibility::Collapsed);
+		OrganImage3->SetVisibility(ESlateVisibility::Visible);
+	}
+	else
+	{
+		UE_LOG(LogTemp, Warning, TEXT("UOrganCutterWidget: Slider value is less than 1, image cannot be destroyed."));
+	}
 }

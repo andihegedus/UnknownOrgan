@@ -1,9 +1,11 @@
 #include "PlayerInventoryWidget.h"
 
+#include "Camera/CameraComponent.h"
 #include "Components/Button.h"
 #include "GameFramework/PlayerController.h"
 #include "Unknown/PlayerCharacter/PCharacter.h"
 #include "Unknown/PlayerCharacter/PController.h"
+#include "Unknown/UserInterface/Interaction/OrganCutterWidget.h"
 
 
 void UPlayerInventoryWidget::NativeOnInitialized()
@@ -53,6 +55,15 @@ void UPlayerInventoryWidget::OnLeftArrowClicked()
 	if (PlayerCharacter)
 	{
 		PlayerCharacter->RotatePlayerCameraLeft();
+
+		if (PlayerCharacter->CameraComp->GetComponentRotation() == FRotator(0,0,0))
+		{
+			WBP_OrganCutter->SetVisibility(ESlateVisibility::Visible);
+		}
+		else
+		{
+			WBP_OrganCutter->SetVisibility(ESlateVisibility::Collapsed);
+		}
 	}
 	else
 	{
@@ -65,6 +76,15 @@ void UPlayerInventoryWidget::OnRightArrowClicked()
 	if (PlayerCharacter)
 	{
 		PlayerCharacter->RotatePlayerCameraRight();
+
+		if (PlayerCharacter->CameraComp->GetComponentRotation() == FRotator(0,0,0))
+		{
+			WBP_OrganCutter->SetVisibility(ESlateVisibility::Visible);
+		}
+		else
+		{
+			WBP_OrganCutter->SetVisibility(ESlateVisibility::Collapsed);
+		}
 	}
 	else
 	{
