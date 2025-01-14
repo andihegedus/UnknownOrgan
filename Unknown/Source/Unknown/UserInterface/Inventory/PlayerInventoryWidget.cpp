@@ -59,7 +59,7 @@ void UPlayerInventoryWidget::OnLeftArrowClicked()
 	{
 		PlayerCharacter->RotatePlayerCameraLeft();
 
-		if (PlayerCharacter->CameraComp->GetComponentRotation() == FRotator(0,0,0))
+		if (PlayerCharacter->TagInFocus.Contains("Cut"))
 		{
 			WBP_OrganCutter->SetVisibility(ESlateVisibility::Visible);
 		}
@@ -67,8 +67,7 @@ void UPlayerInventoryWidget::OnLeftArrowClicked()
 		{
 			WBP_OrganCutter->SetVisibility(ESlateVisibility::Collapsed);
 		}
-
-		if (PlayerCharacter->CameraComp->GetComponentRotation() == FRotator(0,-90.f,0))
+		if (PlayerCharacter->TagInFocus.Contains("Rinse"))
 		{
 			WBP_RinseTool->SetVisibility(ESlateVisibility::Visible);
 		}
@@ -89,7 +88,16 @@ void UPlayerInventoryWidget::OnRightArrowClicked()
 	{
 		PlayerCharacter->RotatePlayerCameraRight();
 
-		if (PlayerCharacter->CameraComp->GetComponentRotation() == FRotator(0,0,0))
+		/*if (PlayerCharacter->CameraComp->GetComponentRotation() == FRotator(0,0,0))
+		{
+			WBP_OrganCutter->SetVisibility(ESlateVisibility::Visible);
+		}
+		else
+		{
+			WBP_OrganCutter->SetVisibility(ESlateVisibility::Collapsed);
+		}*/
+
+		if (PlayerCharacter->TagInFocus.Contains("Cut"))
 		{
 			WBP_OrganCutter->SetVisibility(ESlateVisibility::Visible);
 		}
@@ -97,8 +105,7 @@ void UPlayerInventoryWidget::OnRightArrowClicked()
 		{
 			WBP_OrganCutter->SetVisibility(ESlateVisibility::Collapsed);
 		}
-
-		if (PlayerCharacter->CameraComp->GetComponentRotation() == FRotator(0,-90.f,0))
+		if (PlayerCharacter->TagInFocus.Contains("Rinse"))
 		{
 			WBP_RinseTool->SetVisibility(ESlateVisibility::Visible);
 		}
@@ -106,6 +113,7 @@ void UPlayerInventoryWidget::OnRightArrowClicked()
 		{
 			WBP_RinseTool->SetVisibility(ESlateVisibility::Collapsed);
 		}
+		
 	}
 	else
 	{

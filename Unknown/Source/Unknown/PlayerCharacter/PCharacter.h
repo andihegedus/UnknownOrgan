@@ -52,4 +52,27 @@ public:
 	UCameraComponent* CameraComp;
 
 	FRotator PlayerCameraRotation;
+
+	UPROPERTY(VisibleAnywhere)
+	TArray<FName> TagInFocus;
+	
+	UPROPERTY(VisibleAnywhere)
+	FName CurrentTag;
+
+	
+
+
+protected:
+	// FUNCTIONS
+	// -----------------------------
+	
+	void CheckForInteractable();
+	void FoundInteractable();
+
+	// PROPERTIES & VARIABLES
+	// -----------------------------
+
+	FVector LineTraceStart;
+
+	float CheckInteractionDistance;
 };
