@@ -68,4 +68,7 @@ public:
 
 	UPROPERTY(VisibleAnywhere, meta = (BindWidget))
 	UImage* OrganImage3;
+
+	UPROPERTY(VisibleAnywhere, meta = (BindWidget))
+	UImage* OrganImage4;
 };

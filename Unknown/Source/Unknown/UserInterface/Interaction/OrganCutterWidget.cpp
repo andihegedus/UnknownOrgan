@@ -41,6 +41,7 @@ void UOrganCutterWidget::NativeOnInitialized()
 	OrganImage->SetVisibility(ESlateVisibility::Visible);
 	OrganImage2->SetVisibility(ESlateVisibility::Collapsed);
 	OrganImage3->SetVisibility(ESlateVisibility::Collapsed);
+	OrganImage4->SetVisibility(ESlateVisibility::Collapsed);
 
 	OrganCutterSlider->SetVisibility(ESlateVisibility::Visible);
 	OrganSlider2->SetVisibility(ESlateVisibility::Collapsed);
@@ -62,6 +63,7 @@ void UOrganCutterWidget::CloseAndDestroy(float Value)
 	{
 		OrganImage->SetVisibility(ESlateVisibility::Collapsed);
 		OrganImage2->SetVisibility(ESlateVisibility::Visible);
+		OrganImage3->SetVisibility(ESlateVisibility::Visible);
 		
 		OrganCutterSlider->SetVisibility(ESlateVisibility::Collapsed);
 		OrganSlider2->SetVisibility(ESlateVisibility::Visible);
@@ -70,15 +72,22 @@ void UOrganCutterWidget::CloseAndDestroy(float Value)
 	if (OrganSlider2->GetValue() >= 1 && OrganImage2->IsVisible())
 	{
 		OrganSlider2->SetVisibility(ESlateVisibility::Collapsed);
+		OrganImage2->SetVisibility(ESlateVisibility::Hidden);
+
+		if (!OrganSlider2->IsVisible() && !OrganSlider3->IsVisible() && !OrganImage->IsVisible())
+		{
+			OrganImage4->SetVisibility(ESlateVisibility::Visible);
+		}
 	}
-	if (OrganSlider3->GetValue() >= 1 && OrganImage2->IsVisible())
+	if (OrganSlider3->GetValue() >= 1 && OrganImage3->IsVisible())
 	{
 		OrganSlider3->SetVisibility(ESlateVisibility::Collapsed);
-	}
-	if (!OrganSlider2->IsVisible() && !OrganSlider3->IsVisible() && OrganImage2->IsVisible())
-	{
-		OrganImage2->SetVisibility(ESlateVisibility::Collapsed);
-		OrganImage3->SetVisibility(ESlateVisibility::Visible);
+		OrganImage3->SetVisibility(ESlateVisibility::Hidden);
+
+		if (!OrganSlider2->IsVisible() && !OrganSlider3->IsVisible() && !OrganImage->IsVisible())
+		{
+			OrganImage4->SetVisibility(ESlateVisibility::Visible);
+		}
 	}
 	else
 	{

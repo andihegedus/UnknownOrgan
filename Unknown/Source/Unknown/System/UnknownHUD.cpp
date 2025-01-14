@@ -2,6 +2,7 @@
 
 #include "Unknown/UserInterface/Interaction/InteractionWidget.h"
 #include "Unknown/UserInterface/Interaction/OrganCutterWidget.h"
+#include "Unknown/UserInterface/Interaction/RinseObjectsWidget.h"
 #include "Unknown/UserInterface/Inventory/PlayerInventoryWidget.h"
 #include "Unknown/UserInterface/Inventory/ShelfInventoryWidget.h"
 #include "Unknown/UserInterface/SaveLoad/SaveLoadWidget.h"
@@ -50,10 +51,13 @@ void AUnknownHUD::BeginPlay()
 		OrganCutterWidget = CreateWidget<UOrganCutterWidget>(GetWorld(), OrganCutterWidgetClass);
 		OrganCutterWidget->AddToViewport();
 		OrganCutterWidget->SetVisibility(ESlateVisibility::Collapsed);
-
-		UE_LOG(LogTemp, Warning, TEXT("UUnknownHUD: ShowOrganCutterWidget valid."));
 	}
-	
+	if (RinseObjectsWidgetClass)
+	{
+		RinseObjectsWidget = CreateWidget<URinseObjectsWidget>(GetWorld(), RinseObjectsWidgetClass);
+		RinseObjectsWidget->AddToViewport();
+		RinseObjectsWidget->SetVisibility(ESlateVisibility::Collapsed);
+	}
 }
 
 void AUnknownHUD::ShowHideSaveLoadWidget()
@@ -170,7 +174,6 @@ void AUnknownHUD::ShowOrganCutterWidget()
 {
 	if (OrganCutterWidget)
 	{
-		UE_LOG(LogTemp, Warning, TEXT("UUnknownHUD: ShowOrganCutterWidget valid."));
 		OrganCutterWidget->SetVisibility(ESlateVisibility::Visible);
 	}
 }
@@ -185,6 +188,26 @@ void AUnknownHUD::HideOrganCutterWidget()
 	if (OrganCutterWidget)
 	{
 		OrganCutterWidget->SetVisibility(ESlateVisibility::Collapsed);
+	}
+}
+
+void AUnknownHUD::ShowRinseObjectsWidget()
+{
+	if (RinseObjectsWidget)
+	{
+		RinseObjectsWidget->SetVisibility(ESlateVisibility::Visible);
+	}
+}
+
+void AUnknownHUD::UpdateRinseObjectsWidget()
+{
+}
+
+void AUnknownHUD::HideRinseObjectsWidget()
+{
+	if (RinseObjectsWidget)
+	{
+		RinseObjectsWidget->SetVisibility(ESlateVisibility::Collapsed);
 	}
 }
 

@@ -6,6 +6,7 @@
 #include "Unknown/PlayerCharacter/PCharacter.h"
 #include "Unknown/PlayerCharacter/PController.h"
 #include "Unknown/UserInterface/Interaction/OrganCutterWidget.h"
+#include "Unknown/UserInterface/Interaction/RinseObjectsWidget.h"
 
 
 void UPlayerInventoryWidget::NativeOnInitialized()
@@ -37,6 +38,8 @@ void UPlayerInventoryWidget::NativeOnInitialized()
 	
 	LeftArrowButton->OnClicked.AddDynamic(this, &UPlayerInventoryWidget::OnLeftArrowClicked);
 	RightArrowButton->OnClicked.AddDynamic(this, &UPlayerInventoryWidget::OnRightArrowClicked);
+
+	WBP_RinseTool->SetVisibility(ESlateVisibility::Collapsed);
 }
 
 void UPlayerInventoryWidget::NativeConstruct()
@@ -64,6 +67,15 @@ void UPlayerInventoryWidget::OnLeftArrowClicked()
 		{
 			WBP_OrganCutter->SetVisibility(ESlateVisibility::Collapsed);
 		}
+
+		if (PlayerCharacter->CameraComp->GetComponentRotation() == FRotator(0,-90.f,0))
+		{
+			WBP_RinseTool->SetVisibility(ESlateVisibility::Visible);
+		}
+		else
+		{
+			WBP_RinseTool->SetVisibility(ESlateVisibility::Collapsed);
+		}
 	}
 	else
 	{
@@ -84,6 +96,15 @@ void UPlayerInventoryWidget::OnRightArrowClicked()
 		else
 		{
 			WBP_OrganCutter->SetVisibility(ESlateVisibility::Collapsed);
+		}
+
+		if (PlayerCharacter->CameraComp->GetComponentRotation() == FRotator(0,-90.f,0))
+		{
+			WBP_RinseTool->SetVisibility(ESlateVisibility::Visible);
+		}
+		else
+		{
+			WBP_RinseTool->SetVisibility(ESlateVisibility::Collapsed);
 		}
 	}
 	else

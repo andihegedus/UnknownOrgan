@@ -12,6 +12,7 @@ class UInteractionWidget;
 class UPlayerInventoryWidget;
 class UShelfInventoryWidget;
 class UOrganCutterWidget;
+class URinseObjectsWidget;
 
 UCLASS()
 class UNKNOWN_API AUnknownHUD : public AHUD
@@ -44,7 +45,10 @@ public:
 	void ShowOrganCutterWidget();
 	void UpdateOrganCutterWidget();
 	void HideOrganCutterWidget();
-	
+
+	void ShowRinseObjectsWidget();
+	void UpdateRinseObjectsWidget();
+	void HideRinseObjectsWidget();
 
 	// PROPERTIES & VARIABLES
 	// -----------------------------
@@ -79,6 +83,9 @@ public:
 	UPROPERTY(EditDefaultsOnly, Category="Widgets")
 	TSubclassOf<UOrganCutterWidget> OrganCutterWidgetClass;
 
+	UPROPERTY(EditDefaultsOnly, Category="Widgets")
+	TSubclassOf<URinseObjectsWidget> RinseObjectsWidgetClass;
+
 protected:
 	// PROPERTIES & VARIABLES
 	// -----------------------------
@@ -100,4 +107,7 @@ protected:
 
 	UPROPERTY()
 	UOrganCutterWidget* OrganCutterWidget;
+
+	UPROPERTY()
+	URinseObjectsWidget* RinseObjectsWidget;
 };

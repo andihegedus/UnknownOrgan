@@ -1,31 +1,33 @@
-#pragma once
+﻿#pragma once
 
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
-#include "PlayerInventoryWidget.generated.h"
+#include "RinseObjectsWidget.generated.h"
 
-class URinseObjectsWidget;
-class UOrganCutterWidget;
+
+class UProgressBar;
 class APCharacter;
 class APController;
-class UButton;
-
+class UImage;
+class UHorizontalBox;
 
 UCLASS()
-class UNKNOWN_API UPlayerInventoryWidget: public UUserWidget
+class UNKNOWN_API URinseObjectsWidget : public UUserWidget
 {
 	GENERATED_BODY()
 	
 public:
 	// FUNCTIONS
 	// -----------------------------
+	
 	void UpdateWidget();
 
 	UFUNCTION()
-	void OnLeftArrowClicked();
+	void CloseAndDestroy(float Value);
 
 	UFUNCTION()
-	void OnRightArrowClicked();
+	void RinseOrgan(float Value);
+	
 
 	// PROPERTIES & VARIABLES
 	// -----------------------------
@@ -36,6 +38,14 @@ public:
 	UPROPERTY()
 	APController* PlayerController;
 
+	UPROPERTY(VisibleAnywhere, meta = (BindWidget))
+	UProgressBar* RinseProgressBar1;
+
+	/*UPROPERTY(VisibleAnywhere, meta = (BindWidget))
+	UProgressBar* RinseProgressBar2;
+
+	UPROPERTY(VisibleAnywhere, meta = (BindWidget))
+	UProgressBar* RinseProgressBar3;*/
 
 protected:
 	// FUNCTIONS
@@ -44,19 +54,21 @@ protected:
 	virtual void NativeOnInitialized() override;
 
 	virtual void NativeConstruct() override;
+	
 
 	// PROPERTIES & VARIABLES
 	// -----------------------------
+	
 	UPROPERTY(VisibleAnywhere, meta = (BindWidget))
-	UButton* LeftArrowButton;
+	UHorizontalBox* RinseBox;
+	
+	UPROPERTY(VisibleAnywhere, meta = (BindWidget))
+	UImage* OrganImage1;
+
+	/*UPROPERTY(VisibleAnywhere, meta = (BindWidget))
+	UImage* OrganImage2;
 
 	UPROPERTY(VisibleAnywhere, meta = (BindWidget))
-	UButton* RightArrowButton;
-
-	UPROPERTY(VisibleAnywhere, meta = (BindWidget))
-	UOrganCutterWidget* WBP_OrganCutter;
-
-	UPROPERTY(VisibleAnywhere, meta = (BindWidget))
-	URinseObjectsWidget* WBP_RinseTool;
+	UImage* OrganImage3;*/
 	
 };
