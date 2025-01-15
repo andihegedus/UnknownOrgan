@@ -10,6 +10,7 @@ class AUnknownHUD;
 class APController;
 class USpringArmComponent;
 class UCameraComponent;
+class AOrganRinse;
 
 UCLASS()
 class UNKNOWN_API APCharacter: public ACharacter

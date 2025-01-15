@@ -123,11 +123,11 @@ void APCharacter::RinseOrgan()
 				{
 					if (TraceHit.GetActor()->Tags.Contains("ToRinse"))
 					{
-						
 						OrganRinse = Cast<AOrganRinse>(TraceHit.GetActor());
 		
 						if (OrganRinse)
 						{
+							UE_LOG(LogTemp, Warning, TEXT("APCharacter: OrganRinse object valid, rinse functional."));
 							OrganRinse->DissolveTimelineComp->Play();
 						}
 					}
@@ -264,13 +264,6 @@ void APCharacter::CheckForInteractable()
 				
 				CurrentTag = "ToRinse";
 				TagInFocus.Add(CurrentTag);
-
-				/*OrganRinse = Cast<AOrganRinse>(TraceHit.GetActor());
-
-				if (OrganRinse)
-				{
-					OrganRinse->DissolveTimelineComp->Play();
-				}*/
 		
 				FoundInteractable();
 

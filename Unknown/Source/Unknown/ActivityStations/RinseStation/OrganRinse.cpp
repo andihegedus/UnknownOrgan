@@ -1,16 +1,17 @@
 ﻿#include "OrganRinse.h"
 
-#include "FindInBlueprints.h"
 #include "Components/BoxComponent.h"
 #include "GameFramework/PlayerController.h"
 #include "Materials/MaterialInstance.h"
 #include "Materials/MaterialInstanceDynamic.h"
 #include "Unknown/PlayerCharacter/PCharacter.h"
 #include "Unknown/System/UnknownHUD.h"
+#include "Components/TimelineComponent.h"
 
 AOrganRinse::AOrganRinse()
 {
 	OrganMeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("OrganMeshComponent"));
+	DissolveTimelineComp = CreateDefaultSubobject<UTimelineComponent>(TEXT("DissolveTimelineComp"));
 	OrganMeshComponent->SetupAttachment(GetRootComponent());
 
 	OrganProximityTrigger = CreateDefaultSubobject<UBoxComponent>(TEXT("OrganProxmityTrigger"));
@@ -18,6 +19,8 @@ AOrganRinse::AOrganRinse()
 
 	OrganTag = "ToRinse";
 	this->Tags.Add(OrganTag);
+
+	
 }
 
 void AOrganRinse::BeginPlay()

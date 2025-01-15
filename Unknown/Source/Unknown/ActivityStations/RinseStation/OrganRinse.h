@@ -11,6 +11,9 @@ class APController;
 class UBoxComponent;
 class UStaticMeshComponent;
 class UStaticMesh;
+class UMaterialInstance;
+class UTimelineComponent;
+class UCurveFloat;
 
 UCLASS()
 class AOrganRinse : public AActor
