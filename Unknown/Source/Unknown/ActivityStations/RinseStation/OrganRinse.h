@@ -30,8 +30,6 @@ public:
 
 	void CloseAndDestroy();
 
-	void DissolveOrgan();
-
 	// PROPERTIES & VARIABLES
 	// -----------------------------
 

@@ -33,18 +33,14 @@ void AOrganRinse::BeginPlay()
 
 	if (DissolveTimelineCurveFloat)
 	{
-		UE_LOG(LogTemp, Warning, TEXT("AOrganRinse: DissolveCurveFloat valid!"));
+		//UE_LOG(LogTemp, Warning, TEXT("AOrganRinse: DissolveCurveFloat valid!"));
 		DissolveTimelineComp->AddInterpFloat(DissolveTimelineCurveFloat, UpdateFunctionFloat);
 	}
 }
 
 void AOrganRinse::CloseAndDestroy()
 {
-}
-
-void AOrganRinse::DissolveOrgan()
-{
-	
+	this->Destroy();
 }
 
 void AOrganRinse::UpdateTimelineComp(float Output)
@@ -55,14 +51,12 @@ void AOrganRinse::UpdateTimelineComp(float Output)
 	// convert float to string
 	FString PrintDissolveProgressValue = FString::SanitizeFloat(Output);
 
-	UE_LOG(LogTemp, Warning, TEXT("%s"), *PrintDissolveProgressValue);
+	//UE_LOG(LogTemp, Warning, TEXT("%s"), *PrintDissolveProgressValue);
 
 	OrganMeshComponent->CreateDynamicMaterialInstance(0, OrganMaterialInstance)->SetScalarParameterValue("Progress", Output);
 
-	/*FHashedMaterialParameterInfo ParameterInfo;
-
-	OrganMeshComponent->CreateDynamicMaterialInstance(0, OrganMaterialInstance)->GetScalarParameterValue(ParameterInfo,DissolveProgressValue);
-	FString PrintScalarValue = FString::SanitizeFloat(DissolveProgressValue);
-
-	UE_LOG(LogTemp, Warning, TEXT("%s"), *PrintDissolveProgressValue);*/
+	if (Output >= 0.675)
+	{
+		CloseAndDestroy();
+	}
 }

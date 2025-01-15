@@ -9,6 +9,8 @@ class UOrganCutterWidget;
 class APCharacter;
 class APController;
 class UButton;
+class UTextBlock;
+class UBorder;
 
 
 UCLASS()
@@ -59,6 +61,26 @@ protected:
 	UOrganCutterWidget* WBP_OrganCutter;
 
 	UPROPERTY(VisibleAnywhere, meta = (BindWidget))
-	URinseObjectsWidget* WBP_RinseTool;
-	
+	UTextBlock* CutText;
+
+	UPROPERTY(VisibleAnywhere, meta = (BindWidget))
+	UBorder* CutBorder;
+
+	UPROPERTY(VisibleAnywhere, meta = (BindWidget))
+	UTextBlock* RinseText;
+
+	UPROPERTY(VisibleAnywhere, meta = (BindWidget))
+	UBorder* RinseBorder;
+
+	UPROPERTY(VisibleAnywhere, meta = (BindWidget))
+	UTextBlock* DefendText;
+
+	UPROPERTY(VisibleAnywhere, meta = (BindWidget))
+	UBorder* DefendBorder;
+
+	UPROPERTY(VisibleAnywhere, meta = (BindWidget))
+	UTextBlock* TestText;
+
+	UPROPERTY(VisibleAnywhere, meta = (BindWidget))
+	UBorder* TestBorder;
 };

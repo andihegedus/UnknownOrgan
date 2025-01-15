@@ -170,7 +170,7 @@ void APCharacter::RotatePlayerCameraLeft()
 	// Convert FRotator to string
 	FString PrintCurrentRotation = NewRotation.ToString();
 
-	UE_LOG(LogTemp, Warning, TEXT("%s"), *PrintCurrentRotation);
+	//UE_LOG(LogTemp, Warning, TEXT("%s"), *PrintCurrentRotation);
 
 	CheckForInteractable();
 }
@@ -189,7 +189,7 @@ void APCharacter::RotatePlayerCameraRight()
 
 	FString PrintCurrentRotation = NewRotation.ToString();
 
-	UE_LOG(LogTemp, Warning, TEXT("%s"), *PrintCurrentRotation);
+	//UE_LOG(LogTemp, Warning, TEXT("%s"), *PrintCurrentRotation);
 
 	CheckForInteractable();
 }
@@ -261,7 +261,7 @@ void APCharacter::CheckForInteractable()
 			}
 			if (TraceHit.GetActor()->Tags.Contains("ToRinse"))
 			{
-				UE_LOG(LogTemp, Warning, TEXT("APCharacter: Organ to rinse!"));
+				//UE_LOG(LogTemp, Warning, TEXT("APCharacter: Organ to rinse!"));
 				
 				CurrentTag = "ToRinse";
 				TagInFocus.Add(CurrentTag);

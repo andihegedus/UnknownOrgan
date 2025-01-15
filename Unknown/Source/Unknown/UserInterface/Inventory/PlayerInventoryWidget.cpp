@@ -1,12 +1,13 @@
 #include "PlayerInventoryWidget.h"
 
 #include "Camera/CameraComponent.h"
+#include "Components/Border.h"
 #include "Components/Button.h"
+#include "Components/TextBlock.h"
 #include "GameFramework/PlayerController.h"
 #include "Unknown/PlayerCharacter/PCharacter.h"
 #include "Unknown/PlayerCharacter/PController.h"
 #include "Unknown/UserInterface/Interaction/OrganCutterWidget.h"
-#include "Unknown/UserInterface/Interaction/RinseObjectsWidget.h"
 
 
 void UPlayerInventoryWidget::NativeOnInitialized()
@@ -39,7 +40,17 @@ void UPlayerInventoryWidget::NativeOnInitialized()
 	LeftArrowButton->OnClicked.AddDynamic(this, &UPlayerInventoryWidget::OnLeftArrowClicked);
 	RightArrowButton->OnClicked.AddDynamic(this, &UPlayerInventoryWidget::OnRightArrowClicked);
 
-	WBP_RinseTool->SetVisibility(ESlateVisibility::Collapsed);
+	CutText->SetVisibility(ESlateVisibility::Visible);
+	RinseText->SetVisibility(ESlateVisibility::Collapsed);
+	DefendText->SetVisibility(ESlateVisibility::Collapsed);
+	TestText->SetVisibility(ESlateVisibility::Collapsed);
+
+	CutBorder->SetBrushColor(FLinearColor::Red);
+	RinseBorder->SetBrushColor(FLinearColor::Gray);
+	DefendBorder->SetBrushColor(FLinearColor::Gray);
+	TestBorder->SetBrushColor(FLinearColor::Gray);
+
+	
 }
 
 void UPlayerInventoryWidget::NativeConstruct()
@@ -68,18 +79,44 @@ void UPlayerInventoryWidget::OnLeftArrowClicked()
 		if (PlayerCharacter->TagInFocus.Contains("Cut"))
 		{
 			WBP_OrganCutter->SetVisibility(ESlateVisibility::Visible);
+			CutText->SetVisibility(ESlateVisibility::Visible);
+			CutBorder->SetBrushColor(FLinearColor::Red);
 		}
 		else
 		{
 			WBP_OrganCutter->SetVisibility(ESlateVisibility::Collapsed);
+			CutText->SetVisibility(ESlateVisibility::Collapsed);
+			CutBorder->SetBrushColor(FLinearColor::Gray);
 		}
 		if (PlayerCharacter->TagInFocus.Contains("Rinse"))
 		{
-			WBP_RinseTool->SetVisibility(ESlateVisibility::Visible);
+			RinseText->SetVisibility(ESlateVisibility::Visible);
+			RinseBorder->SetBrushColor(FLinearColor::Blue);
 		}
 		else
 		{
-			WBP_RinseTool->SetVisibility(ESlateVisibility::Collapsed);
+			RinseText->SetVisibility(ESlateVisibility::Collapsed);
+			RinseBorder->SetBrushColor(FLinearColor::Gray);
+		}
+		if (PlayerCharacter->CameraComp->GetComponentRotation() == FRotator(0,180,0))
+		{
+			DefendText->SetVisibility(ESlateVisibility::Visible);
+			DefendBorder->SetBrushColor(FLinearColor::Yellow);
+		}
+		else
+		{
+			DefendText->SetVisibility(ESlateVisibility::Collapsed);
+			DefendBorder->SetBrushColor(FLinearColor::Gray);
+		}
+		if (PlayerCharacter->TagInFocus.Contains("Test"))
+		{
+			TestText->SetVisibility(ESlateVisibility::Visible);
+			TestBorder->SetBrushColor(FLinearColor::Green);
+		}
+		else
+		{
+			TestText->SetVisibility(ESlateVisibility::Collapsed);
+			TestBorder->SetBrushColor(FLinearColor::Gray);
 		}
 	}
 	else
@@ -94,32 +131,48 @@ void UPlayerInventoryWidget::OnRightArrowClicked()
 	{
 		PlayerCharacter->RotatePlayerCameraRight();
 
-		/*if (PlayerCharacter->CameraComp->GetComponentRotation() == FRotator(0,0,0))
-		{
-			WBP_OrganCutter->SetVisibility(ESlateVisibility::Visible);
-		}
-		else
-		{
-			WBP_OrganCutter->SetVisibility(ESlateVisibility::Collapsed);
-		}*/
-
 		if (PlayerCharacter->TagInFocus.Contains("Cut"))
 		{
 			WBP_OrganCutter->SetVisibility(ESlateVisibility::Visible);
+			CutText->SetVisibility(ESlateVisibility::Visible);
+			CutBorder->SetBrushColor(FLinearColor::Red);
 		}
 		else
 		{
 			WBP_OrganCutter->SetVisibility(ESlateVisibility::Collapsed);
+			CutText->SetVisibility(ESlateVisibility::Collapsed);
+			CutBorder->SetBrushColor(FLinearColor::Gray);
 		}
 		if (PlayerCharacter->TagInFocus.Contains("Rinse"))
 		{
-			WBP_RinseTool->SetVisibility(ESlateVisibility::Visible);
+			RinseText->SetVisibility(ESlateVisibility::Visible);
+			RinseBorder->SetBrushColor(FLinearColor::Blue);
 		}
 		else
 		{
-			WBP_RinseTool->SetVisibility(ESlateVisibility::Collapsed);
+			RinseText->SetVisibility(ESlateVisibility::Collapsed);
+			RinseBorder->SetBrushColor(FLinearColor::Gray);
 		}
-		
+		if (PlayerCharacter->CameraComp->GetComponentRotation() == FRotator(0,180,0))
+		{
+			DefendText->SetVisibility(ESlateVisibility::Visible);
+			DefendBorder->SetBrushColor(FLinearColor::Yellow);
+		}
+		else
+		{
+			DefendText->SetVisibility(ESlateVisibility::Collapsed);
+			DefendBorder->SetBrushColor(FLinearColor::Gray);
+		}
+		if (PlayerCharacter->TagInFocus.Contains("Test"))
+		{
+			TestText->SetVisibility(ESlateVisibility::Visible);
+			TestBorder->SetBrushColor(FLinearColor::Green);
+		}
+		else
+		{
+			TestText->SetVisibility(ESlateVisibility::Collapsed);
+			TestBorder->SetBrushColor(FLinearColor::Gray);
+		}
 	}
 	else
 	{
