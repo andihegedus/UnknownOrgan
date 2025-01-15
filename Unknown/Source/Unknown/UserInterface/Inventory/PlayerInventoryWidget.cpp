@@ -47,6 +47,12 @@ void UPlayerInventoryWidget::NativeConstruct()
 	Super::NativeConstruct();
 }
 
+void UPlayerInventoryWidget::NativeOnDragDetected(const FGeometry& InGeometry, const FPointerEvent& InMouseEvent,
+	UDragDropOperation*& OutOperation)
+{
+	Super::NativeOnDragDetected(InGeometry, InMouseEvent, OutOperation);
+}
+
 void UPlayerInventoryWidget::UpdateWidget()
 {
 	

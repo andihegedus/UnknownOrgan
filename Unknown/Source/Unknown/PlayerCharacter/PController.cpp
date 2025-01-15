@@ -36,4 +36,9 @@ void APController::SetupInputComponent()
 	ShelfInventoryAction = NewObject<UInputAction>(this);
 	ShelfInventoryAction->ValueType = EInputActionValueType::Boolean;
 	SetupKeyMap(PCMappingContext, ShelfInventoryAction, EKeys::I, false, false, EInputAxisSwizzle::YXZ);
+
+	// To rinse out the organ
+	RinseAction = NewObject<UInputAction>(this);
+	RinseAction->ValueType = EInputActionValueType::Boolean;
+	SetupKeyMap(PCMappingContext, RinseAction, EKeys::LeftMouseButton, false, false, EInputAxisSwizzle::YXZ);
 }

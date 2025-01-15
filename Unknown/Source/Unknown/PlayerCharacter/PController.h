@@ -30,5 +30,8 @@ public:
 
 	UPROPERTY()
 	class UInputAction* ShelfInventoryAction;
+
+	UPROPERTY()
+	class UInputAction* RinseAction;
 	
 };

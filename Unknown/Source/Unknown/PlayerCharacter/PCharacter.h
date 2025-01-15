@@ -32,6 +32,10 @@ public:
 	
 	void OpenShelfInventory();
 
+	void RinseOrgan();
+
+	void StopRinseOrgan();
+
 	void RotatePlayerCameraLeft();
 
 	void RotatePlayerCameraRight();

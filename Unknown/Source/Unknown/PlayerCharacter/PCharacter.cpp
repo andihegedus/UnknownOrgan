@@ -55,6 +55,9 @@ void APCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponen
 
 	EnhancedInputComponent->BindAction(PlayerBaseController->EscapeAction, ETriggerEvent::Completed, this, &APCharacter::OpenCloseWidget);
 	EnhancedInputComponent->BindAction(PlayerBaseController->ShelfInventoryAction, ETriggerEvent::Completed, this, &APCharacter::OpenShelfInventory);
+	EnhancedInputComponent->BindAction(PlayerBaseController->RinseAction, ETriggerEvent::Triggered, this, &APCharacter::RinseOrgan);
+	EnhancedInputComponent->BindAction(PlayerBaseController->RinseAction, ETriggerEvent::Completed, this, &APCharacter::StopRinseOrgan);
+
 
 	ULocalPlayer* LocalPlayer = PlayerBaseController->GetLocalPlayer();
 
@@ -88,8 +91,43 @@ void APCharacter::OpenShelfInventory()
 	HUD->ShowShelfInventoryWidget();
 }
 
+void APCharacter::RinseOrgan()
+{
+	if (TagInFocus.Contains("ToRinse"))
+	{
+		//UE_LOG(LogTemp, Warning, TEXT("APCharacter: Rinsing!!"));
+
+		if (this->GetWorld()->GetFirstPlayerController())
+		{
+			UE_LOG(LogTemp, Warning, TEXT("APCharacter: Mouse changed!!"));
+			
+			this->GetWorld()->GetFirstPlayerController()->CurrentMouseCursor = EMouseCursor::GrabHandClosed;
+		}
+		else
+		{
+			UE_LOG(LogTemp, Warning, TEXT("APCharacter: PlayerController not valid.")); 
+		}
+	}
+}
+
+void APCharacter::StopRinseOrgan()
+{
+	if (this->GetWorld()->GetFirstPlayerController())
+	{
+		UE_LOG(LogTemp, Warning, TEXT("APCharacter: Mouse changed!!"));
+			
+		this->GetWorld()->GetFirstPlayerController()->CurrentMouseCursor = EMouseCursor::Default;
+	}
+	else
+	{
+		UE_LOG(LogTemp, Warning, TEXT("APCharacter: PlayerController not valid.")); 
+	}
+}
+
 void APCharacter::RotatePlayerCameraLeft()
 {
+	TagInFocus.Empty();
+	
 	UE_LOG(LogTemp, Warning, TEXT("APCharacter: Rotate Left!"));
 
 	PlayerCameraRotation = CameraComp->GetComponentRotation();
@@ -107,6 +145,8 @@ void APCharacter::RotatePlayerCameraLeft()
 
 void APCharacter::RotatePlayerCameraRight()
 {
+	TagInFocus.Empty();
+
 	UE_LOG(LogTemp, Warning, TEXT("APCharacter: Rotate Right!"));
 
 	PlayerCameraRotation = CameraComp->GetComponentRotation();
@@ -180,6 +220,17 @@ void APCharacter::CheckForInteractable()
 				UE_LOG(LogTemp, Warning, TEXT("APCharacter: Door!"));
 				
 				CurrentTag = "Door";
+				TagInFocus.Add(CurrentTag);
+		
+				FoundInteractable();
+
+				return;
+			}
+			if (TraceHit.GetActor()->Tags.Contains("ToRinse"))
+			{
+				UE_LOG(LogTemp, Warning, TEXT("APCharacter: Organ to rinse!"));
+				
+				CurrentTag = "ToRinse";
 				TagInFocus.Add(CurrentTag);
 		
 				FoundInteractable();

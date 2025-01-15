@@ -45,6 +45,8 @@ protected:
 
 	virtual void NativeConstruct() override;
 
+	virtual void NativeOnDragDetected(const FGeometry& InGeometry, const FPointerEvent& InMouseEvent, UDragDropOperation*& OutOperation) override;
+	
 	// PROPERTIES & VARIABLES
 	// -----------------------------
 	UPROPERTY(VisibleAnywhere, meta = (BindWidget))
