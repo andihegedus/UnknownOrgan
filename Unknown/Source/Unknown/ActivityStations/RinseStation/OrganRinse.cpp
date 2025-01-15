@@ -19,8 +19,6 @@ AOrganRinse::AOrganRinse()
 
 	OrganTag = "ToRinse";
 	this->Tags.Add(OrganTag);
-
-	
 }
 
 void AOrganRinse::BeginPlay()
@@ -35,6 +33,7 @@ void AOrganRinse::BeginPlay()
 
 	if (DissolveTimelineCurveFloat)
 	{
+		UE_LOG(LogTemp, Warning, TEXT("AOrganRinse: DissolveCurveFloat valid!"));
 		DissolveTimelineComp->AddInterpFloat(DissolveTimelineCurveFloat, UpdateFunctionFloat);
 	}
 }
@@ -50,7 +49,20 @@ void AOrganRinse::DissolveOrgan()
 
 void AOrganRinse::UpdateTimelineComp(float Output)
 {
-	DissolveProgressValue += 0.02;
+	//UE_LOG(LogTemp, Warning, TEXT("AOrganRinse: UpdateTimelineComp firing!"));
+	Output += 0.001;
 
-	OrganMeshComponent->CreateDynamicMaterialInstance(0, OrganMaterialInstance)->SetScalarParameterValue("Progress", DissolveProgressValue);
+	// convert float to string
+	FString PrintDissolveProgressValue = FString::SanitizeFloat(Output);
+
+	UE_LOG(LogTemp, Warning, TEXT("%s"), *PrintDissolveProgressValue);
+
+	OrganMeshComponent->CreateDynamicMaterialInstance(0, OrganMaterialInstance)->SetScalarParameterValue("Progress", Output);
+
+	/*FHashedMaterialParameterInfo ParameterInfo;
+
+	OrganMeshComponent->CreateDynamicMaterialInstance(0, OrganMaterialInstance)->GetScalarParameterValue(ParameterInfo,DissolveProgressValue);
+	FString PrintScalarValue = FString::SanitizeFloat(DissolveProgressValue);
+
+	UE_LOG(LogTemp, Warning, TEXT("%s"), *PrintDissolveProgressValue);*/
 }

@@ -127,7 +127,7 @@ void APCharacter::RinseOrgan()
 		
 						if (OrganRinse)
 						{
-							UE_LOG(LogTemp, Warning, TEXT("APCharacter: OrganRinse object valid, rinse functional."));
+							//UE_LOG(LogTemp, Warning, TEXT("APCharacter: OrganRinse object valid, rinse functional."));
 							OrganRinse->DissolveTimelineComp->Play();
 						}
 					}
@@ -167,6 +167,7 @@ void APCharacter::RotatePlayerCameraLeft()
 
 	CameraComp->SetRelativeRotation(NewRotation);
 
+	// Convert FRotator to string
 	FString PrintCurrentRotation = NewRotation.ToString();
 
 	UE_LOG(LogTemp, Warning, TEXT("%s"), *PrintCurrentRotation);
