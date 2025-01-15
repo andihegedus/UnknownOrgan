@@ -40,6 +40,8 @@ public:
 
 	void RotatePlayerCameraRight();
 
+	
+
 	// PROPERTIES & VARIABLES
 	// -----------------------------
 	
@@ -48,6 +50,9 @@ public:
 	
 	UPROPERTY(EditAnywhere)
 	AUnknownHUD* HUD;
+
+	UPROPERTY()
+	AOrganRinse* OrganRinse;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Camera");
 	USpringArmComponent* SpringArmComp;
@@ -63,14 +68,13 @@ public:
 	UPROPERTY(VisibleAnywhere)
 	FName CurrentTag;
 
-	
-
 
 protected:
 	// FUNCTIONS
 	// -----------------------------
 	
 	void CheckForInteractable();
+	
 	void FoundInteractable();
 
 	// PROPERTIES & VARIABLES
@@ -79,4 +83,6 @@ protected:
 	FVector LineTraceStart;
 
 	float CheckInteractionDistance;
+
+	
 };

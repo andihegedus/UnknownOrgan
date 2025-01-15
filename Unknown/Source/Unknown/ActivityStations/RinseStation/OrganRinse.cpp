@@ -1,7 +1,10 @@
 ﻿#include "OrganRinse.h"
 
+#include "FindInBlueprints.h"
 #include "Components/BoxComponent.h"
 #include "GameFramework/PlayerController.h"
+#include "Materials/MaterialInstance.h"
+#include "Materials/MaterialInstanceDynamic.h"
 #include "Unknown/PlayerCharacter/PCharacter.h"
 #include "Unknown/System/UnknownHUD.h"
 
@@ -25,7 +28,12 @@ void AOrganRinse::BeginPlay()
 
 	PlayerCharacter = Cast<APCharacter>(GetWorld()->GetFirstPlayerController()->GetPawn());
 
-	//OrganProximityTrigger->OnBeginCursorOver.AddDynamic(this, &AOrganRinse::OnMouseOverlapBegin);
+	UpdateFunctionFloat.BindDynamic(this, &AOrganRinse::UpdateTimelineComp);
+
+	if (DissolveTimelineCurveFloat)
+	{
+		DissolveTimelineComp->AddInterpFloat(DissolveTimelineCurveFloat, UpdateFunctionFloat);
+	}
 }
 
 void AOrganRinse::CloseAndDestroy()
@@ -34,8 +42,12 @@ void AOrganRinse::CloseAndDestroy()
 
 void AOrganRinse::DissolveOrgan()
 {
+	
 }
 
-void AOrganRinse::OnMouseOverlapBegin(UPrimitiveComponent* OverlappedComp)
+void AOrganRinse::UpdateTimelineComp(float Output)
 {
+	DissolveProgressValue += 0.02;
+
+	OrganMeshComponent->CreateDynamicMaterialInstance(0, OrganMaterialInstance)->SetScalarParameterValue("Progress", DissolveProgressValue);
 }

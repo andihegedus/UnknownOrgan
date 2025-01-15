@@ -1,6 +1,7 @@
 ﻿#pragma once
 
 #include "CoreMinimal.h"
+#include "Components/TimelineComponent.h"
 #include "GameFramework/Pawn.h"
 #include "OrganRinse.generated.h"
 
@@ -43,12 +44,23 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	FName OrganTag;
 
+	UPROPERTY(EditAnywhere)
+	UCurveFloat* DissolveTimelineCurveFloat;
+
+	float DissolveProgressValue;
+
+	FOnTimelineEvent OnTimelineEnd;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
+	UTimelineComponent* DissolveTimelineComp;
+
+	FOnTimelineFloat UpdateFunctionFloat;
+
 protected:
 	// FUNCTIONS
 	// -----------------------------
-
 	UFUNCTION()
-	void OnMouseOverlapBegin(class UPrimitiveComponent* OverlappedComp);
+	void UpdateTimelineComp(float Output);
 	
 	// PROPERTIES & VARIABLES
 	// -----------------------------
@@ -57,6 +69,11 @@ protected:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	UStaticMeshComponent* OrganMeshComponent;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UMaterialInstance* OrganMaterialInstance;
+
+	
 
 	
 	

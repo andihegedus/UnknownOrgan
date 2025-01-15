@@ -6,6 +6,7 @@
 #include "Camera/CameraComponent.h"
 #include "Engine/LocalPlayer.h"
 #include "GameFramework/SpringArmComponent.h"
+#include "Unknown/ActivityStations/RinseStation/OrganRinse.h"
 #include "Unknown/System/UnknownHUD.h"
 
 APCharacter::APCharacter()
@@ -33,6 +34,7 @@ APCharacter::APCharacter()
 void APCharacter::Tick(float DeltaSeconds)
 {
 	Super::Tick(DeltaSeconds);
+	
 }
 
 void APCharacter::BeginPlay()
@@ -81,7 +83,7 @@ void APCharacter::OpenCloseWidget()
 	}
 	else
 	{
-		UE_LOG(LogTemp, Warning, TEXT("APCharacter: No tags present in WidgetTages.")); 
+		UE_LOG(LogTemp, Warning, TEXT("APCharacter: No tags present in WidgetTages."));
 	}
 	
 }
@@ -99,9 +101,38 @@ void APCharacter::RinseOrgan()
 
 		if (this->GetWorld()->GetFirstPlayerController())
 		{
-			UE_LOG(LogTemp, Warning, TEXT("APCharacter: Mouse changed!!"));
-			
 			this->GetWorld()->GetFirstPlayerController()->CurrentMouseCursor = EMouseCursor::GrabHandClosed;
+
+			LineTraceStart = GetPawnViewLocation();
+	
+			FVector LineTraceEnd{LineTraceStart + (CameraComp->GetComponentRotation().Vector() * CheckInteractionDistance)};
+			float LookDirection = FVector::DotProduct(GetActorForwardVector(), CameraComp->GetComponentRotation().Vector());
+
+			if (LookDirection > 0)
+			{
+				// Visualize the trace hit line
+				//DrawDebugLine(GetWorld(), LineTraceStart, LineTraceEnd, FColor::Magenta, false, 1.0f, 0, 2.f);
+
+				FCollisionQueryParams QueryParams;
+
+				QueryParams.AddIgnoredActor(this);
+
+				FHitResult TraceHit;
+
+				if(GetWorld()->LineTraceSingleByChannel(TraceHit, LineTraceStart, LineTraceEnd, ECC_Visibility, QueryParams))
+				{
+					if (TraceHit.GetActor()->Tags.Contains("ToRinse"))
+					{
+						
+						OrganRinse = Cast<AOrganRinse>(TraceHit.GetActor());
+		
+						if (OrganRinse)
+						{
+							OrganRinse->DissolveTimelineComp->Play();
+						}
+					}
+				}
+			}
 		}
 		else
 		{
@@ -161,6 +192,7 @@ void APCharacter::RotatePlayerCameraRight()
 
 	CheckForInteractable();
 }
+
 
 void APCharacter::CheckForInteractable()
 {
@@ -232,6 +264,13 @@ void APCharacter::CheckForInteractable()
 				
 				CurrentTag = "ToRinse";
 				TagInFocus.Add(CurrentTag);
+
+				/*OrganRinse = Cast<AOrganRinse>(TraceHit.GetActor());
+
+				if (OrganRinse)
+				{
+					OrganRinse->DissolveTimelineComp->Play();
+				}*/
 		
 				FoundInteractable();
 
