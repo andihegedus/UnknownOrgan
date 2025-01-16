@@ -88,7 +88,7 @@ void UPlayerInventoryWidget::OnLeftArrowClicked()
 			CutText->SetVisibility(ESlateVisibility::Collapsed);
 			CutBorder->SetBrushColor(FLinearColor::Gray);
 		}
-		if (PlayerCharacter->TagInFocus.Contains("Rinse"))
+		if (PlayerCharacter->TagInFocus.Contains("Rinse") || PlayerCharacter->TagInFocus.Contains("ToRinse"))
 		{
 			RinseText->SetVisibility(ESlateVisibility::Visible);
 			RinseBorder->SetBrushColor(FLinearColor::Blue);

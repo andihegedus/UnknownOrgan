@@ -3,9 +3,11 @@
 #include "PController.h"
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
+#include "InterchangeTranslatorBase.h"
 #include "Camera/CameraComponent.h"
 #include "Engine/LocalPlayer.h"
 #include "GameFramework/SpringArmComponent.h"
+#include "Kismet/KismetSystemLibrary.h"
 #include "Unknown/ActivityStations/RinseStation/OrganRinse.h"
 #include "Unknown/System/UnknownHUD.h"
 
@@ -97,42 +99,11 @@ void APCharacter::RinseOrgan()
 {
 	if (TagInFocus.Contains("ToRinse"))
 	{
-		//UE_LOG(LogTemp, Warning, TEXT("APCharacter: Rinsing!!"));
-
 		if (this->GetWorld()->GetFirstPlayerController())
 		{
 			this->GetWorld()->GetFirstPlayerController()->CurrentMouseCursor = EMouseCursor::GrabHandClosed;
 
-			LineTraceStart = GetPawnViewLocation();
-	
-			FVector LineTraceEnd{LineTraceStart + (CameraComp->GetComponentRotation().Vector() * CheckInteractionDistance)};
-			float LookDirection = FVector::DotProduct(GetActorForwardVector(), CameraComp->GetComponentRotation().Vector());
-
-			if (LookDirection > 0)
-			{
-				// Visualize the trace hit line
-				//DrawDebugLine(GetWorld(), LineTraceStart, LineTraceEnd, FColor::Magenta, false, 1.0f, 0, 2.f);
-
-				FCollisionQueryParams QueryParams;
-
-				QueryParams.AddIgnoredActor(this);
-
-				FHitResult TraceHit;
-
-				if(GetWorld()->LineTraceSingleByChannel(TraceHit, LineTraceStart, LineTraceEnd, ECC_Visibility, QueryParams))
-				{
-					if (TraceHit.GetActor()->Tags.Contains("ToRinse"))
-					{
-						OrganRinse = Cast<AOrganRinse>(TraceHit.GetActor());
-		
-						if (OrganRinse)
-						{
-							//UE_LOG(LogTemp, Warning, TEXT("APCharacter: OrganRinse object valid, rinse functional."));
-							OrganRinse->DissolveTimelineComp->Play();
-						}
-					}
-				}
-			}
+			CheckForOrgan();
 		}
 		else
 		{
@@ -145,9 +116,9 @@ void APCharacter::StopRinseOrgan()
 {
 	if (this->GetWorld()->GetFirstPlayerController())
 	{
-		UE_LOG(LogTemp, Warning, TEXT("APCharacter: Mouse changed!!"));
-			
 		this->GetWorld()->GetFirstPlayerController()->CurrentMouseCursor = EMouseCursor::Default;
+
+		CheckForOrgan();
 	}
 	else
 	{
@@ -275,6 +246,100 @@ void APCharacter::CheckForInteractable()
 
 	UE_LOG(LogTemp, Warning, TEXT("APCharacter: No interactables found."));
 	TagInFocus.Empty();
+}
+
+void APCharacter::CheckForOrgan()
+{
+	if (this->GetWorld()->GetFirstPlayerController())
+	{
+		/*LineTraceStart = GetPawnViewLocation();
+	
+		FVector LineTraceEnd{LineTraceStart + (CameraComp->GetComponentRotation().Vector() * CheckInteractionDistance)};
+		float LookDirection = FVector::DotProduct(GetActorForwardVector(), CameraComp->GetComponentRotation().Vector());
+
+		if (LookDirection > 0)
+		{
+			//DrawDebugLine(GetWorld(), LineTraceStart, LineTraceEnd , FColor::Magenta, false, 1.0f, 0, 1.f);
+			
+			FCollisionQueryParams QueryParams;
+
+			QueryParams.AddIgnoredActor(this);
+
+			FHitResult TraceHit;
+
+			FVector HalfSize = FVector(40.f, 40.f, 40.f);
+
+			FRotator Orientation = FRotator(0.f, 0.f, 0.f);
+
+			if(UKismetSystemLibrary::BoxTraceSingle(GetWorld(), LineTraceStart, LineTraceEnd, HalfSize, Orientation, TraceTypeQuery1, false, Actors, EDrawDebugTrace::Persistent, TraceHit, false, FColor::Magenta, FColor::Blue, 1.0f))
+			{
+				if (TraceHit.GetActor()->Tags.Contains("ToRinse"))
+				{
+					OrganRinse = Cast<AOrganRinse>(TraceHit.GetActor());
+		
+					if (OrganRinse)
+					{
+						if (this->GetWorld()->GetFirstPlayerController()->CurrentMouseCursor.GetValue() ==  EMouseCursor::GrabHandClosed)
+						{
+							OrganRinse->DissolveTimelineComp->Play();
+						}
+						else
+						{
+							OrganRinse->DissolveTimelineComp->Stop();	
+						}
+							
+					}
+				}
+			}
+		}*/
+
+		
+
+		FCollisionQueryParams QueryParams;
+
+		QueryParams.AddIgnoredActor(this);
+
+		FHitResult CursorHit;
+		
+		if (this->GetWorld()->GetFirstPlayerController()->GetHitResultUnderCursorForObjects(ObjectTypes,false,CursorHit))
+		{
+			FName ActorName = FName(CursorHit.GetActor()->GetName());
+			FString Stringy = ActorName.ToString();
+							
+			//UE_LOG(LogTemp, Warning, TEXT("%s"), *Stringy);
+							
+			if (CursorHit.GetActor()->Tags.Contains("ToRinse"))
+			{
+				UE_LOG(LogTemp, Warning, TEXT("APCharacter: Cursor hit on ToRinse!"));
+
+				OrganRinse = Cast<AOrganRinse>(CursorHit.GetActor());
+
+				if (OrganRinse)
+				{
+					if (this->GetWorld()->GetFirstPlayerController()->CurrentMouseCursor.GetValue() ==  EMouseCursor::GrabHandClosed)
+					{
+						OrganRinse->DissolveTimelineComp->Play();
+					}
+					else
+					{
+						OrganRinse->DissolveTimelineComp->Stop();	
+					}
+				}
+			}
+			else
+			{
+				UE_LOG(LogTemp, Warning, TEXT("APCharacter: No rinse :("));
+			}
+		}
+		else
+		{
+			UE_LOG(LogTemp, Warning, TEXT("APCharacter: No cursor hit :("))
+		}
+	}
+	else
+	{
+		UE_LOG(LogTemp, Warning, TEXT("APCharacter: PlayerController not valid.")); 
+	}
 }
 
 void APCharacter::FoundInteractable()

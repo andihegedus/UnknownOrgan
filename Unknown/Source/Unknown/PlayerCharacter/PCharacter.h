@@ -75,7 +75,9 @@ protected:
 	// -----------------------------
 	
 	void CheckForInteractable();
-	
+
+	void CheckForOrgan();
+
 	void FoundInteractable();
 
 	// PROPERTIES & VARIABLES
@@ -85,5 +87,8 @@ protected:
 
 	float CheckInteractionDistance;
 
+	UPROPERTY()
+	TArray<AActor*> Actors;
 	
+	const TArray<TEnumAsByte<EObjectTypeQuery>>& ObjectTypes{ObjectTypeQuery2};
 };
