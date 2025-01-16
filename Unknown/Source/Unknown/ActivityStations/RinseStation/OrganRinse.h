@@ -74,8 +74,9 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	UMaterialInstance* OrganMaterialInstance;
 
-	
+	/*UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	TArray<UStaticMeshComponent*> HiddenTreasures;
 
-	
-	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UStaticMeshComponent* SpawnedTreasure;*/
 };

@@ -293,8 +293,6 @@ void APCharacter::CheckForOrgan()
 			}
 		}*/
 
-		
-
 		FCollisionQueryParams QueryParams;
 
 		QueryParams.AddIgnoredActor(this);
@@ -310,7 +308,7 @@ void APCharacter::CheckForOrgan()
 							
 			if (CursorHit.GetActor()->Tags.Contains("ToRinse"))
 			{
-				UE_LOG(LogTemp, Warning, TEXT("APCharacter: Cursor hit on ToRinse!"));
+				//UE_LOG(LogTemp, Warning, TEXT("APCharacter: Cursor hit on ToRinse!"));
 
 				OrganRinse = Cast<AOrganRinse>(CursorHit.GetActor());
 
