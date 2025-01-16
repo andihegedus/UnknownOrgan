@@ -3,6 +3,8 @@
 #include "CoreMinimal.h"
 #include "Components/TimelineComponent.h"
 #include "GameFramework/Pawn.h"
+#include "Unknown/DataAndInterface/ItemInterface.h"
+#include "Unknown/DataAndInterface/ItemDataStructs.h"
 #include "OrganRinse.generated.h"
 
 class AUnknownHUD;
@@ -14,6 +16,7 @@ class UStaticMesh;
 class UMaterialInstance;
 class UTimelineComponent;
 class UCurveFloat;
+class UDataTable;
 
 UCLASS()
 class AOrganRinse : public AActor
@@ -56,6 +59,23 @@ public:
 	UTimelineComponent* DissolveTimelineComp;
 
 	FOnTimelineFloat UpdateFunctionFloat;
+
+	// From ItemDataStructs
+
+	UPROPERTY(EditAnywhere, Category="Item Data")
+	UDataTable* ToyDataTable;
+
+	UPROPERTY(EditAnywhere, Category="Item Data")
+	TArray<FName> AllToyIDs;
+	
+	UPROPERTY(EditAnywhere, Category="Item Data")
+	FName DesiredToyID;
+
+	UPROPERTY(EditAnywhere, Category="Item Data")
+	int32 ToyQuantity;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UStaticMeshComponent* ToyMeshComponent;
 
 protected:
 	// FUNCTIONS

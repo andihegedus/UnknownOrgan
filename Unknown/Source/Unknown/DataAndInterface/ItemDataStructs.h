@@ -6,6 +6,8 @@
 
 class UTexture2D;
 class UStaticMesh;
+class UMaterial;
+class UAnimMontage;
 
 UENUM()
 enum class EToyType : uint8
@@ -41,22 +43,15 @@ struct FToyAssetData
 	UPROPERTY(EditAnywhere, Category="Asset Data")
 	UTexture2D* Icon;
 
-	// Not sure if this is right either, TBD
+	// Not sure if this is right, TBD
 	UPROPERTY(EditAnywhere, Category="Asset Data")
 	UAnimMontage* Animation;
 
-	//Not sure if I need singles or arrays for both mesh and materials, will include both for now, TBD
 	UPROPERTY(EditAnywhere, Category="Asset Data")
-	UStaticMeshComponent* Mesh;
-	
-	UPROPERTY(EditAnywhere, Category="Asset Data")
-	TArray<UStaticMesh*> MeshOptions;
+	UStaticMesh* Mesh;
 
 	UPROPERTY(EditAnywhere, Category="Asset Data")
 	UMaterial* ColorwayMaterial;
-	
-	UPROPERTY(EditAnywhere, Category="Asset Data")
-	TArray<UMaterial*> ColorwayOptions;
 	
 	UPROPERTY(EditAnywhere, Category="Numeric Data")
 	int32 Quantity;
