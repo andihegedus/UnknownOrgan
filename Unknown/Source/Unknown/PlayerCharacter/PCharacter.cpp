@@ -252,47 +252,6 @@ void APCharacter::CheckForOrgan()
 {
 	if (this->GetWorld()->GetFirstPlayerController())
 	{
-		/*LineTraceStart = GetPawnViewLocation();
-	
-		FVector LineTraceEnd{LineTraceStart + (CameraComp->GetComponentRotation().Vector() * CheckInteractionDistance)};
-		float LookDirection = FVector::DotProduct(GetActorForwardVector(), CameraComp->GetComponentRotation().Vector());
-
-		if (LookDirection > 0)
-		{
-			//DrawDebugLine(GetWorld(), LineTraceStart, LineTraceEnd , FColor::Magenta, false, 1.0f, 0, 1.f);
-			
-			FCollisionQueryParams QueryParams;
-
-			QueryParams.AddIgnoredActor(this);
-
-			FHitResult TraceHit;
-
-			FVector HalfSize = FVector(40.f, 40.f, 40.f);
-
-			FRotator Orientation = FRotator(0.f, 0.f, 0.f);
-
-			if(UKismetSystemLibrary::BoxTraceSingle(GetWorld(), LineTraceStart, LineTraceEnd, HalfSize, Orientation, TraceTypeQuery1, false, Actors, EDrawDebugTrace::Persistent, TraceHit, false, FColor::Magenta, FColor::Blue, 1.0f))
-			{
-				if (TraceHit.GetActor()->Tags.Contains("ToRinse"))
-				{
-					OrganRinse = Cast<AOrganRinse>(TraceHit.GetActor());
-		
-					if (OrganRinse)
-					{
-						if (this->GetWorld()->GetFirstPlayerController()->CurrentMouseCursor.GetValue() ==  EMouseCursor::GrabHandClosed)
-						{
-							OrganRinse->DissolveTimelineComp->Play();
-						}
-						else
-						{
-							OrganRinse->DissolveTimelineComp->Stop();	
-						}
-							
-					}
-				}
-			}
-		}*/
-
 		FCollisionQueryParams QueryParams;
 
 		QueryParams.AddIgnoredActor(this);

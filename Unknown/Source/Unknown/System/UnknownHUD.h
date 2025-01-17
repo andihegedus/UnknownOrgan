@@ -86,6 +86,12 @@ public:
 	UPROPERTY(EditDefaultsOnly, Category="Widgets")
 	TSubclassOf<URinseObjectsWidget> RinseObjectsWidgetClass;
 
+	UPROPERTY()
+	UPlayerInventoryWidget* PlayerInventoryWidget;
+
+	UPROPERTY()
+	URinseObjectsWidget* RinseObjectsWidget;
+
 protected:
 	// PROPERTIES & VARIABLES
 	// -----------------------------
@@ -100,14 +106,8 @@ protected:
 	UInteractionWidget* InteractionWidget;
 	
 	UPROPERTY()
-	UPlayerInventoryWidget* PlayerInventoryWidget;
-
-	UPROPERTY()
 	UShelfInventoryWidget* ShelfInventoryWidget;
 
 	UPROPERTY()
 	UOrganCutterWidget* OrganCutterWidget;
-
-	UPROPERTY()
-	URinseObjectsWidget* RinseObjectsWidget;
 };

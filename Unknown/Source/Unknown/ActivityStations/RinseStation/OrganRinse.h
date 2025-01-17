@@ -1,12 +1,16 @@
 ﻿#pragma once
 
 #include "CoreMinimal.h"
+#include "Brushes/SlateImageBrush.h"
 #include "Components/TimelineComponent.h"
 #include "GameFramework/Pawn.h"
 #include "Unknown/DataAndInterface/ItemInterface.h"
 #include "Unknown/DataAndInterface/ItemDataStructs.h"
 #include "OrganRinse.generated.h"
 
+class UPlayerInventoryWidget;
+class URinseObjectsWidget;
+struct FSlateImageBrush;
 class AUnknownHUD;
 class APCharacter;
 class APController;
@@ -44,6 +48,12 @@ public:
 
 	UPROPERTY()
 	APController* PlayerController;
+
+	UPROPERTY()
+	URinseObjectsWidget* RinseObjectsWidget;
+
+	UPROPERTY()
+	UPlayerInventoryWidget* PlayerInventoryWidget;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	FName OrganTag;
@@ -93,6 +103,12 @@ protected:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	UMaterialInstance* OrganMaterialInstance;
+
+	UPROPERTY()
+	UTexture2D* IconBrushTexture;
+
+	UPROPERTY()
+	FText ToyNameText;
 
 	/*UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	TArray<UStaticMeshComponent*> HiddenTreasures;

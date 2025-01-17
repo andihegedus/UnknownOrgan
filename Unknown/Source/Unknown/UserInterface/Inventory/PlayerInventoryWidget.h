@@ -4,6 +4,7 @@
 #include "Blueprint/UserWidget.h"
 #include "PlayerInventoryWidget.generated.h"
 
+class UHorizontalBox;
 class URinseObjectsWidget;
 class UOrganCutterWidget;
 class APCharacter;
@@ -37,6 +38,9 @@ public:
 
 	UPROPERTY()
 	APController* PlayerController;
+
+	UPROPERTY(VisibleAnywhere, meta = (BindWidget))
+	URinseObjectsWidget* WBP_RinseTool;
 
 
 protected:
@@ -83,4 +87,7 @@ protected:
 
 	UPROPERTY(VisibleAnywhere, meta = (BindWidget))
 	UBorder* TestBorder;
+
+	UPROPERTY(VisibleAnywhere, meta = (BindWidget))
+	UHorizontalBox* PlayerInventory;
 };

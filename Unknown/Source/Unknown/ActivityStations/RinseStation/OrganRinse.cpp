@@ -1,12 +1,16 @@
 ﻿#include "OrganRinse.h"
 
 #include "Components/BoxComponent.h"
+#include "Components/Image.h"
+#include "Components/TextBlock.h"
 #include "GameFramework/PlayerController.h"
 #include "Materials/MaterialInstance.h"
 #include "Materials/MaterialInstanceDynamic.h"
 #include "Unknown/PlayerCharacter/PCharacter.h"
 #include "Unknown/System/UnknownHUD.h"
 #include "Components/TimelineComponent.h"
+#include "Unknown/UserInterface/Interaction/RinseObjectsWidget.h"
+#include "Unknown/UserInterface/Inventory/PlayerInventoryWidget.h"
 
 AOrganRinse::AOrganRinse()
 {
@@ -50,7 +54,7 @@ void AOrganRinse::BeginPlay()
 	if (ToyDataTable)
 	{
 		int32 RowsQuantity = ToyDataTable->GetRowNames().Num();
-		int32 Min = 1;
+		int32 Min = 0;
 		int32 Max = RowsQuantity - 1;
 		int32 RandomInt = RandomStream.RandRange(Min,Max);
 
@@ -66,6 +70,9 @@ void AOrganRinse::BeginPlay()
 			ToyMeshComponent->SetMaterial(0, ToyData->ToyAssetData.ColorwayMaterial);
 		
 			ToyMeshComponent->SetRelativeScale3D(FVector(0.25,0.25,0.25));
+
+			IconBrushTexture = ToyData->ToyAssetData.Icon;
+			ToyNameText = ToyData->ToyTextData.NameText;
 		}
 		else
 		{
@@ -80,7 +87,7 @@ void AOrganRinse::BeginPlay()
 
 void AOrganRinse::CloseAndDestroy()
 {
-	//this->Destroy();
+	this->Destroy();
 }
 
 void AOrganRinse::UpdateTimelineComp(float Output)
@@ -98,5 +105,26 @@ void AOrganRinse::UpdateTimelineComp(float Output)
 	if (Output >= 0.675)
 	{
 		CloseAndDestroy();
+
+		if (HUD)
+		{
+			PlayerInventoryWidget = Cast<UPlayerInventoryWidget>(HUD->PlayerInventoryWidget);
+
+			if (PlayerInventoryWidget)
+			{
+				PlayerInventoryWidget->WBP_RinseTool->TreasureImage->SetBrushFromTexture(IconBrushTexture);
+				PlayerInventoryWidget->WBP_RinseTool->TreasureText->SetText(ToyNameText);
+				PlayerInventoryWidget->WBP_RinseTool->SetVisibility(ESlateVisibility::Visible);
+			}
+			else
+			{
+				UE_LOG(LogTemp, Warning, TEXT("AOrganRinse, UpdateTimelineComp(): Can't access PlayerInventoryWidget in this fashion."));
+			}
+		}
+		else
+		{
+			UE_LOG(LogTemp, Warning, TEXT("AOrganRinse, UpdateTimelineComp(): Can't access HUD."));
+		}
+		
 	}
 }

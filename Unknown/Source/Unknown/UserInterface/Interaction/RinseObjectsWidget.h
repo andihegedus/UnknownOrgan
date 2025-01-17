@@ -2,9 +2,13 @@
 
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
+#include "Components/Button.h"
 #include "RinseObjectsWidget.generated.h"
 
 
+class FOnButtonClickedEvent;
+class UButton;
+class UTextBlock;
 class UProgressBar;
 class APCharacter;
 class APController;
@@ -19,14 +23,9 @@ class UNKNOWN_API URinseObjectsWidget : public UUserWidget
 public:
 	// FUNCTIONS
 	// -----------------------------
-	
-	void UpdateWidget();
 
 	UFUNCTION()
-	void CloseAndDestroy(float Value);
-
-	UFUNCTION()
-	void RinseOrgan(float Value);
+	void CloseWidget();
 	
 
 	// PROPERTIES & VARIABLES
@@ -39,13 +38,13 @@ public:
 	APController* PlayerController;
 
 	UPROPERTY(VisibleAnywhere, meta = (BindWidget))
-	UProgressBar* RinseProgressBar1;
-
-	/*UPROPERTY(VisibleAnywhere, meta = (BindWidget))
-	UProgressBar* RinseProgressBar2;
+	UImage* TreasureImage;
 
 	UPROPERTY(VisibleAnywhere, meta = (BindWidget))
-	UProgressBar* RinseProgressBar3;*/
+	UTextBlock* TreasureText;
+
+	FOnButtonClickedEvent OnButtonClickedEvent;
+
 
 protected:
 	// FUNCTIONS
@@ -63,12 +62,5 @@ protected:
 	UHorizontalBox* RinseBox;
 	
 	UPROPERTY(VisibleAnywhere, meta = (BindWidget))
-	UImage* OrganImage1;
-
-	/*UPROPERTY(VisibleAnywhere, meta = (BindWidget))
-	UImage* OrganImage2;
-
-	UPROPERTY(VisibleAnywhere, meta = (BindWidget))
-	UImage* OrganImage3;*/
-	
+	UButton* CloseButton;
 };

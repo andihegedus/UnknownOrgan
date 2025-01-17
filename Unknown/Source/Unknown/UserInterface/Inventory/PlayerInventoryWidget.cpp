@@ -8,6 +8,7 @@
 #include "Unknown/PlayerCharacter/PCharacter.h"
 #include "Unknown/PlayerCharacter/PController.h"
 #include "Unknown/UserInterface/Interaction/OrganCutterWidget.h"
+#include "Unknown/UserInterface/Interaction/RinseObjectsWidget.h"
 
 
 void UPlayerInventoryWidget::NativeOnInitialized()
@@ -50,7 +51,7 @@ void UPlayerInventoryWidget::NativeOnInitialized()
 	DefendBorder->SetBrushColor(FLinearColor::Gray);
 	TestBorder->SetBrushColor(FLinearColor::Gray);
 
-	
+	WBP_RinseTool->SetVisibility(ESlateVisibility::Collapsed);
 }
 
 void UPlayerInventoryWidget::NativeConstruct()
