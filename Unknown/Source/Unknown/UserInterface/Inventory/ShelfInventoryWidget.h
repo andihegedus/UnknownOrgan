@@ -8,6 +8,7 @@ class UScrollBox;
 class UShelfSlotWidget;
 class APCharacter;
 class APController;
+class UUnknownGameInstance;
 
 UCLASS()
 class UNKNOWN_API UShelfInventoryWidget: public UUserWidget
@@ -27,6 +28,9 @@ public:
 
 	UPROPERTY()
 	APController* PlayerController;
+	
+	UPROPERTY()
+	UUnknownGameInstance* GameInstance;
 
 protected:
 	// FUNCTIONS
@@ -42,7 +46,10 @@ protected:
 	UPROPERTY(VisibleAnywhere, meta = (BindWidget))
 	UScrollBox* InventoryScrollBox;
 	
-	UPROPERTY(VisibleAnywhere, meta = (BindWidget))
-	UShelfSlotWidget* WBP_ShelfSlot;
+	//UPROPERTY(VisibleAnywhere, meta = (BindWidget))
+	//UShelfSlotWidget* WBP_ShelfSlot;
+
+	UPROPERTY(EditDefaultsOnly)
+	TSubclassOf<UShelfSlotWidget> ShelfSlotClass;
 	
 };

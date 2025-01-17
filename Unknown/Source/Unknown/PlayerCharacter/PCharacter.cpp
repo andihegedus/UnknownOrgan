@@ -285,12 +285,12 @@ void APCharacter::CheckForOrgan()
 			}
 			else
 			{
-				UE_LOG(LogTemp, Warning, TEXT("APCharacter: No rinse :("));
+				//UE_LOG(LogTemp, Warning, TEXT("APCharacter: No rinse :("));
 			}
 		}
 		else
 		{
-			UE_LOG(LogTemp, Warning, TEXT("APCharacter: No cursor hit :("))
+			//UE_LOG(LogTemp, Warning, TEXT("APCharacter: No cursor hit :("))
 		}
 	}
 	else

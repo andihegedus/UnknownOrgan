@@ -146,13 +146,6 @@ void AUnknownHUD::ShowShelfInventoryWidget()
 	if (ShelfInventoryWidget)
 	{
 		ShelfInventoryWidget->SetVisibility(ESlateVisibility::Visible);
-
-		SaveLoadWidget->SetVisibility(ESlateVisibility::Collapsed);
-
-		WidgetTags.Empty();
-		
-		CurrentTag = "ShelfInventory";
-		WidgetTags.Add(CurrentTag);
 	}
 }
 
@@ -161,8 +154,6 @@ void AUnknownHUD::HideShelfInventoryWidget()
 	if (ShelfInventoryWidget)
 	{
 		ShelfInventoryWidget->SetVisibility(ESlateVisibility::Collapsed);
-
-		WidgetTags.Empty();
 	}
 }
 

@@ -20,17 +20,9 @@ public:
 		FKey Key, bool bNegate, bool bSwizzle, EInputAxisSwizzle SwizzleOrder);
 
 	virtual void SetupInputComponent() override;
-
-	void SaveGameData();
-
+	
 	// PROPERTIES & VARIABLES
 	// -----------------------------
-
-	UPROPERTY()
-	USaveData* GameSaveInstance;
-
-	UPROPERTY()
-	UDataTable* ToyDataTable;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	class UInputMappingContext* PCMappingContext;

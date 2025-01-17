@@ -4,6 +4,7 @@
 #include "Blueprint/UserWidget.h"
 #include "PlayerInventoryWidget.generated.h"
 
+class UShelfInventoryWidget;
 class UHorizontalBox;
 class URinseObjectsWidget;
 class UOrganCutterWidget;
@@ -63,6 +64,9 @@ protected:
 
 	UPROPERTY(VisibleAnywhere, meta = (BindWidget))
 	UOrganCutterWidget* WBP_OrganCutter;
+
+	UPROPERTY(VisibleAnywhere, meta = (BindWidget))
+	UShelfInventoryWidget* WBP_ShelfInventory;
 
 	UPROPERTY(VisibleAnywhere, meta = (BindWidget))
 	UTextBlock* CutText;

@@ -1,5 +1,6 @@
 #include "PlayerInventoryWidget.h"
 
+#include "ShelfInventoryWidget.h"
 #include "Camera/CameraComponent.h"
 #include "Components/Border.h"
 #include "Components/Button.h"
@@ -52,6 +53,7 @@ void UPlayerInventoryWidget::NativeOnInitialized()
 	TestBorder->SetBrushColor(FLinearColor::Gray);
 
 	WBP_RinseTool->SetVisibility(ESlateVisibility::Collapsed);
+	WBP_ShelfInventory->SetVisibility(ESlateVisibility::Collapsed);
 }
 
 void UPlayerInventoryWidget::NativeConstruct()
@@ -113,11 +115,13 @@ void UPlayerInventoryWidget::OnLeftArrowClicked()
 		{
 			TestText->SetVisibility(ESlateVisibility::Visible);
 			TestBorder->SetBrushColor(FLinearColor::Green);
+			WBP_ShelfInventory->SetVisibility(ESlateVisibility::Visible);
 		}
 		else
 		{
 			TestText->SetVisibility(ESlateVisibility::Collapsed);
 			TestBorder->SetBrushColor(FLinearColor::Gray);
+			WBP_ShelfInventory->SetVisibility(ESlateVisibility::Collapsed);
 		}
 	}
 	else
@@ -168,11 +172,13 @@ void UPlayerInventoryWidget::OnRightArrowClicked()
 		{
 			TestText->SetVisibility(ESlateVisibility::Visible);
 			TestBorder->SetBrushColor(FLinearColor::Green);
+			WBP_ShelfInventory->SetVisibility(ESlateVisibility::Visible);
 		}
 		else
 		{
 			TestText->SetVisibility(ESlateVisibility::Collapsed);
 			TestBorder->SetBrushColor(FLinearColor::Gray);
+			WBP_ShelfInventory->SetVisibility(ESlateVisibility::Collapsed);
 		}
 	}
 	else

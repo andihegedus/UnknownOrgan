@@ -8,6 +8,7 @@
 #include "Unknown/Data/ItemDataStructs.h"
 #include "OrganRinse.generated.h"
 
+class UUnknownGameInstance;
 class UPlayerInventoryWidget;
 class URinseObjectsWidget;
 struct FSlateImageBrush;
@@ -48,6 +49,9 @@ public:
 
 	UPROPERTY()
 	APController* PlayerController;
+
+	UPROPERTY()
+	UUnknownGameInstance* GameInstance;
 
 	UPROPERTY()
 	URinseObjectsWidget* RinseObjectsWidget;

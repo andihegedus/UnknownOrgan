@@ -45,18 +45,3 @@ void APController::SetupInputComponent()
 	SetupKeyMap(PCMappingContext, RinseAction, EKeys::LeftMouseButton, false, false, EInputAxisSwizzle::YXZ);
 }
 
-void APController::SaveGameData()
-{
-	GameSaveInstance = Cast<USaveData>(UGameplayStatics::CreateSaveGameObject(USaveData::StaticClass()));
-
-	bool bSaveSuccess = UGameplayStatics::SaveGameToSlot(GameSaveInstance, "Save1", 0);
-
-	if (bSaveSuccess)
-	{
-		UE_LOG(LogTemp, Warning, TEXT("Game saved successfully!"));
-	}
-	else
-	{
-		UE_LOG(LogTemp, Error, TEXT("Failed to save game."));
-	}
-}

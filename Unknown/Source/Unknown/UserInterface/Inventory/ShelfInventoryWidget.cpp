@@ -1,5 +1,8 @@
 #include "ShelfInventoryWidget.h"
 
+#include "ShelfSlotWidget.h"
+#include "Components/ScrollBox.h"
+#include "Unknown/UnknownGameInstance.h"
 #include "Unknown/PlayerCharacter/PCharacter.h"
 #include "Unknown/PlayerCharacter/PController.h"
 
@@ -8,6 +11,8 @@ void UShelfInventoryWidget::NativeOnInitialized()
 	Super::NativeOnInitialized();
 
 	PlayerCharacter = Cast<APCharacter>(GetWorld()->GetFirstPlayerController()->GetPawn());
+
+	GameInstance = Cast<UUnknownGameInstance>(GetWorld()->GetGameInstance());
 
 	if (PlayerCharacter)
 	{
@@ -38,4 +43,13 @@ void UShelfInventoryWidget::NativeConstruct()
 
 void UShelfInventoryWidget::UpdateWidget()
 {
+	if (GameInstance)
+	{
+		for (int i = 0; i < GameInstance->AcquiredToyIDs.Num() - 1; i++)
+		{
+			UShelfSlotWidget* CollectableSlot = CreateWidget<UShelfSlotWidget>(this, ShelfSlotClass);
+
+			InventoryScrollBox->AddChild(CollectableSlot);
+		}
+	}
 }

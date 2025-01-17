@@ -15,18 +15,12 @@ class UNKNOWN_API USaveData : public USaveGame
 	GENERATED_BODY()
 
 public:
+	// FUNCTIONS
+	// -----------------------------
+	USaveData();
 	
 	// PROPERTIES & VARIABLES
 	// -----------------------------
 	UPROPERTY(SaveGame)
-	FName ID;
-
-	UPROPERTY(SaveGame)
-	EToyType ToyType;
-
-	UPROPERTY(SaveGame)
-	FToyTextData ToyTextData;
-
-	UPROPERTY(SaveGame)
-	FToyAssetData ToyAssetData;
+	TArray<FName> SavedIDs;
 };

@@ -9,6 +9,7 @@
 #include "Unknown/PlayerCharacter/PCharacter.h"
 #include "Unknown/System/UnknownHUD.h"
 #include "Components/TimelineComponent.h"
+#include "Unknown/UnknownGameInstance.h"
 #include "Unknown/UserInterface/Interaction/RinseObjectsWidget.h"
 #include "Unknown/UserInterface/Inventory/PlayerInventoryWidget.h"
 
@@ -37,6 +38,8 @@ void AOrganRinse::BeginPlay()
 
 	PlayerCharacter = Cast<APCharacter>(GetWorld()->GetFirstPlayerController()->GetPawn());
 
+	GameInstance = Cast<UUnknownGameInstance>(GetWorld()->GetGameInstance());
+
 	UpdateFunctionFloat.BindDynamic(this, &AOrganRinse::UpdateTimelineComp);
 
 	if (DissolveTimelineCurveFloat)
@@ -60,7 +63,23 @@ void AOrganRinse::BeginPlay()
 
 		DesiredToyID = ToyDataTable->GetRowNames()[RandomInt];
 
-		UE_LOG(LogTemp, Warning, TEXT("%s"), *DesiredToyID.ToString());
+		//UE_LOG(LogTemp, Warning, TEXT("%s"), *DesiredToyID.ToString());
+
+		if (GameInstance)
+		{
+			GameInstance->AcquiredToyIDs.Add(DesiredToyID);
+
+			if (GameInstance->AcquiredToyIDs.Num() >= 1)
+			{
+				FName PrintID = GameInstance->AcquiredToyIDs[0];
+				
+				UE_LOG(LogTemp, Warning, TEXT("%s"), *PrintID.ToString());
+			}
+		}
+		else
+		{
+			UE_LOG(LogTemp, Warning, TEXT("AOrganRinse: GameInstance not valid."));
+		}
 
 		if (!DesiredToyID.IsNone())
 		{
