@@ -1,23 +1,26 @@
-#pragma once
+﻿#pragma once
 
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
-#include "ShelfInventoryWidget.generated.h"
+#include "ShelfSlotWidget.generated.h"
 
-class UScrollBox;
-class UShelfSlotWidget;
+class UBorder;
+class UTextBlock;
+class UImage;
+class FText;
 class APCharacter;
 class APController;
 
 UCLASS()
-class UNKNOWN_API UShelfInventoryWidget: public UUserWidget
+class UNKNOWN_API UShelfSlotWidget : public UUserWidget
 {
+
 	GENERATED_BODY()
-	
+
 public:
 	// FUNCTIONS
 	// -----------------------------
-	void UpdateWidget();
+
 
 	// PROPERTIES & VARIABLES
 	// -----------------------------
@@ -40,9 +43,14 @@ protected:
 	// -----------------------------
 
 	UPROPERTY(VisibleAnywhere, meta = (BindWidget))
-	UScrollBox* InventoryScrollBox;
-	
+	UImage* ToyImage;
+
 	UPROPERTY(VisibleAnywhere, meta = (BindWidget))
-	UShelfSlotWidget* WBP_ShelfSlot;
-	
+	UTextBlock* ToyName;
+
+	UPROPERTY(VisibleAnywhere, meta = (BindWidget))
+	UTextBlock* ToyDescription;
+
+	UPROPERTY(VisibleAnywhere, meta = (BindWidget))
+	UBorder* DescriptionBorder;
 };

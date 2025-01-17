@@ -4,8 +4,8 @@
 #include "Brushes/SlateImageBrush.h"
 #include "Components/TimelineComponent.h"
 #include "GameFramework/Pawn.h"
-#include "Unknown/DataAndInterface/ItemInterface.h"
-#include "Unknown/DataAndInterface/ItemDataStructs.h"
+#include "Unknown/Data/ItemInterface.h"
+#include "Unknown/Data/ItemDataStructs.h"
 #include "OrganRinse.generated.h"
 
 class UPlayerInventoryWidget;

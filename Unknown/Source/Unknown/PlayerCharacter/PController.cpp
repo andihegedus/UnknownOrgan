@@ -1,8 +1,10 @@
 #include "PController.h"
 #include "PCharacter.h"
+#include "Kismet/GameplayStatics.h"
+#include "Unknown/Data/SaveData.h"
 
 void APController::SetupKeyMap(UInputMappingContext* InputMappingContext, UInputAction* InputAction, FKey Key,
-	bool bNegate, bool bSwizzle, EInputAxisSwizzle SwizzleOrder)
+                               bool bNegate, bool bSwizzle, EInputAxisSwizzle SwizzleOrder)
 {
 	FEnhancedActionKeyMapping& KeyMapping = InputMappingContext->MapKey(InputAction, Key);
 	UObject* MapObject = InputMappingContext->GetOuter();
@@ -41,4 +43,20 @@ void APController::SetupInputComponent()
 	RinseAction = NewObject<UInputAction>(this);
 	RinseAction->ValueType = EInputActionValueType::Boolean;
 	SetupKeyMap(PCMappingContext, RinseAction, EKeys::LeftMouseButton, false, false, EInputAxisSwizzle::YXZ);
+}
+
+void APController::SaveGameData()
+{
+	GameSaveInstance = Cast<USaveData>(UGameplayStatics::CreateSaveGameObject(USaveData::StaticClass()));
+
+	bool bSaveSuccess = UGameplayStatics::SaveGameToSlot(GameSaveInstance, "Save1", 0);
+
+	if (bSaveSuccess)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("Game saved successfully!"));
+	}
+	else
+	{
+		UE_LOG(LogTemp, Error, TEXT("Failed to save game."));
+	}
 }

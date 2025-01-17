@@ -5,6 +5,8 @@
 #include "InputMappingContext.h"
 #include "PController.generated.h"
 
+class USaveData;
+
 UCLASS()
 class UNKNOWN_API APController: public APlayerController
 {
@@ -19,8 +21,16 @@ public:
 
 	virtual void SetupInputComponent() override;
 
+	void SaveGameData();
+
 	// PROPERTIES & VARIABLES
 	// -----------------------------
+
+	UPROPERTY()
+	USaveData* GameSaveInstance;
+
+	UPROPERTY()
+	UDataTable* ToyDataTable;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	class UInputMappingContext* PCMappingContext;
