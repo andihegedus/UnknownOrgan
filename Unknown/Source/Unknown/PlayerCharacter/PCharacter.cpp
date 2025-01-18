@@ -8,6 +8,7 @@
 #include "Engine/LocalPlayer.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "Kismet/KismetSystemLibrary.h"
+#include "Unknown/ActivityStations/DefendStation/Monster.h"
 #include "Unknown/ActivityStations/RinseStation/OrganRinse.h"
 #include "Unknown/ActivityStations/TestStation/ToyInspector.h"
 #include "Unknown/System/UnknownHUD.h"
@@ -112,6 +113,19 @@ void APCharacter::StartInteraction()
 		}
 	}
 	if (TagInFocus.Contains("ToInspect"))
+	{
+		if (this->GetWorld()->GetFirstPlayerController())
+		{
+			this->GetWorld()->GetFirstPlayerController()->CurrentMouseCursor = EMouseCursor::GrabHand;
+
+			CheckForInteraction();
+		}
+		else
+		{
+			UE_LOG(LogTemp, Warning, TEXT("APCharacter: PlayerController not valid.")); 
+		}
+	}
+	if (TagInFocus.Contains("ToSwat"))
 	{
 		if (this->GetWorld()->GetFirstPlayerController())
 		{
@@ -245,9 +259,18 @@ void APCharacter::CheckForInteractable()
 			}
 			if (TraceHit.GetActor()->Tags.Contains("ToInspect"))
 			{
-				UE_LOG(LogTemp, Warning, TEXT("APCharacter: Toy to inspect!"));
+				//UE_LOG(LogTemp, Warning, TEXT("APCharacter: Toy to inspect!"));
 				
 				CurrentTag = "ToInspect";
+				TagInFocus.Add(CurrentTag);
+
+				return;
+			}
+			if (TraceHit.GetActor()->Tags.Contains("ToSwat"))
+			{
+				UE_LOG(LogTemp, Warning, TEXT("APCharacter: Monster to swat!"));
+				
+				CurrentTag = "ToSwat";
 				TagInFocus.Add(CurrentTag);
 
 				return;
@@ -327,7 +350,29 @@ void APCharacter::CheckForInteraction()
 			}
 			else
 			{
-				//UE_LOG(LogTemp, Warning, TEXT("APCharacter: No rinse :("));
+				//UE_LOG(LogTemp, Warning, TEXT("APCharacter: No toy :("));
+			}
+			if (CursorHit.GetActor()->Tags.Contains("ToSwat"))
+			{
+				UE_LOG(LogTemp, Warning, TEXT("APCharacter: Cursor hit on ToSwat!"));
+
+				Monster = Cast<AMonster>(CursorHit.GetActor());
+
+				if (Monster)
+				{
+					if (this->GetWorld()->GetFirstPlayerController()->CurrentMouseCursor.GetValue() ==  EMouseCursor::GrabHand)
+					{
+						
+					}
+					else
+					{
+						
+					}
+				}
+			}
+			else
+			{
+				UE_LOG(LogTemp, Warning, TEXT("APCharacter: No swat :("));
 			}
 		}
 		else
@@ -340,5 +385,7 @@ void APCharacter::CheckForInteraction()
 		UE_LOG(LogTemp, Warning, TEXT("APCharacter: PlayerController not valid.")); 
 	}
 }
+
+
 
 

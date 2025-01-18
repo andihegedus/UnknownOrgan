@@ -6,6 +6,7 @@
 #include "GameFramework/Character.h"
 #include "PCharacter.generated.h"
 
+class AMonster;
 class AToyInspector;
 class AUnknownHUD;
 class APController;
@@ -58,6 +59,9 @@ public:
 	UPROPERTY()
 	AToyInspector* ToyInspector;
 
+	UPROPERTY()
+	AMonster* Monster;
+
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Camera");
 	USpringArmComponent* SpringArmComp;
 	
@@ -92,4 +96,9 @@ protected:
 	TArray<AActor*> Actors;
 	
 	const TArray<TEnumAsByte<EObjectTypeQuery>>& ObjectTypes{ObjectTypeQuery2};
+
+	FTimerHandle MonsterTimerHandle;
+
+	UPROPERTY(EditAnywhere)
+	float DelayAfterDefend;
 };
