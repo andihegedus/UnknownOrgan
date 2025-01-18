@@ -2,9 +2,12 @@
 
 #include "ShelfSlotWidget.h"
 #include "Components/HorizontalBox.h"
+#include "Components/Image.h"
 #include "Components/ScrollBox.h"
+#include "Components/TextBlock.h"
 #include "Components/WrapBox.h"
 #include "Unknown/UnknownGameInstance.h"
+#include "Unknown/Data/ItemDataStructs.h"
 #include "Unknown/PlayerCharacter/PCharacter.h"
 #include "Unknown/PlayerCharacter/PController.h"
 #include "Unknown/System/UnknownHUD.h"
@@ -68,7 +71,13 @@ void UShelfInventoryWidget::UpdateWidget()
 				if (ShelfSlot)
 				{
 					InventoryScrollBox->AddChild(ShelfSlot);
-					UE_LOG(LogTemp, Warning, TEXT("UShelfInventoryWidget: Array built."));
+
+					const FToyData* ToyData = GameInstance->ToyDataTable->FindRow<FToyData>(GameInstance->AcquiredToyIDs[i], GameInstance->AcquiredToyIDs[i].ToString());
+
+					ShelfSlot->ToyName->SetText(ToyData->ToyTextData.NameText);
+					ShelfSlot->ToyDescription->SetText(ToyData->ToyTextData.DescriptionText);
+					IconBrushTexture = ToyData->ToyAssetData.Icon;
+					ShelfSlot->ToyImage->SetBrushFromTexture(IconBrushTexture);;
 				}
 				else
 				{

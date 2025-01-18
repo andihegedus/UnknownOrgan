@@ -4,6 +4,7 @@
 #include "Blueprint/UserWidget.h"
 #include "ShelfSlotWidget.generated.h"
 
+class UButton;
 class UBorder;
 class UTextBlock;
 class UImage;
@@ -21,6 +22,8 @@ public:
 	// FUNCTIONS
 	// -----------------------------
 
+	UFUNCTION()
+	void InspectToyTrigger();
 
 	// PROPERTIES & VARIABLES
 	// -----------------------------
@@ -31,17 +34,6 @@ public:
 	UPROPERTY()
 	APController* PlayerController;
 
-protected:
-	// FUNCTIONS
-	// -----------------------------
-
-	virtual void NativeOnInitialized() override;
-
-	virtual void NativeConstruct() override;
-
-	// PROPERTIES & VARIABLES
-	// -----------------------------
-
 	UPROPERTY(VisibleAnywhere, meta = (BindWidget))
 	UImage* ToyImage;
 
@@ -51,6 +43,24 @@ protected:
 	UPROPERTY(VisibleAnywhere, meta = (BindWidget))
 	UTextBlock* ToyDescription;
 
+protected:
+	// FUNCTIONS
+	// -----------------------------
+
+	virtual void NativeOnInitialized() override;
+
+	virtual void NativeConstruct() override;
+
+	virtual void NativeOnMouseEnter(const FGeometry& InGeometry, const FPointerEvent& InMouseEvent) override;
+
+	virtual void NativeOnMouseLeave(const FPointerEvent& InMouseEvent) override;
+
+	// PROPERTIES & VARIABLES
+	// -----------------------------
+
 	UPROPERTY(VisibleAnywhere, meta = (BindWidget))
 	UBorder* DescriptionBorder;
+
+	UPROPERTY(VisibleAnywhere, meta = (BindWidget))
+	UButton* InspectToyButton;
 };

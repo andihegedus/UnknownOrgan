@@ -52,6 +52,9 @@ protected:
 	UPROPERTY(VisibleAnywhere, meta = (BindWidget))
 	UScrollBox* InventoryScrollBox;
 
+	UPROPERTY()
+	UTexture2D* IconBrushTexture;
+
 	//UPROPERTY(VisibleAnywhere, meta = (BindWidget))
 	//UHorizontalBox* InventorySlotBox;
 	

@@ -35,5 +35,8 @@ public:
 
 	UPROPERTY()
 	TArray<FName> AcquiredToyIDs;
+
+	UPROPERTY()
+	UDataTable* ToyDataTable;
 	
 };

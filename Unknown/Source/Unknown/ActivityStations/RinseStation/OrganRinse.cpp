@@ -68,6 +68,7 @@ void AOrganRinse::BeginPlay()
 		if (GameInstance)
 		{
 			GameInstance->AcquiredToyIDs.Add(DesiredToyID);
+			GameInstance->ToyDataTable = ToyDataTable;
 
 			if (GameInstance->AcquiredToyIDs.Num() >= 1)
 			{
