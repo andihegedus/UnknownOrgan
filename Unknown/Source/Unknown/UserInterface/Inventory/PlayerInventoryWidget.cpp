@@ -52,8 +52,8 @@ void UPlayerInventoryWidget::NativeOnInitialized()
 	DefendBorder->SetBrushColor(FLinearColor::Gray);
 	TestBorder->SetBrushColor(FLinearColor::Gray);
 
-	WBP_RinseTool->SetVisibility(ESlateVisibility::Collapsed);
-	WBP_ShelfInventory->SetVisibility(ESlateVisibility::Collapsed);
+	RinseTool->SetVisibility(ESlateVisibility::Collapsed);
+	ShelfInventory->SetVisibility(ESlateVisibility::Collapsed);
 }
 
 void UPlayerInventoryWidget::NativeConstruct()
@@ -81,13 +81,13 @@ void UPlayerInventoryWidget::OnLeftArrowClicked()
 
 		if (PlayerCharacter->TagInFocus.Contains("Cut"))
 		{
-			WBP_OrganCutter->SetVisibility(ESlateVisibility::Visible);
+			OrganCutter->SetVisibility(ESlateVisibility::Visible);
 			CutText->SetVisibility(ESlateVisibility::Visible);
 			CutBorder->SetBrushColor(FLinearColor::Red);
 		}
 		else
 		{
-			WBP_OrganCutter->SetVisibility(ESlateVisibility::Collapsed);
+			OrganCutter->SetVisibility(ESlateVisibility::Collapsed);
 			CutText->SetVisibility(ESlateVisibility::Collapsed);
 			CutBorder->SetBrushColor(FLinearColor::Gray);
 		}
@@ -111,17 +111,17 @@ void UPlayerInventoryWidget::OnLeftArrowClicked()
 			DefendText->SetVisibility(ESlateVisibility::Collapsed);
 			DefendBorder->SetBrushColor(FLinearColor::Gray);
 		}
-		if (PlayerCharacter->TagInFocus.Contains("Test"))
+		if (PlayerCharacter->TagInFocus.Contains("Test") || PlayerCharacter->TagInFocus.Contains("ToInspect"))
 		{
-			WBP_ShelfInventory->UpdateWidget();
-			WBP_ShelfInventory->SetVisibility(ESlateVisibility::Visible);
+			ShelfInventory->UpdateWidget();
+			ShelfInventory->SetVisibility(ESlateVisibility::Visible);
 			TestText->SetVisibility(ESlateVisibility::Visible);
 			TestBorder->SetBrushColor(FLinearColor::Green);
 		}
 		else
 		{
 			
-			WBP_ShelfInventory->SetVisibility(ESlateVisibility::Collapsed);
+			ShelfInventory->SetVisibility(ESlateVisibility::Collapsed);
 			TestText->SetVisibility(ESlateVisibility::Collapsed);
 			TestBorder->SetBrushColor(FLinearColor::Gray);
 		}
@@ -140,13 +140,13 @@ void UPlayerInventoryWidget::OnRightArrowClicked()
 
 		if (PlayerCharacter->TagInFocus.Contains("Cut"))
 		{
-			WBP_OrganCutter->SetVisibility(ESlateVisibility::Visible);
+			OrganCutter->SetVisibility(ESlateVisibility::Visible);
 			CutText->SetVisibility(ESlateVisibility::Visible);
 			CutBorder->SetBrushColor(FLinearColor::Red);
 		}
 		else
 		{
-			WBP_OrganCutter->SetVisibility(ESlateVisibility::Collapsed);
+			OrganCutter->SetVisibility(ESlateVisibility::Collapsed);
 			CutText->SetVisibility(ESlateVisibility::Collapsed);
 			CutBorder->SetBrushColor(FLinearColor::Gray);
 		}
@@ -170,16 +170,16 @@ void UPlayerInventoryWidget::OnRightArrowClicked()
 			DefendText->SetVisibility(ESlateVisibility::Collapsed);
 			DefendBorder->SetBrushColor(FLinearColor::Gray);
 		}
-		if (PlayerCharacter->TagInFocus.Contains("Test"))
+		if (PlayerCharacter->TagInFocus.Contains("Test") || PlayerCharacter->TagInFocus.Contains("ToInspect"))
 		{
-			WBP_ShelfInventory->UpdateWidget();
-			WBP_ShelfInventory->SetVisibility(ESlateVisibility::Visible);
+			ShelfInventory->UpdateWidget();
+			ShelfInventory->SetVisibility(ESlateVisibility::Visible);
 			TestText->SetVisibility(ESlateVisibility::Visible);
 			TestBorder->SetBrushColor(FLinearColor::Green);
 		}
 		else
 		{
-			WBP_ShelfInventory->SetVisibility(ESlateVisibility::Collapsed);
+			ShelfInventory->SetVisibility(ESlateVisibility::Collapsed);
 			TestText->SetVisibility(ESlateVisibility::Collapsed);
 			TestBorder->SetBrushColor(FLinearColor::Gray);
 		}

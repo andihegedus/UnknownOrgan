@@ -37,8 +37,8 @@ void UShelfSlotWidget::NativeOnInitialized()
 	InspectToyButton->OnClicked.AddDynamic(this, &UShelfSlotWidget::InspectToyTrigger);
 
 	InspectToyButton->SetVisibility(ESlateVisibility::Collapsed);
-	DescriptionBorder->SetVisibility(ESlateVisibility::Collapsed);
-	ToyDescription->SetVisibility(ESlateVisibility::Collapsed);
+	DescriptionBorder->SetVisibility(ESlateVisibility::Hidden);
+	ToyDescription->SetVisibility(ESlateVisibility::Hidden);
 }
 
 void UShelfSlotWidget::NativeConstruct()
@@ -51,8 +51,7 @@ void UShelfSlotWidget::NativeOnMouseEnter(const FGeometry& InGeometry, const FPo
 	Super::NativeOnMouseEnter(InGeometry, InMouseEvent);
 
 	InspectToyButton->SetVisibility(ESlateVisibility::Visible);
-	DescriptionBorder->SetVisibility(ESlateVisibility::Visible);
-	ToyDescription->SetVisibility(ESlateVisibility::Visible);
+	
 }
 
 void UShelfSlotWidget::NativeOnMouseLeave(const FPointerEvent& InMouseEvent)
@@ -60,11 +59,12 @@ void UShelfSlotWidget::NativeOnMouseLeave(const FPointerEvent& InMouseEvent)
 	Super::NativeOnMouseLeave(InMouseEvent);
 
 	InspectToyButton->SetVisibility(ESlateVisibility::Collapsed);
-	DescriptionBorder->SetVisibility(ESlateVisibility::Collapsed);
-	ToyDescription->SetVisibility(ESlateVisibility::Collapsed);
 }
 
 void UShelfSlotWidget::InspectToyTrigger()
 {
 	UE_LOG(LogTemp, Warning, TEXT("UShelfSlotWidget: Inspect!"));
+
+	DescriptionBorder->SetVisibility(ESlateVisibility::Visible);
+	ToyDescription->SetVisibility(ESlateVisibility::Visible);
 }

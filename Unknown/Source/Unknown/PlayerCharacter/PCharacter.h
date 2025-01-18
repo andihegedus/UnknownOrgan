@@ -6,6 +6,7 @@
 #include "GameFramework/Character.h"
 #include "PCharacter.generated.h"
 
+class AToyInspector;
 class AUnknownHUD;
 class APController;
 class USpringArmComponent;
@@ -33,14 +34,13 @@ public:
 	
 	void OpenShelfInventory();
 
-	void RinseOrgan();
+	void StartInteraction();
 
-	void StopRinseOrgan();
+	void StopInteraction();
 
 	void RotatePlayerCameraLeft();
 
 	void RotatePlayerCameraRight();
-
 	
 
 	// PROPERTIES & VARIABLES
@@ -54,6 +54,9 @@ public:
 
 	UPROPERTY()
 	AOrganRinse* OrganRinse;
+
+	UPROPERTY()
+	AToyInspector* ToyInspector;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Camera");
 	USpringArmComponent* SpringArmComp;
@@ -76,9 +79,7 @@ protected:
 	
 	void CheckForInteractable();
 
-	void CheckForOrgan();
-
-	void FoundInteractable();
+	void CheckForInteraction();
 
 	// PROPERTIES & VARIABLES
 	// -----------------------------

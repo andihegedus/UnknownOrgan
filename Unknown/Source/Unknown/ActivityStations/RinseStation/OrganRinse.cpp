@@ -132,9 +132,9 @@ void AOrganRinse::UpdateTimelineComp(float Output)
 
 			if (PlayerInventoryWidget)
 			{
-				PlayerInventoryWidget->WBP_RinseTool->TreasureImage->SetBrushFromTexture(IconBrushTexture);
-				PlayerInventoryWidget->WBP_RinseTool->TreasureText->SetText(ToyNameText);
-				PlayerInventoryWidget->WBP_RinseTool->SetVisibility(ESlateVisibility::Visible);
+				PlayerInventoryWidget->RinseTool->TreasureImage->SetBrushFromTexture(IconBrushTexture);
+				PlayerInventoryWidget->RinseTool->TreasureText->SetText(ToyNameText);
+				PlayerInventoryWidget->RinseTool->SetVisibility(ESlateVisibility::Visible);
 			}
 			else
 			{

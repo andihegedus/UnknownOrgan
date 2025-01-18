@@ -41,7 +41,7 @@ public:
 	APController* PlayerController;
 
 	UPROPERTY(VisibleAnywhere, meta = (BindWidget))
-	URinseObjectsWidget* WBP_RinseTool;
+	URinseObjectsWidget* RinseTool;
 
 
 protected:
@@ -63,10 +63,10 @@ protected:
 	UButton* RightArrowButton;
 
 	UPROPERTY(VisibleAnywhere, meta = (BindWidget))
-	UOrganCutterWidget* WBP_OrganCutter;
+	UOrganCutterWidget* OrganCutter;
 
 	UPROPERTY(VisibleAnywhere, meta = (BindWidget))
-	UShelfInventoryWidget* WBP_ShelfInventory;
+	UShelfInventoryWidget* ShelfInventory;
 
 	UPROPERTY(VisibleAnywhere, meta = (BindWidget))
 	UTextBlock* CutText;

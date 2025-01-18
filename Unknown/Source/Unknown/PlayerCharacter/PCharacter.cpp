@@ -9,6 +9,7 @@
 #include "GameFramework/SpringArmComponent.h"
 #include "Kismet/KismetSystemLibrary.h"
 #include "Unknown/ActivityStations/RinseStation/OrganRinse.h"
+#include "Unknown/ActivityStations/TestStation/ToyInspector.h"
 #include "Unknown/System/UnknownHUD.h"
 
 APCharacter::APCharacter()
@@ -59,8 +60,8 @@ void APCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponen
 
 	EnhancedInputComponent->BindAction(PlayerBaseController->EscapeAction, ETriggerEvent::Completed, this, &APCharacter::OpenCloseWidget);
 	EnhancedInputComponent->BindAction(PlayerBaseController->ShelfInventoryAction, ETriggerEvent::Completed, this, &APCharacter::OpenShelfInventory);
-	EnhancedInputComponent->BindAction(PlayerBaseController->RinseAction, ETriggerEvent::Triggered, this, &APCharacter::RinseOrgan);
-	EnhancedInputComponent->BindAction(PlayerBaseController->RinseAction, ETriggerEvent::Completed, this, &APCharacter::StopRinseOrgan);
+	EnhancedInputComponent->BindAction(PlayerBaseController->RinseAction, ETriggerEvent::Triggered, this, &APCharacter::StartInteraction);
+	EnhancedInputComponent->BindAction(PlayerBaseController->RinseAction, ETriggerEvent::Completed, this, &APCharacter::StopInteraction);
 
 
 	ULocalPlayer* LocalPlayer = PlayerBaseController->GetLocalPlayer();
@@ -95,7 +96,7 @@ void APCharacter::OpenShelfInventory()
 	HUD->ShowShelfInventoryWidget();
 }
 
-void APCharacter::RinseOrgan()
+void APCharacter::StartInteraction()
 {
 	if (TagInFocus.Contains("ToRinse"))
 	{
@@ -103,7 +104,20 @@ void APCharacter::RinseOrgan()
 		{
 			this->GetWorld()->GetFirstPlayerController()->CurrentMouseCursor = EMouseCursor::GrabHandClosed;
 
-			CheckForOrgan();
+			CheckForInteraction();
+		}
+		else
+		{
+			UE_LOG(LogTemp, Warning, TEXT("APCharacter: PlayerController not valid.")); 
+		}
+	}
+	if (TagInFocus.Contains("ToInspect"))
+	{
+		if (this->GetWorld()->GetFirstPlayerController())
+		{
+			this->GetWorld()->GetFirstPlayerController()->CurrentMouseCursor = EMouseCursor::GrabHand;
+
+			CheckForInteraction();
 		}
 		else
 		{
@@ -112,13 +126,13 @@ void APCharacter::RinseOrgan()
 	}
 }
 
-void APCharacter::StopRinseOrgan()
+void APCharacter::StopInteraction()
 {
 	if (this->GetWorld()->GetFirstPlayerController())
 	{
 		this->GetWorld()->GetFirstPlayerController()->CurrentMouseCursor = EMouseCursor::Default;
 
-		CheckForOrgan();
+		CheckForInteraction();
 	}
 	else
 	{
@@ -193,8 +207,6 @@ void APCharacter::CheckForInteractable()
 				CurrentTag = "Cut";
 				TagInFocus.Add(CurrentTag);
 		
-				FoundInteractable();
-
 				return;
 			}
 			if (TraceHit.GetActor()->Tags.Contains("Rinse"))
@@ -204,8 +216,6 @@ void APCharacter::CheckForInteractable()
 				CurrentTag = "Rinse";
 				TagInFocus.Add(CurrentTag);
 		
-				FoundInteractable();
-
 				return;
 			}
 			if (TraceHit.GetActor()->Tags.Contains("Test"))
@@ -215,8 +225,6 @@ void APCharacter::CheckForInteractable()
 				CurrentTag = "Test";
 				TagInFocus.Add(CurrentTag);
 		
-				FoundInteractable();
-
 				return;
 			}
 			if (TraceHit.GetActor()->Tags.Contains("Door"))
@@ -226,18 +234,21 @@ void APCharacter::CheckForInteractable()
 				CurrentTag = "Door";
 				TagInFocus.Add(CurrentTag);
 		
-				FoundInteractable();
-
 				return;
 			}
 			if (TraceHit.GetActor()->Tags.Contains("ToRinse"))
 			{
-				//UE_LOG(LogTemp, Warning, TEXT("APCharacter: Organ to rinse!"));
-				
 				CurrentTag = "ToRinse";
 				TagInFocus.Add(CurrentTag);
 		
-				FoundInteractable();
+				return;
+			}
+			if (TraceHit.GetActor()->Tags.Contains("ToInspect"))
+			{
+				UE_LOG(LogTemp, Warning, TEXT("APCharacter: Toy to inspect!"));
+				
+				CurrentTag = "ToInspect";
+				TagInFocus.Add(CurrentTag);
 
 				return;
 			}
@@ -248,7 +259,7 @@ void APCharacter::CheckForInteractable()
 	TagInFocus.Empty();
 }
 
-void APCharacter::CheckForOrgan()
+void APCharacter::CheckForInteraction()
 {
 	if (this->GetWorld()->GetFirstPlayerController())
 	{
@@ -287,6 +298,37 @@ void APCharacter::CheckForOrgan()
 			{
 				//UE_LOG(LogTemp, Warning, TEXT("APCharacter: No rinse :("));
 			}
+			if (CursorHit.GetActor()->Tags.Contains("ToInspect"))
+			{
+				//UE_LOG(LogTemp, Warning, TEXT("APCharacter: Cursor hit on ToInspect!"));
+
+				ToyInspector = Cast<AToyInspector>(CursorHit.GetActor());
+
+				if (ToyInspector)
+				{
+					if (this->GetWorld()->GetFirstPlayerController()->CurrentMouseCursor.GetValue() ==  EMouseCursor::GrabHand)
+					{
+						FRotator CurrentRotation = ToyInspector->GetActorRotation();
+						
+						float MouseX;
+						float MouseY;
+						
+						this->GetWorld()->GetFirstPlayerController()->GetInputMouseDelta(MouseX, MouseY);
+
+						FRotator NewActorRotation(CurrentRotation.Pitch + MouseX * 10, CurrentRotation.Yaw + MouseY * 10, 0);
+						
+						ToyInspector->SetActorRotation(NewActorRotation);
+					}
+					else
+					{
+						ToyInspector->StopRotateToy();
+					}
+				}
+			}
+			else
+			{
+				//UE_LOG(LogTemp, Warning, TEXT("APCharacter: No rinse :("));
+			}
 		}
 		else
 		{
@@ -299,6 +341,4 @@ void APCharacter::CheckForOrgan()
 	}
 }
 
-void APCharacter::FoundInteractable()
-{
-}
+
