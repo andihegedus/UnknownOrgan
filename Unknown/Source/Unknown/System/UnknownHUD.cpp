@@ -5,6 +5,7 @@
 #include "Unknown/UserInterface/Interaction/RinseObjectsWidget.h"
 #include "Unknown/UserInterface/Inventory/PlayerInventoryWidget.h"
 #include "Unknown/UserInterface/Inventory/ShelfInventoryWidget.h"
+#include "Unknown/UserInterface/Inventory/ShelfSlotWidget.h"
 #include "Unknown/UserInterface/SaveLoad/SaveLoadWidget.h"
 #include "Unknown/UserInterface/Settings/SettingsWidget.h"
 
@@ -45,6 +46,12 @@ void AUnknownHUD::BeginPlay()
 		ShelfInventoryWidget = CreateWidget<UShelfInventoryWidget>(GetWorld(), ShelfInventoryWidgetClass);
 		ShelfInventoryWidget->AddToViewport();
 		ShelfInventoryWidget->SetVisibility(ESlateVisibility::Collapsed);
+	}
+	if (ShelfSlotWidgetClass)
+	{
+		ShelfSlotWidget = CreateWidget<UShelfSlotWidget>(GetWorld(), ShelfSlotWidgetClass);
+		ShelfSlotWidget->AddToViewport();
+		ShelfSlotWidget->SetVisibility(ESlateVisibility::Collapsed);
 	}
 	if (OrganCutterWidgetClass)
 	{

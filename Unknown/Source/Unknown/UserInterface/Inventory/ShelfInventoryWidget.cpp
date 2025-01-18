@@ -1,10 +1,13 @@
 #include "ShelfInventoryWidget.h"
 
 #include "ShelfSlotWidget.h"
+#include "Components/HorizontalBox.h"
 #include "Components/ScrollBox.h"
+#include "Components/WrapBox.h"
 #include "Unknown/UnknownGameInstance.h"
 #include "Unknown/PlayerCharacter/PCharacter.h"
 #include "Unknown/PlayerCharacter/PController.h"
+#include "Unknown/System/UnknownHUD.h"
 
 void UShelfInventoryWidget::NativeOnInitialized()
 {
@@ -12,28 +15,28 @@ void UShelfInventoryWidget::NativeOnInitialized()
 
 	PlayerCharacter = Cast<APCharacter>(GetWorld()->GetFirstPlayerController()->GetPawn());
 
-	GameInstance = Cast<UUnknownGameInstance>(GetWorld()->GetGameInstance());
-
 	if (PlayerCharacter)
 	{
 		PlayerController = Cast<APController>(PlayerCharacter->GetWorld()->GetFirstPlayerController());
 
 		if (PlayerController)
 		{
-			UE_LOG(LogTemp, Warning, TEXT("UPlayerInventoryWidget: PlayerController valid!"));
+			UE_LOG(LogTemp, Warning, TEXT("UShelfInventoryWidget: PlayerController valid!"));
 			PlayerController->bShowMouseCursor = true;
 			PlayerController->bEnableClickEvents = true; 
 			PlayerController->bEnableMouseOverEvents = true;
 		}
 		else
 		{
-			UE_LOG(LogTemp, Warning, TEXT("UPlayerInventoryWidget: PlayerController not valid."));
+			UE_LOG(LogTemp, Warning, TEXT("UShelfInventoryWidget: PlayerController not valid."));
 		}
 	}
 	else
 	{
-		UE_LOG(LogTemp, Warning, TEXT("UPlayerInventoryWidget: PlayerCharacter not valid."));
+		UE_LOG(LogTemp, Warning, TEXT("UShelfInventoryWidget: PlayerCharacter not valid."));
 	}
+
+	
 }
 
 void UShelfInventoryWidget::NativeConstruct()
@@ -43,13 +46,54 @@ void UShelfInventoryWidget::NativeConstruct()
 
 void UShelfInventoryWidget::UpdateWidget()
 {
+	GameInstance = Cast<UUnknownGameInstance>(GetWorld()->GetGameInstance());
+	
 	if (GameInstance)
 	{
-		for (int i = 0; i < GameInstance->AcquiredToyIDs.Num() - 1; i++)
+		if (GameInstance->AcquiredToyIDs.Num() >= 1)
 		{
-			UShelfSlotWidget* CollectableSlot = CreateWidget<UShelfSlotWidget>(this, ShelfSlotClass);
+			InventoryScrollBox->ClearChildren();
+			
+			for (int i = 0; i < GameInstance->AcquiredToyIDs.Num(); i++)
+			{
+				if (PlayerCharacter->HUD->ShelfSlotWidgetClass)
+				{
+					ShelfSlot = CreateWidget<UShelfSlotWidget>(this, PlayerCharacter->HUD->ShelfSlotWidgetClass);
+				}
+				else
+				{
+					UE_LOG(LogTemp, Warning, TEXT("UShelfInventoryWidget: ShelfSlotClass not valid."));
+				}
+				
+				if (ShelfSlot)
+				{
+					InventoryScrollBox->AddChild(ShelfSlot);
+					UE_LOG(LogTemp, Warning, TEXT("UShelfInventoryWidget: Array built."));
+				}
+				else
+				{
+					UE_LOG(LogTemp, Warning, TEXT("UShelfInventoryWidget: ShelfSlot not valid."));
+				}
+			}
 
-			InventoryScrollBox->AddChild(CollectableSlot);
+			if (ShelfSlot)
+			{
+				InventoryScrollBox->AddChild(ShelfSlot);
+				UE_LOG(LogTemp, Warning, TEXT("UShelfInventoryWidget: Non-array single built."));
+			}
+			else
+			{
+				UE_LOG(LogTemp, Warning, TEXT("UShelfInventoryWidget: ShelfSlot not valid."));
+			}
 		}
+		else
+		{
+			UE_LOG(LogTemp, Warning, TEXT("UShelfInventoryWidget: ShelfSlotClass not valid."));
+		}
+			
+	}
+	else
+	{
+		UE_LOG(LogTemp, Warning, TEXT("UShelfInventoryWidget: No IDs in GameInstance array."));
 	}
 }

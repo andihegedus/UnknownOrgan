@@ -113,15 +113,17 @@ void UPlayerInventoryWidget::OnLeftArrowClicked()
 		}
 		if (PlayerCharacter->TagInFocus.Contains("Test"))
 		{
+			WBP_ShelfInventory->UpdateWidget();
+			WBP_ShelfInventory->SetVisibility(ESlateVisibility::Visible);
 			TestText->SetVisibility(ESlateVisibility::Visible);
 			TestBorder->SetBrushColor(FLinearColor::Green);
-			WBP_ShelfInventory->SetVisibility(ESlateVisibility::Visible);
 		}
 		else
 		{
+			
+			WBP_ShelfInventory->SetVisibility(ESlateVisibility::Collapsed);
 			TestText->SetVisibility(ESlateVisibility::Collapsed);
 			TestBorder->SetBrushColor(FLinearColor::Gray);
-			WBP_ShelfInventory->SetVisibility(ESlateVisibility::Collapsed);
 		}
 	}
 	else
@@ -170,15 +172,16 @@ void UPlayerInventoryWidget::OnRightArrowClicked()
 		}
 		if (PlayerCharacter->TagInFocus.Contains("Test"))
 		{
+			WBP_ShelfInventory->UpdateWidget();
+			WBP_ShelfInventory->SetVisibility(ESlateVisibility::Visible);
 			TestText->SetVisibility(ESlateVisibility::Visible);
 			TestBorder->SetBrushColor(FLinearColor::Green);
-			WBP_ShelfInventory->SetVisibility(ESlateVisibility::Visible);
 		}
 		else
 		{
+			WBP_ShelfInventory->SetVisibility(ESlateVisibility::Collapsed);
 			TestText->SetVisibility(ESlateVisibility::Collapsed);
 			TestBorder->SetBrushColor(FLinearColor::Gray);
-			WBP_ShelfInventory->SetVisibility(ESlateVisibility::Collapsed);
 		}
 	}
 	else

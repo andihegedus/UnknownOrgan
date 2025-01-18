@@ -5,6 +5,7 @@
 #include "UnknownHUD.generated.h"
 
 
+class UShelfSlotWidget;
 class APCharacter;
 class USaveLoadWidget;
 class USettingsWidget;
@@ -86,6 +87,9 @@ public:
 	UPROPERTY(EditDefaultsOnly, Category="Widgets")
 	TSubclassOf<URinseObjectsWidget> RinseObjectsWidgetClass;
 
+	UPROPERTY(EditDefaultsOnly, Category="Widgets")
+	TSubclassOf<UShelfSlotWidget> ShelfSlotWidgetClass;
+
 	UPROPERTY()
 	UPlayerInventoryWidget* PlayerInventoryWidget;
 
@@ -110,4 +114,7 @@ protected:
 
 	UPROPERTY()
 	UOrganCutterWidget* OrganCutterWidget;
+
+	UPROPERTY()
+	UShelfSlotWidget* ShelfSlotWidget;
 };
