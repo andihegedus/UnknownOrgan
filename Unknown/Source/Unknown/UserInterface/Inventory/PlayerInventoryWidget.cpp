@@ -117,15 +117,13 @@ void UPlayerInventoryWidget::OnLeftArrowClicked()
 		}
 		if (PlayerCharacter->TagInFocus.Contains("Test") || PlayerCharacter->TagInFocus.Contains("ToInspect"))
 		{
-			OrganCutter->SetVisibility(ESlateVisibility::Collapsed);
-			ShelfInventory->UpdateWidget();
+			OrganCutter->SetVisibility(ESlateVisibility::Hidden);
 			ShelfInventory->SetVisibility(ESlateVisibility::Visible);
 			TestText->SetVisibility(ESlateVisibility::Visible);
 			TestBorder->SetBrushColor(FLinearColor::Green);
 		}
 		else
 		{
-			
 			ShelfInventory->SetVisibility(ESlateVisibility::Collapsed);
 			TestText->SetVisibility(ESlateVisibility::Collapsed);
 			TestBorder->SetBrushColor(FLinearColor::Gray);
@@ -179,7 +177,8 @@ void UPlayerInventoryWidget::OnRightArrowClicked()
 		}
 		if (PlayerCharacter->TagInFocus.Contains("Test") || PlayerCharacter->TagInFocus.Contains("ToInspect"))
 		{
-			ShelfInventory->UpdateWidget();
+			//ShelfInventory->UpdateWidget();
+			OrganCutter->SetVisibility(ESlateVisibility::Hidden);
 			ShelfInventory->SetVisibility(ESlateVisibility::Visible);
 			TestText->SetVisibility(ESlateVisibility::Visible);
 			TestBorder->SetBrushColor(FLinearColor::Green);

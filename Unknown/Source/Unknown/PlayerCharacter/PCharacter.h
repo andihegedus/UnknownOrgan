@@ -18,6 +18,7 @@ class UPrimitiveComponent;
 class UUnknownGameInstance;
 
 DECLARE_MULTICAST_DELEGATE(FOnMonsterStateUpdated);
+DECLARE_MULTICAST_DELEGATE(FOnInventoryStateUpdated);
 
 UCLASS()
 class UNKNOWN_API APCharacter: public ACharacter
@@ -85,6 +86,7 @@ public:
 	FName CurrentTag;
 	
 	FOnMonsterStateUpdated OnMonsterStateUpdated;
+	FOnInventoryStateUpdated OnInventoryStateUpdated;
 
 
 protected:

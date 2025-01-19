@@ -43,6 +43,7 @@ void URinseObjectsWidget::NativeConstruct()
 void URinseObjectsWidget::CloseWidget()
 {
 	this->SetVisibility(ESlateVisibility::Collapsed);
+	PlayerCharacter->OnInventoryStateUpdated.Broadcast();
 	UE_LOG(LogTemp, Warning, TEXT("URinseObjectsWidget: CloseWidget fired!"));
 }
 

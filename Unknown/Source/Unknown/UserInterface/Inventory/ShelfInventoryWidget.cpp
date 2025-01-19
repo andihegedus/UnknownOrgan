@@ -22,6 +22,8 @@ void UShelfInventoryWidget::NativeOnInitialized()
 	{
 		PlayerController = Cast<APController>(PlayerCharacter->GetWorld()->GetFirstPlayerController());
 
+		PlayerCharacter->OnInventoryStateUpdated.AddUObject(this, &UShelfInventoryWidget::UpdateWidget);
+
 		if (PlayerController)
 		{
 			UE_LOG(LogTemp, Warning, TEXT("UShelfInventoryWidget: PlayerController valid!"));
@@ -65,7 +67,7 @@ void UShelfInventoryWidget::UpdateWidget()
 				}
 				else
 				{
-					UE_LOG(LogTemp, Warning, TEXT("UShelfInventoryWidget: ShelfSlotClass not valid."));
+					//UE_LOG(LogTemp, Warning, TEXT("UShelfInventoryWidget: ShelfSlotClass not valid."));
 				}
 				
 				if (ShelfSlot)
@@ -85,7 +87,7 @@ void UShelfInventoryWidget::UpdateWidget()
 				}
 			}
 
-			if (ShelfSlot)
+			/*if (ShelfSlot)
 			{
 				InventoryScrollBox->AddChild(ShelfSlot);
 				UE_LOG(LogTemp, Warning, TEXT("UShelfInventoryWidget: Non-array single built."));
@@ -93,11 +95,11 @@ void UShelfInventoryWidget::UpdateWidget()
 			else
 			{
 				UE_LOG(LogTemp, Warning, TEXT("UShelfInventoryWidget: ShelfSlot not valid."));
-			}
+			}*/
 		}
 		else
 		{
-			UE_LOG(LogTemp, Warning, TEXT("UShelfInventoryWidget: ShelfSlotClass not valid."));
+			//UE_LOG(LogTemp, Warning, TEXT("UShelfInventoryWidget: ShelfSlotClass not valid."));
 		}
 			
 	}

@@ -60,7 +60,6 @@ void UOrganCutterWidget::NativeOnInitialized()
 		GameInstance->bOrganExtruded = bOrganExtruded;
 		GameInstance->bOrganDissected = bOrganDissected;
 	}
-	
 }
 
 void UOrganCutterWidget::NativeConstruct()
@@ -116,6 +115,13 @@ void UOrganCutterWidget::CloseAndDestroy(float Value)
 		OrganSlider3->SetVisibility(ESlateVisibility::Hidden);
 		OrganImage3->SetVisibility(ESlateVisibility::Hidden);
 
+		bOrganDissected = true;
+
+		if (GameInstance)
+		{
+			GameInstance->bOrganDissected = bOrganDissected;
+		}
+
 		if (!OrganSlider2->IsVisible() && !OrganSlider3->IsVisible() && !OrganImage->IsVisible())
 		{
 			OrganImage4->SetVisibility(ESlateVisibility::Visible);
@@ -146,9 +152,11 @@ void UOrganCutterWidget::ResetCutter()
 	OrganSlider3->SetValue(0.f);
 
 	bOrganExtruded = false;
+	bOrganDissected = false;
 
 	if (GameInstance)
 	{
 		GameInstance->bOrganExtruded = bOrganExtruded;
+		GameInstance->bOrganDissected = bOrganDissected;
 	}
 }
