@@ -48,66 +48,85 @@ void AOrganRinse::BeginPlay()
 		DissolveTimelineComp->AddInterpFloat(DissolveTimelineCurveFloat, UpdateFunctionFloat);
 	}
 
-	// Temp hardcode to test
-	//DesiredToyID = "T0001R";
-
-	FRandomStream RandomStream;
-	RandomStream.Initialize(FMath::Rand());
-
-	if (ToyDataTable)
-	{
-		int32 RowsQuantity = ToyDataTable->GetRowNames().Num();
-		int32 Min = 0;
-		int32 Max = RowsQuantity - 1;
-		int32 RandomInt = RandomStream.RandRange(Min,Max);
-
-		DesiredToyID = ToyDataTable->GetRowNames()[RandomInt];
-
-		//UE_LOG(LogTemp, Warning, TEXT("%s"), *DesiredToyID.ToString());
-
-		if (GameInstance)
-		{
-			GameInstance->AcquiredToyIDs.Add(DesiredToyID);
-			GameInstance->ToyDataTable = ToyDataTable;
-
-			if (GameInstance->AcquiredToyIDs.Num() >= 1)
-			{
-				FName PrintID = GameInstance->AcquiredToyIDs[0];
-				
-				UE_LOG(LogTemp, Warning, TEXT("%s"), *PrintID.ToString());
-			}
-		}
-		else
-		{
-			UE_LOG(LogTemp, Warning, TEXT("AOrganRinse: GameInstance not valid."));
-		}
-
-		if (!DesiredToyID.IsNone())
-		{
-			const FToyData* ToyData = ToyDataTable->FindRow<FToyData>(DesiredToyID, DesiredToyID.ToString());
-
-			ToyMeshComponent->SetStaticMesh(ToyData->ToyAssetData.Mesh);
-			ToyMeshComponent->SetMaterial(0, ToyData->ToyAssetData.ColorwayMaterial);
-		
-			ToyMeshComponent->SetRelativeScale3D(FVector(0.25,0.25,0.25));
-
-			IconBrushTexture = ToyData->ToyAssetData.Icon;
-			ToyNameText = ToyData->ToyTextData.NameText;
-		}
-		else
-		{
-			UE_LOG(LogTemp, Warning, TEXT("AOrganRinse: ToyID not valid."));
-		}
-	}
-	else
-	{
-		UE_LOG(LogTemp, Warning, TEXT("AOrganRinse: DataTable not valid."));
-	}
+	OrganMeshComponent->SetVisibility(false);
+	ToyMeshComponent->SetVisibility(false);
 }
 
 void AOrganRinse::CloseAndDestroy()
 {
-	this->Destroy();
+	OrganMeshComponent->SetVisibility(false);
+	ToyMeshComponent->SetVisibility(false);
+
+	DissolveTimelineComp->SetPlaybackPosition(0.f, false);
+}
+
+void AOrganRinse::SpawnOrgansToRinse()
+{
+	if (GameInstance)
+	{
+		if (GameInstance->bOrganDissected)
+		{
+			FRandomStream RandomStream;
+			RandomStream.Initialize(FMath::Rand());
+
+			if (ToyDataTable)
+			{
+				int32 RowsQuantity = ToyDataTable->GetRowNames().Num();
+				int32 Min = 0;
+				int32 Max = RowsQuantity - 1;
+				int32 RandomInt = RandomStream.RandRange(Min,Max);
+
+				DesiredToyID = ToyDataTable->GetRowNames()[RandomInt];
+
+				//UE_LOG(LogTemp, Warning, TEXT("%s"), *DesiredToyID.ToString());
+
+				if (GameInstance)
+				{
+					GameInstance->AcquiredToyIDs.Add(DesiredToyID);
+					GameInstance->ToyDataTable = ToyDataTable;
+
+					if (GameInstance->AcquiredToyIDs.Num() >= 1)
+					{
+						FName PrintID = GameInstance->AcquiredToyIDs[0];
+				
+						UE_LOG(LogTemp, Warning, TEXT("%s"), *PrintID.ToString());
+					}
+				}
+				else
+				{
+					UE_LOG(LogTemp, Warning, TEXT("AOrganRinse: GameInstance not valid."));
+				}
+
+				if (!DesiredToyID.IsNone())
+				{
+					const FToyData* ToyData = ToyDataTable->FindRow<FToyData>(DesiredToyID, DesiredToyID.ToString());
+
+					ToyMeshComponent->SetStaticMesh(ToyData->ToyAssetData.Mesh);
+					ToyMeshComponent->SetMaterial(0, ToyData->ToyAssetData.ColorwayMaterial);
+		
+					ToyMeshComponent->SetRelativeScale3D(FVector(0.25,0.25,0.25));
+
+					IconBrushTexture = ToyData->ToyAssetData.Icon;
+					ToyNameText = ToyData->ToyTextData.NameText;
+				}
+				else
+				{
+					UE_LOG(LogTemp, Warning, TEXT("AOrganRinse: ToyID not valid."));
+				}
+			}
+			else
+			{
+				UE_LOG(LogTemp, Warning, TEXT("AOrganRinse: DataTable not valid."));
+			}
+			
+			OrganMeshComponent->SetVisibility(true);
+			ToyMeshComponent->SetVisibility(true);
+		}
+		else
+		{
+			UE_LOG(LogTemp, Warning, TEXT("AOrganRinse: No dissected organs available."));
+		}
+	}
 }
 
 void AOrganRinse::UpdateTimelineComp(float Output)

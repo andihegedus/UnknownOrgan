@@ -14,6 +14,8 @@
 #include "Unknown/ActivityStations/RinseStation/OrganRinse.h"
 #include "Unknown/ActivityStations/TestStation/ToyInspector.h"
 #include "Unknown/System/UnknownHUD.h"
+#include "Unknown/UserInterface/Interaction/OrganCutterWidget.h"
+#include "Unknown/UserInterface/Inventory/PlayerInventoryWidget.h"
 
 APCharacter::APCharacter()
 {
@@ -277,6 +279,17 @@ void APCharacter::CheckForInteractable()
 			{
 				CurrentTag = "ToRinse";
 				TagInFocus.Add(CurrentTag);
+
+				OrganRinse = Cast<AOrganRinse>(TraceHit.GetActor());
+
+				if (OrganRinse)
+				{
+					OrganRinse->SpawnOrgansToRinse();
+				}
+				else
+				{
+					UE_LOG(LogTemp, Warning, TEXT("APCharacter: Rinse, OrganRinse not valid."));
+				}
 		
 				return;
 			}
@@ -407,7 +420,7 @@ void APCharacter::CheckForInteraction()
 			}
 			else
 			{
-				UE_LOG(LogTemp, Warning, TEXT("APCharacter: No swat :("));
+				//UE_LOG(LogTemp, Warning, TEXT("APCharacter: No swat :("));
 			}
 		}
 		else

@@ -38,6 +38,8 @@ public:
 
 	void CloseAndDestroy();
 
+	void SpawnOrgansToRinse();
+
 	// PROPERTIES & VARIABLES
 	// -----------------------------
 

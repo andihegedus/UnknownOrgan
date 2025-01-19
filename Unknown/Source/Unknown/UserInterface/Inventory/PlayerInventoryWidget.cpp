@@ -8,6 +8,7 @@
 #include "GameFramework/PlayerController.h"
 #include "Unknown/PlayerCharacter/PCharacter.h"
 #include "Unknown/PlayerCharacter/PController.h"
+#include "Unknown/UserInterface/Interaction/MonsterStateLoggerWidget.h"
 #include "Unknown/UserInterface/Interaction/OrganCutterWidget.h"
 #include "Unknown/UserInterface/Interaction/RinseObjectsWidget.h"
 
@@ -52,8 +53,10 @@ void UPlayerInventoryWidget::NativeOnInitialized()
 	DefendBorder->SetBrushColor(FLinearColor::Gray);
 	TestBorder->SetBrushColor(FLinearColor::Gray);
 
+	OrganCutter->SetVisibility(ESlateVisibility::Visible);
 	RinseTool->SetVisibility(ESlateVisibility::Collapsed);
 	ShelfInventory->SetVisibility(ESlateVisibility::Collapsed);
+	MonsterStateLogger->SetVisibility(ESlateVisibility::Hidden);
 }
 
 void UPlayerInventoryWidget::NativeConstruct()
@@ -87,12 +90,13 @@ void UPlayerInventoryWidget::OnLeftArrowClicked()
 		}
 		else
 		{
-			OrganCutter->SetVisibility(ESlateVisibility::Collapsed);
+			OrganCutter->ResetCutter();
 			CutText->SetVisibility(ESlateVisibility::Collapsed);
 			CutBorder->SetBrushColor(FLinearColor::Gray);
 		}
 		if (PlayerCharacter->TagInFocus.Contains("Rinse") || PlayerCharacter->TagInFocus.Contains("ToRinse"))
 		{
+			OrganCutter->SetVisibility(ESlateVisibility::Hidden);
 			RinseText->SetVisibility(ESlateVisibility::Visible);
 			RinseBorder->SetBrushColor(FLinearColor::Blue);
 		}
@@ -113,6 +117,7 @@ void UPlayerInventoryWidget::OnLeftArrowClicked()
 		}
 		if (PlayerCharacter->TagInFocus.Contains("Test") || PlayerCharacter->TagInFocus.Contains("ToInspect"))
 		{
+			OrganCutter->SetVisibility(ESlateVisibility::Collapsed);
 			ShelfInventory->UpdateWidget();
 			ShelfInventory->SetVisibility(ESlateVisibility::Visible);
 			TestText->SetVisibility(ESlateVisibility::Visible);
@@ -146,12 +151,13 @@ void UPlayerInventoryWidget::OnRightArrowClicked()
 		}
 		else
 		{
-			OrganCutter->SetVisibility(ESlateVisibility::Collapsed);
+			OrganCutter->ResetCutter();
 			CutText->SetVisibility(ESlateVisibility::Collapsed);
 			CutBorder->SetBrushColor(FLinearColor::Gray);
 		}
 		if (PlayerCharacter->TagInFocus.Contains("Rinse"))
 		{
+			OrganCutter->SetVisibility(ESlateVisibility::Hidden);
 			RinseText->SetVisibility(ESlateVisibility::Visible);
 			RinseBorder->SetBrushColor(FLinearColor::Blue);
 		}

@@ -41,5 +41,8 @@ public:
 
 	UPROPERTY()
 	int32 MonsterPositionID;
-	
+
+	bool bOrganExtruded;
+
+	bool bOrganDissected;
 };

@@ -218,9 +218,9 @@ void AUnknownHUD::HideRinseObjectsWidget()
 
 void AUnknownHUD::ShowMonsterLogger()
 {
-	if (MonsterStateLoggerWidget)
+	if (PlayerInventoryWidget)
 	{
-		MonsterStateLoggerWidget->SetVisibility(ESlateVisibility::Visible);
+		PlayerInventoryWidget->MonsterStateLogger->SetVisibility(ESlateVisibility::Visible);
 	}
 }
 
@@ -228,7 +228,7 @@ void AUnknownHUD::HideMonsterLogger()
 {
 	if (MonsterStateLoggerWidget)
 	{
-		MonsterStateLoggerWidget->SetVisibility(ESlateVisibility::Collapsed);
+		PlayerInventoryWidget->MonsterStateLogger->SetVisibility(ESlateVisibility::Collapsed);
 	}
 }
 

@@ -10,7 +10,9 @@ class APController;
 class USlider;
 class UTextBlock;
 class UImage;
+class UButton;
 class UHorizontalBox;
+class UUnknownGameInstance;
 
 UCLASS()
 class UNKNOWN_API UOrganCutterWidget : public UUserWidget
@@ -20,11 +22,14 @@ class UNKNOWN_API UOrganCutterWidget : public UUserWidget
 public:
 	// FUNCTIONS
 	// -----------------------------
-	
-	void UpdateWidget();
+
+	UFUNCTION()
+	void ExtrudeNewOrgan();
 
 	UFUNCTION()
 	void CloseAndDestroy(float Value);
+
+	void ResetCutter();
 	
 
 	// PROPERTIES & VARIABLES
@@ -36,6 +41,9 @@ public:
 	UPROPERTY()
 	APController* PlayerController;
 
+	UPROPERTY()
+	UUnknownGameInstance* GameInstance;
+
 	UPROPERTY(VisibleAnywhere, meta = (BindWidget))
 	USlider* OrganCutterSlider;
 
@@ -44,6 +52,10 @@ public:
 
 	UPROPERTY(VisibleAnywhere, meta = (BindWidget))
 	USlider* OrganSlider3;
+
+	bool bOrganExtruded;
+
+	bool bOrganDissected;
 
 	protected:
 	// FUNCTIONS
@@ -71,4 +83,7 @@ public:
 
 	UPROPERTY(VisibleAnywhere, meta = (BindWidget))
 	UImage* OrganImage4;
+
+	UPROPERTY(VisibleAnywhere, meta = (BindWidget))
+	UButton* ExtrudeOrganButton;
 };

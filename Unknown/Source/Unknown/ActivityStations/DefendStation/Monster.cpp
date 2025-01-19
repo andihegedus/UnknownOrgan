@@ -88,7 +88,7 @@ void AMonster::MonsterTimer()
 {
 	if (bIsProwling)
 	{
-		UE_LOG(LogTemp, Warning, TEXT("AMonster: MonsterTimer, prowling!"));
+		//UE_LOG(LogTemp, Warning, TEXT("AMonster: MonsterTimer, prowling!"));
 		
 		GetWorld()->GetTimerManager().SetTimer(MonsterProwlTimerHandle, this, &AMonster::MonsterTimer, 1.f, true);
 
@@ -158,7 +158,7 @@ void AMonster::MonsterTimer()
 	}
 	else if (!bIsProwling)
 	{
-		UE_LOG(LogTemp, Warning, TEXT("AMonster: MonsterTimer, not prowling."));
+		//UE_LOG(LogTemp, Warning, TEXT("AMonster: MonsterTimer, not prowling."));
 		
 		GetWorld()->GetTimerManager().ClearTimer(MonsterProwlTimerHandle);
 		GetWorld()->GetTimerManager().SetTimer(MonsterIdleTimerHandle, this, &AMonster::MonsterTimer, 1.f, true);
@@ -189,7 +189,7 @@ void AMonster::MonsterRetreatTimer()
 {
 	if (bIsRetreating)
 	{
-		UE_LOG(LogTemp, Warning, TEXT("AMonster: MonsterRetreatTimer, retreating."));
+		//UE_LOG(LogTemp, Warning, TEXT("AMonster: MonsterRetreatTimer, retreating."));
 		
 		GetWorld()->GetTimerManager().ClearTimer(MonsterProwlTimerHandle);
 		GetWorld()->GetTimerManager().SetTimer(MonsterRetreatTimerHandle, this, &AMonster::MonsterRetreatTimer, 1.f, true);
