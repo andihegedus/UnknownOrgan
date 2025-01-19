@@ -12,15 +12,6 @@ AMonster::AMonster()
 	MonsterMeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("MonsterMeshComponent"));
 	MonsterMeshComponent->SetupAttachment(GetRootComponent());
 
-	MonsterPosition1 = CreateDefaultSubobject<UBoxComponent>(TEXT("MonsterPosition1"));
-	MonsterPosition1->AttachToComponent(MonsterMeshComponent, FAttachmentTransformRules::KeepRelativeTransform);
-
-	MonsterPosition2 = CreateDefaultSubobject<UBoxComponent>(TEXT("MonsterPosition2"));
-	MonsterPosition2->AttachToComponent(MonsterMeshComponent, FAttachmentTransformRules::KeepRelativeTransform);
-
-	MonsterPosition3 = CreateDefaultSubobject<UBoxComponent>(TEXT("MonsterPosition3"));
-	MonsterPosition3->AttachToComponent(MonsterMeshComponent, FAttachmentTransformRules::KeepRelativeTransform);
-
 	MonsterTrigger = CreateDefaultSubobject<UBoxComponent>(TEXT("MonsterTrigger"));
 	MonsterTrigger->AttachToComponent(MonsterMeshComponent, FAttachmentTransformRules::KeepRelativeTransform);
 
@@ -56,7 +47,7 @@ void AMonster::BeginPlay()
 		UE_LOG(LogTemp, Warning, TEXT("AMonster: MonsterTimelineCurveFloat not valid."));
 	}
 
-	MonsterTrigger->OnComponentBeginOverlap.AddDynamic(this, &AMonster::OnOverlapBegin);
+	//MonsterTrigger->OnComponentBeginOverlap.AddDynamic(this, &AMonster::OnOverlapBegin);
 	MonsterTimer();
 }
 
@@ -66,15 +57,15 @@ void AMonster::UpdateTimelineComp(float Output)
 	switch (MonsterPositionID)
 	{
 		case 1:
-			MonsterLocation1 = FVector(InitialMonsterLocation.X + 300.f, InitialMonsterLocation.Y - 300.f, InitialMonsterLocation.Z);
+			MonsterLocation1 = FVector(InitialMonsterLocation.X + 200.f, InitialMonsterLocation.Y + 100.f, InitialMonsterLocation.Z);
 			MonsterMeshComponent->SetRelativeLocation(MonsterLocation1);
 			break;
 		case 2:
-			MonsterLocation2 = FVector(MonsterLocation1.X + 300.f, MonsterLocation1.Y - 300.f, MonsterLocation1.Z);
+			MonsterLocation2 = FVector(MonsterLocation1.X + 100.f, MonsterLocation1.Y - 200.f, MonsterLocation1.Z);
 			MonsterMeshComponent->SetRelativeLocation(MonsterLocation2);
 			break;
 		case 3:
-			MonsterLocation3 = FVector(MonsterLocation2.X + 300.f, MonsterLocation2.Y - 300.f, MonsterLocation2.Z);
+			MonsterLocation3 = FVector(MonsterLocation2.X + 300.f, MonsterLocation2.Y + 400.f, MonsterLocation2.Z);
 			MonsterMeshComponent->SetRelativeLocation(MonsterLocation3);
 			break;
 		case 0:
@@ -111,6 +102,23 @@ void AMonster::MonsterTimer()
 			}
 			else
 			{
+				if (MonsterPositionID == 3)
+				{
+					if (GameInstance)
+					{
+						FRandomStream RandomStream;
+						RandomStream.Initialize(FMath::Rand());
+
+						int32 ArrayLength = GameInstance->AcquiredToyIDs.Num();
+						int32 Min = 0;
+						int32 Max = ArrayLength - 1;
+						int32 RandomInt = RandomStream.RandRange(Min,Max);
+
+						GameInstance->AcquiredToyIDs.RemoveAt(RandomInt);
+
+						UE_LOG(LogTemp, Warning, TEXT("AMonster: Monster removed item from inventory!"));
+					}
+				}
 				GetWorld()->GetTimerManager().ClearTimer(MonsterProwlTimerHandle);
 				bIsProwling = false;
 				MonsterPositionID = 0;

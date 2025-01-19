@@ -89,15 +89,6 @@ protected:
 	UStaticMeshComponent* MonsterMeshComponent;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	UBoxComponent* MonsterPosition1;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	UBoxComponent* MonsterPosition2;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	UBoxComponent* MonsterPosition3;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	UBoxComponent* MonsterTrigger;
 
 	FOnTimelineFloat UpdateFunctionFloat;
