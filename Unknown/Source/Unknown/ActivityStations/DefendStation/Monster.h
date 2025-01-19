@@ -27,6 +27,8 @@ public:
 
 	virtual void BeginPlay() override;
 
+	void MonsterRetreatTimer();
+
 	// PROPERTIES & VARIABLES
 	// -----------------------------
 
@@ -66,6 +68,8 @@ public:
 	UPROPERTY(EditAnywhere)
 	int32 MonsterPositionID;
 
+	bool bIsRetreating;
+
 protected:
 	// FUNCTIONS
 	// -----------------------------
@@ -73,6 +77,8 @@ protected:
 	void UpdateTimelineComp(float Output);
 
 	void MonsterTimer();
+
+	
 
 	void MoveMonster();
 
@@ -96,6 +102,8 @@ protected:
 	FTimerHandle MonsterProwlTimerHandle;
 
 	FTimerHandle MonsterIdleTimerHandle;
+
+	FTimerHandle MonsterRetreatTimerHandle;
 
 	float MonsterTimerLoopCount;
 

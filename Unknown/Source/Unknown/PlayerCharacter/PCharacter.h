@@ -88,17 +88,18 @@ protected:
 	// PROPERTIES & VARIABLES
 	// -----------------------------
 
+	const TArray<TEnumAsByte<EObjectTypeQuery>>& ObjectTypes{ObjectTypeQuery2};
+	
 	FVector LineTraceStart;
 
 	float CheckInteractionDistance;
+	
+	float SwatCount;
 
 	UPROPERTY()
 	TArray<AActor*> Actors;
 	
-	const TArray<TEnumAsByte<EObjectTypeQuery>>& ObjectTypes{ObjectTypeQuery2};
-
 	FTimerHandle MonsterTimerHandle;
 
-	UPROPERTY(EditAnywhere)
-	float DelayAfterDefend;
+	
 };

@@ -129,7 +129,7 @@ void APCharacter::StartInteraction()
 	{
 		if (this->GetWorld()->GetFirstPlayerController())
 		{
-			this->GetWorld()->GetFirstPlayerController()->CurrentMouseCursor = EMouseCursor::GrabHand;
+			this->GetWorld()->GetFirstPlayerController()->CurrentMouseCursor = EMouseCursor::Hand;
 
 			CheckForInteraction();
 		}
@@ -360,14 +360,26 @@ void APCharacter::CheckForInteraction()
 
 				if (Monster)
 				{
-					if (this->GetWorld()->GetFirstPlayerController()->CurrentMouseCursor.GetValue() ==  EMouseCursor::GrabHand)
+					if (Monster->MonsterPositionID == 3)
 					{
+						UE_LOG(LogTemp, Warning, TEXT("APCharacter: Swat!!"));
+
+						this->GetWorld()->GetFirstPlayerController()->CurrentMouseCursor = EMouseCursor::Hand;
+					
+						SwatCount++;
 						
+						if (SwatCount > 5)
+						{
+							Monster->bIsRetreating = true;
+							Monster->MonsterRetreatTimer();
+
+							this->GetWorld()->GetFirstPlayerController()->CurrentMouseCursor = EMouseCursor::Default;
+						}
 					}
-					else
-					{
-						
-					}
+				}
+				else
+				{
+					UE_LOG(LogTemp, Warning, TEXT("APCharacter: No monster to swat :("));
 				}
 			}
 			else

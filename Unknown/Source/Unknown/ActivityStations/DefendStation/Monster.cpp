@@ -19,6 +19,7 @@ AMonster::AMonster()
 	
 	InitialMonsterLocation = MonsterMeshComponent->GetComponentLocation();
 	bIsProwling = false;
+	bIsRetreating = false;
 	
 	MonsterTag = "ToSwat";
 	this->Tags.Add(MonsterTag);
@@ -106,17 +107,20 @@ void AMonster::MonsterTimer()
 				{
 					if (GameInstance)
 					{
-						FRandomStream RandomStream;
-						RandomStream.Initialize(FMath::Rand());
+						if (GameInstance->AcquiredToyIDs.Num() > 0)
+						{
+							FRandomStream RandomStream;
+							RandomStream.Initialize(FMath::Rand());
 
-						int32 ArrayLength = GameInstance->AcquiredToyIDs.Num();
-						int32 Min = 0;
-						int32 Max = ArrayLength - 1;
-						int32 RandomInt = RandomStream.RandRange(Min,Max);
+							int32 ArrayLength = GameInstance->AcquiredToyIDs.Num();
+							int32 Min = 0;
+							int32 Max = ArrayLength - 1;
+							int32 RandomInt = RandomStream.RandRange(Min,Max);
 
-						GameInstance->AcquiredToyIDs.RemoveAt(RandomInt);
+							GameInstance->AcquiredToyIDs.RemoveAt(RandomInt);
 
-						UE_LOG(LogTemp, Warning, TEXT("AMonster: Monster removed item from inventory!"));
+							UE_LOG(LogTemp, Warning, TEXT("AMonster: Monster removed item from inventory!"));
+						}
 					}
 				}
 				GetWorld()->GetTimerManager().ClearTimer(MonsterProwlTimerHandle);
@@ -149,6 +153,53 @@ void AMonster::MonsterTimer()
 			MonsterTimer();
 		}
 	}
+}
+
+void AMonster::MonsterRetreatTimer()
+{
+	if (bIsRetreating)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("AMonster: MonsterRetreatTimer, retreating."));
+		
+		GetWorld()->GetTimerManager().ClearTimer(MonsterProwlTimerHandle);
+		GetWorld()->GetTimerManager().SetTimer(MonsterRetreatTimerHandle, this, &AMonster::MonsterRetreatTimer, 1.f, true);
+
+		if (MonsterTimerLoopCount < 2.f)
+		{
+			MonsterTimerLoopCount += 1.f;
+		}
+		else if (MonsterTimerLoopCount >= 2.f)
+		{
+			if (MonsterPositionID > 0)
+			{
+				GetWorld()->GetTimerManager().SetTimer(MonsterRetreatTimerHandle, this, &AMonster::MonsterRetreatTimer, 1.f, true);
+				MonsterPositionID--;
+				MonsterTimerLoopCount = 0;
+				MoveMonster();
+				MonsterRetreatTimer();
+			}
+			else
+			{
+				GetWorld()->GetTimerManager().ClearTimer(MonsterRetreatTimerHandle);
+				bIsProwling = false;
+				bIsRetreating = false;
+				MonsterPositionID = 0;
+				MonsterTimerLoopCount = 0;
+				MoveMonster();
+				MonsterTimer();
+			}
+		}
+	}
+	else if (!bIsRetreating)
+	{
+		GetWorld()->GetTimerManager().ClearTimer(MonsterRetreatTimerHandle);
+		bIsProwling = false;
+		MonsterPositionID = 0;
+		MonsterTimerLoopCount = 0;
+		MoveMonster();
+		MonsterTimer();
+	}
+	
 }
 
 void AMonster::MoveMonster()

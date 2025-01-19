@@ -164,6 +164,7 @@ void UPlayerInventoryWidget::OnRightArrowClicked()
 		{
 			DefendText->SetVisibility(ESlateVisibility::Visible);
 			DefendBorder->SetBrushColor(FLinearColor::Yellow);
+			
 		}
 		else
 		{
