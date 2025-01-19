@@ -63,13 +63,23 @@ void UShelfSlotWidget::NativeOnMouseLeave(const FPointerEvent& InMouseEvent)
 
 void UShelfSlotWidget::InspectToyTrigger()
 {
-	UE_LOG(LogTemp, Warning, TEXT("UShelfSlotWidget: Inspect!"));
-
-	/*if (PlayerCharacter)
+	if (PlayerCharacter)
 	{
 		DesiredID = ToyID->GetText();
-		PlayerCharacter->ToyInspector->SwapMesh(DesiredID);
-	}*/
+
+		if (PlayerCharacter->ToyInspector)
+		{
+			PlayerCharacter->ToyInspector->SwapMesh(DesiredID);
+		}
+		else
+		{
+			UE_LOG(LogTemp, Warning, TEXT("UShelfSlotWidget: ToyInspector ref from PlayerCharacter not valid."));
+		}
+	}
+	else
+	{
+		UE_LOG(LogTemp, Warning, TEXT("UShelfSlotWidget: PlayerCharacter not valid."));
+	}
 
 	DescriptionBorder->SetVisibility(ESlateVisibility::Visible);
 	ToyDescription->SetVisibility(ESlateVisibility::Visible);

@@ -39,13 +39,25 @@ void AToyInspector::StopRotateToy()
 
 void AToyInspector::SwapMesh(FText ID)
 {
-	//DesiredToyID = FName(ID.ToString());
+	DesiredToyID = FName(ID.ToString());
 	
-	//const FToyData* ToyData = ToyDataTable->FindRow<FToyData>(DesiredToyID, DesiredToyID.ToString());
+	const FToyData* ToyData = ToyDataTable->FindRow<FToyData>(DesiredToyID, DesiredToyID.ToString());
+	
+	if (ToyData)
+	{
+		const FString TestNameFromData = ToyData->ToyTextData.NameText.ToString();
+	
+		UE_LOG(LogTemp, Warning, TEXT("AToyInspector: Swap mesh!"));
+		UE_LOG(LogTemp, Warning, TEXT("%s"), *TestNameFromData);
 
-	//ToyMeshComponent->SetStaticMesh(ToyData->ToyAssetData.Mesh);
-	//ToyMeshComponent->SetMaterial(0, ToyData->ToyAssetData.ColorwayMaterial);
+		ToyMeshComponent->SetStaticMesh(ToyData->ToyAssetData.Mesh);
+		ToyMeshComponent->SetMaterial(0, ToyData->ToyAssetData.ColorwayMaterial);
+	}
+	else
+	{
+		UE_LOG(LogTemp, Warning, TEXT("AToyInspector: SwapMesh, ToyData not valid."));
+	}
+
 	
-	UE_LOG(LogTemp, Warning, TEXT("AToyInspector: Swap mesh!"));
 }
 
