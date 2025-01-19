@@ -26,6 +26,9 @@ public:
 	void RotateToy();
 
 	void StopRotateToy();
+
+	UFUNCTION()
+	void SwapMesh(FText ID);
 	
 	// PROPERTIES & VARIABLES
 	// -----------------------------
@@ -44,6 +47,12 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	FName ToyTag;
+
+	UPROPERTY(EditAnywhere, Category="Item Data")
+	UDataTable* ToyDataTable;
+
+	UPROPERTY(EditAnywhere, Category="Item Data")
+	FName DesiredToyID;
 
 	
 protected:

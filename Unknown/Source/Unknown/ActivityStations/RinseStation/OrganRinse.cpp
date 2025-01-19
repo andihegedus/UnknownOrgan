@@ -80,7 +80,7 @@ void AOrganRinse::SpawnOrgansToRinse()
 
 				//UE_LOG(LogTemp, Warning, TEXT("%s"), *DesiredToyID.ToString());
 
-				if (GameInstance)
+				/*if (GameInstance)
 				{
 					GameInstance->AcquiredToyIDs.Add(DesiredToyID);
 					GameInstance->ToyDataTable = ToyDataTable;
@@ -95,7 +95,7 @@ void AOrganRinse::SpawnOrgansToRinse()
 				else
 				{
 					UE_LOG(LogTemp, Warning, TEXT("AOrganRinse: GameInstance not valid."));
-				}
+				}*/
 
 				if (!DesiredToyID.IsNone())
 				{
@@ -143,6 +143,19 @@ void AOrganRinse::UpdateTimelineComp(float Output)
 
 	if (Output >= 0.675)
 	{
+		if (GameInstance)
+		{
+			GameInstance->AcquiredToyIDs.Add(DesiredToyID);
+			GameInstance->ToyDataTable = ToyDataTable;
+
+			if (GameInstance->AcquiredToyIDs.Num() >= 1)
+			{
+				FName PrintID = GameInstance->AcquiredToyIDs[0];
+				
+				UE_LOG(LogTemp, Warning, TEXT("%s"), *PrintID.ToString());
+			}
+		}
+		
 		CloseAndDestroy();
 
 		if (HUD)

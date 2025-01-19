@@ -3,6 +3,7 @@
 #include "Components/Border.h"
 #include "Components/Button.h"
 #include "Components/TextBlock.h"
+#include "Unknown/ActivityStations/TestStation/ToyInspector.h"
 #include "Unknown/PlayerCharacter/PCharacter.h"
 #include "Unknown/PlayerCharacter/PController.h"
 
@@ -19,7 +20,6 @@ void UShelfSlotWidget::NativeOnInitialized()
 
 		if (PlayerController)
 		{
-			UE_LOG(LogTemp, Warning, TEXT("UShelfSlotWidget: PlayerController valid!"));
 			PlayerController->bShowMouseCursor = true;
 			PlayerController->bEnableClickEvents = true; 
 			PlayerController->bEnableMouseOverEvents = true;
@@ -64,6 +64,12 @@ void UShelfSlotWidget::NativeOnMouseLeave(const FPointerEvent& InMouseEvent)
 void UShelfSlotWidget::InspectToyTrigger()
 {
 	UE_LOG(LogTemp, Warning, TEXT("UShelfSlotWidget: Inspect!"));
+
+	/*if (PlayerCharacter)
+	{
+		DesiredID = ToyID->GetText();
+		PlayerCharacter->ToyInspector->SwapMesh(DesiredID);
+	}*/
 
 	DescriptionBorder->SetVisibility(ESlateVisibility::Visible);
 	ToyDescription->SetVisibility(ESlateVisibility::Visible);

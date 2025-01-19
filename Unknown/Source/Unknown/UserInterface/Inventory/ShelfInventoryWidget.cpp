@@ -79,7 +79,8 @@ void UShelfInventoryWidget::UpdateWidget()
 					ShelfSlot->ToyName->SetText(ToyData->ToyTextData.NameText);
 					ShelfSlot->ToyDescription->SetText(ToyData->ToyTextData.DescriptionText);
 					IconBrushTexture = ToyData->ToyAssetData.Icon;
-					ShelfSlot->ToyImage->SetBrushFromTexture(IconBrushTexture);;
+					ShelfSlot->ToyImage->SetBrushFromTexture(IconBrushTexture);
+					ShelfSlot->ToyID->SetText(ToyData->ToyTextData.IDText);
 				}
 				else
 				{

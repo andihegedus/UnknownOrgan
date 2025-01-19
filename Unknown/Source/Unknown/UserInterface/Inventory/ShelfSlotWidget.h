@@ -41,7 +41,13 @@ public:
 	UTextBlock* ToyName;
 
 	UPROPERTY(VisibleAnywhere, meta = (BindWidget))
+	UTextBlock* ToyID;
+
+	UPROPERTY(VisibleAnywhere, meta = (BindWidget))
 	UTextBlock* ToyDescription;
+
+	UPROPERTY()
+	FText DesiredID;
 
 protected:
 	// FUNCTIONS

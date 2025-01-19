@@ -59,6 +59,7 @@ void APCharacter::Tick(float DeltaSeconds)
 		if (GameInstance->MonsterPositionID == 1 || GameInstance->MonsterPositionID == 3)
 		{
 			OnMonsterStateUpdated.Broadcast();
+			OnInventoryStateUpdated.Broadcast();
 
 			if (HUD)
 			{

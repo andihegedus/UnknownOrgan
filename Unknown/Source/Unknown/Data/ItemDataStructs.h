@@ -23,6 +23,9 @@ struct FToyTextData
 	GENERATED_BODY()
 
 	UPROPERTY(EditAnywhere, Category="Text Data")
+	FText IDText;
+	
+	UPROPERTY(EditAnywhere, Category="Text Data")
 	FText NameText;
 
 	UPROPERTY(EditAnywhere, Category="Text Data")

@@ -2,6 +2,7 @@
 
 #include "GameFramework/PlayerController.h"
 #include "Unknown/UnknownGameInstance.h"
+#include "Unknown/Data/ItemDataStructs.h"
 #include "Unknown/PlayerCharacter/PCharacter.h"
 #include "Unknown/System/UnknownHUD.h"
 
@@ -34,5 +35,17 @@ void AToyInspector::RotateToy()
 void AToyInspector::StopRotateToy()
 {
 	UE_LOG(LogTemp, Warning, TEXT("AToyInspector: Stop!"));
+}
+
+void AToyInspector::SwapMesh(FText ID)
+{
+	//DesiredToyID = FName(ID.ToString());
+	
+	//const FToyData* ToyData = ToyDataTable->FindRow<FToyData>(DesiredToyID, DesiredToyID.ToString());
+
+	//ToyMeshComponent->SetStaticMesh(ToyData->ToyAssetData.Mesh);
+	//ToyMeshComponent->SetMaterial(0, ToyData->ToyAssetData.ColorwayMaterial);
+	
+	UE_LOG(LogTemp, Warning, TEXT("AToyInspector: Swap mesh!"));
 }
 
