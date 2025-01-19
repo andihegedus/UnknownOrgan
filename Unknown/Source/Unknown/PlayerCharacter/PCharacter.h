@@ -6,6 +6,7 @@
 #include "GameFramework/Character.h"
 #include "PCharacter.generated.h"
 
+class UBoxComponent;
 class AMonster;
 class AToyInspector;
 class AUnknownHUD;
@@ -13,6 +14,10 @@ class APController;
 class USpringArmComponent;
 class UCameraComponent;
 class AOrganRinse;
+class UPrimitiveComponent;
+class UUnknownGameInstance;
+
+DECLARE_MULTICAST_DELEGATE(FOnMonsterStateUpdated);
 
 UCLASS()
 class UNKNOWN_API APCharacter: public ACharacter
@@ -62,6 +67,9 @@ public:
 	UPROPERTY()
 	AMonster* Monster;
 
+	UPROPERTY()
+	UUnknownGameInstance* GameInstance;
+
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Camera");
 	USpringArmComponent* SpringArmComp;
 	
@@ -75,6 +83,8 @@ public:
 	
 	UPROPERTY(VisibleAnywhere)
 	FName CurrentTag;
+	
+	FOnMonsterStateUpdated OnMonsterStateUpdated;
 
 
 protected:

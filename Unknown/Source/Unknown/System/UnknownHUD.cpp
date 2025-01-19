@@ -1,6 +1,7 @@
 #include "UnknownHUD.h"
 
 #include "Unknown/UserInterface/Interaction/InteractionWidget.h"
+#include "Unknown/UserInterface/Interaction/MonsterStateLoggerWidget.h"
 #include "Unknown/UserInterface/Interaction/OrganCutterWidget.h"
 #include "Unknown/UserInterface/Interaction/RinseObjectsWidget.h"
 #include "Unknown/UserInterface/Inventory/PlayerInventoryWidget.h"
@@ -64,6 +65,12 @@ void AUnknownHUD::BeginPlay()
 		RinseObjectsWidget = CreateWidget<URinseObjectsWidget>(GetWorld(), RinseObjectsWidgetClass);
 		RinseObjectsWidget->AddToViewport();
 		RinseObjectsWidget->SetVisibility(ESlateVisibility::Collapsed);
+	}
+	if (MonsterStateLoggerWidgetClass)
+	{
+		MonsterStateLoggerWidget = CreateWidget<UMonsterStateLoggerWidget>(GetWorld(), MonsterStateLoggerWidgetClass);
+		MonsterStateLoggerWidget->AddToViewport();
+		MonsterStateLoggerWidget->SetVisibility(ESlateVisibility::Collapsed);
 	}
 }
 
@@ -206,6 +213,22 @@ void AUnknownHUD::HideRinseObjectsWidget()
 	if (RinseObjectsWidget)
 	{
 		RinseObjectsWidget->SetVisibility(ESlateVisibility::Collapsed);
+	}
+}
+
+void AUnknownHUD::ShowMonsterLogger()
+{
+	if (MonsterStateLoggerWidget)
+	{
+		MonsterStateLoggerWidget->SetVisibility(ESlateVisibility::Visible);
+	}
+}
+
+void AUnknownHUD::HideMonsterLogger()
+{
+	if (MonsterStateLoggerWidget)
+	{
+		MonsterStateLoggerWidget->SetVisibility(ESlateVisibility::Collapsed);
 	}
 }
 

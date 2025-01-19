@@ -5,9 +5,11 @@
 #include "EnhancedInputSubsystems.h"
 #include "InterchangeTranslatorBase.h"
 #include "Camera/CameraComponent.h"
+#include "Components/BoxComponent.h"
 #include "Engine/LocalPlayer.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "Kismet/KismetSystemLibrary.h"
+#include "Unknown/UnknownGameInstance.h"
 #include "Unknown/ActivityStations/DefendStation/Monster.h"
 #include "Unknown/ActivityStations/RinseStation/OrganRinse.h"
 #include "Unknown/ActivityStations/TestStation/ToyInspector.h"
@@ -35,19 +37,40 @@ APCharacter::APCharacter()
 	CheckInteractionDistance = 400.f;
 }
 
-void APCharacter::Tick(float DeltaSeconds)
-{
-	Super::Tick(DeltaSeconds);
-	
-}
-
 void APCharacter::BeginPlay()
 {
 	Super::BeginPlay();
 
 	HUD = Cast<AUnknownHUD>(GetWorld()->GetFirstPlayerController()->GetHUD());
 
+	GameInstance = Cast<UUnknownGameInstance>(GetWorld()->GetGameInstance());
+
 	CheckForInteractable();
+}
+
+void APCharacter::Tick(float DeltaSeconds)
+{
+	Super::Tick(DeltaSeconds);
+	
+	if (GameInstance)
+	{
+		if (GameInstance->MonsterPositionID == 1 || GameInstance->MonsterPositionID == 3)
+		{
+			OnMonsterStateUpdated.Broadcast();
+
+			if (HUD)
+			{
+				HUD->ShowMonsterLogger();
+			}
+		}
+		else
+		{
+			if (HUD)
+			{
+				HUD->HideMonsterLogger();
+			}
+		}
+	}
 }
 
 void APCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
@@ -150,7 +173,7 @@ void APCharacter::StopInteraction()
 	}
 	else
 	{
-		UE_LOG(LogTemp, Warning, TEXT("APCharacter: PlayerController not valid.")); 
+		UE_LOG(LogTemp, Warning, TEXT("APCharacter: PlayerController not valid."));
 	}
 }
 

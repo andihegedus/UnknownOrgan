@@ -15,6 +15,8 @@ class UCurveFloat;
 class FName;
 class UPrimitiveComponent;
 
+//DECLARE_MULTICAST_DELEGATE(FOnMonsterStateUpdated);
+
 UCLASS()
 class UNKNOWN_API AMonster : public AActor
 {
@@ -70,6 +72,8 @@ public:
 
 	bool bIsRetreating;
 
+	//FOnMonsterStateUpdated OnMonsterStateUpdated;
+
 protected:
 	// FUNCTIONS
 	// -----------------------------
@@ -78,13 +82,11 @@ protected:
 
 	void MonsterTimer();
 
-	
-
 	void MoveMonster();
 
-	UFUNCTION()
+	/*UFUNCTION()
 	void OnOverlapBegin(class UPrimitiveComponent* OverlappedComp, class AActor* Actor,
-		class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
+		class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);*/
 
 
 	// PROPERTIES & VARIABLES

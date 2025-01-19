@@ -5,6 +5,7 @@
 #include "UnknownHUD.generated.h"
 
 
+class UMonsterStateLoggerWidget;
 class UShelfSlotWidget;
 class APCharacter;
 class USaveLoadWidget;
@@ -51,6 +52,9 @@ public:
 	void UpdateRinseObjectsWidget();
 	void HideRinseObjectsWidget();
 
+	void ShowMonsterLogger();
+	void HideMonsterLogger();
+
 	// PROPERTIES & VARIABLES
 	// -----------------------------
 
@@ -89,6 +93,9 @@ public:
 
 	UPROPERTY(EditDefaultsOnly, Category="Widgets")
 	TSubclassOf<UShelfSlotWidget> ShelfSlotWidgetClass;
+	
+	UPROPERTY(EditDefaultsOnly, Category="Widgets")
+	TSubclassOf<UMonsterStateLoggerWidget> MonsterStateLoggerWidgetClass;
 
 	UPROPERTY()
 	UPlayerInventoryWidget* PlayerInventoryWidget;
@@ -117,4 +124,7 @@ protected:
 
 	UPROPERTY()
 	UShelfSlotWidget* ShelfSlotWidget;
+	
+	UPROPERTY()
+	UMonsterStateLoggerWidget* MonsterStateLoggerWidget;
 };

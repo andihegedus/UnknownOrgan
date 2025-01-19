@@ -37,6 +37,11 @@ void AMonster::BeginPlay()
 
 	MonsterPositionID = 0;
 
+	if (GameInstance)
+	{
+		GameInstance->MonsterPositionID = MonsterPositionID;
+	}
+
 	UpdateFunctionFloat.BindDynamic(this, &AMonster::UpdateTimelineComp);
 	
 	if (MonsterTimelineCurveFloat)
@@ -87,16 +92,27 @@ void AMonster::MonsterTimer()
 		
 		GetWorld()->GetTimerManager().SetTimer(MonsterProwlTimerHandle, this, &AMonster::MonsterTimer, 1.f, true);
 
-		if (MonsterTimerLoopCount < 5.f)
+		if (MonsterTimerLoopCount < 20.f)
 		{
 			MonsterTimerLoopCount += 1.f;
 		}
-		else if (MonsterTimerLoopCount >= 5.f)
+		else if (MonsterTimerLoopCount >= 20.f)
 		{
 			if (MonsterPositionID > 0 && MonsterPositionID < 3)
 			{
+				/*if (MonsterPositionID == 1)
+				{
+					OnMonsterStateUpdated.Broadcast();
+				}*/
+				
 				GetWorld()->GetTimerManager().SetTimer(MonsterProwlTimerHandle, this, &AMonster::MonsterTimer, 1.f, true);
 				MonsterPositionID++;
+
+				if (GameInstance)
+				{
+					GameInstance->MonsterPositionID = MonsterPositionID;
+				}
+				
 				MonsterTimerLoopCount = 0;
 				MoveMonster();
 				MonsterTimer();
@@ -105,6 +121,8 @@ void AMonster::MonsterTimer()
 			{
 				if (MonsterPositionID == 3)
 				{
+					//OnMonsterStateUpdated.Broadcast();
+					
 					if (GameInstance)
 					{
 						if (GameInstance->AcquiredToyIDs.Num() > 0)
@@ -126,6 +144,12 @@ void AMonster::MonsterTimer()
 				GetWorld()->GetTimerManager().ClearTimer(MonsterProwlTimerHandle);
 				bIsProwling = false;
 				MonsterPositionID = 0;
+				
+				if (GameInstance)
+				{
+					GameInstance->MonsterPositionID = MonsterPositionID;
+				}
+				
 				MonsterTimerLoopCount = 0;
 				MoveMonster();
 				MonsterTimer();
@@ -148,6 +172,12 @@ void AMonster::MonsterTimer()
 			GetWorld()->GetTimerManager().ClearTimer(MonsterIdleTimerHandle);
 			bIsProwling = true;
 			MonsterPositionID = 1;
+
+			if (GameInstance)
+			{
+				GameInstance->MonsterPositionID = MonsterPositionID;
+			}
+			
 			MonsterTimerLoopCount = 0;
 			MoveMonster();
 			MonsterTimer();
@@ -195,6 +225,12 @@ void AMonster::MonsterRetreatTimer()
 		GetWorld()->GetTimerManager().ClearTimer(MonsterRetreatTimerHandle);
 		bIsProwling = false;
 		MonsterPositionID = 0;
+
+		if (GameInstance)
+		{
+			GameInstance->MonsterPositionID = MonsterPositionID;
+		}
+		
 		MonsterTimerLoopCount = 0;
 		MoveMonster();
 		MonsterTimer();
@@ -208,10 +244,11 @@ void AMonster::MoveMonster()
 	UE_LOG(LogTemp, Warning, TEXT("AMonster: MoveMonster triggered."));
 }
 
+/*
 void AMonster::OnOverlapBegin(UPrimitiveComponent* OverlappedComp, AActor* Actor, UPrimitiveComponent* OtherComp,
                               int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
 	UE_LOG(LogTemp, Warning, TEXT("AMonster: Overlap has begun with MonsterTrigger."));
 	MonsterPositionID = 0;
 	MonsterTimer();
-}
+}*/

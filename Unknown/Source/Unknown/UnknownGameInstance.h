@@ -38,5 +38,8 @@ public:
 
 	UPROPERTY()
 	UDataTable* ToyDataTable;
+
+	UPROPERTY()
+	int32 MonsterPositionID;
 	
 };
