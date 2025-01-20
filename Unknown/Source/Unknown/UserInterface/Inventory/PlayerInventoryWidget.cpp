@@ -153,7 +153,7 @@ void UPlayerInventoryWidget::OnRightArrowClicked()
 			CutText->SetVisibility(ESlateVisibility::Collapsed);
 			CutBorder->SetBrushColor(FLinearColor::Gray);
 		}
-		if (PlayerCharacter->TagInFocus.Contains("Rinse"))
+		if (PlayerCharacter->TagInFocus.Contains("Rinse") || PlayerCharacter->TagInFocus.Contains("ToRinse"))
 		{
 			OrganCutter->SetVisibility(ESlateVisibility::Hidden);
 			RinseText->SetVisibility(ESlateVisibility::Visible);

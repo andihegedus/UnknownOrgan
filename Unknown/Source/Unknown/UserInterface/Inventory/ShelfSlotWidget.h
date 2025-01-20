@@ -43,8 +43,8 @@ public:
 	UPROPERTY(VisibleAnywhere, meta = (BindWidget))
 	UTextBlock* ToyID;
 
-	UPROPERTY(VisibleAnywhere, meta = (BindWidget))
-	UTextBlock* ToyDescription;
+	//UPROPERTY(VisibleAnywhere, meta = (BindWidget))
+	//UTextBlock* ToyDescription;
 
 	UPROPERTY()
 	FText DesiredID;
@@ -64,8 +64,8 @@ protected:
 	// PROPERTIES & VARIABLES
 	// -----------------------------
 
-	UPROPERTY(VisibleAnywhere, meta = (BindWidget))
-	UBorder* DescriptionBorder;
+	//UPROPERTY(VisibleAnywhere, meta = (BindWidget))
+	//UBorder* DescriptionBorder;
 
 	UPROPERTY(VisibleAnywhere, meta = (BindWidget))
 	UButton* InspectToyButton;

@@ -9,6 +9,8 @@ class UTextBlock;
 class UHorizontalBox;
 class APCharacter;
 class APController;
+class UUnknownGameInstance;
+class FString;
 
 UCLASS()
 class UNKNOWN_API UMonsterStateLoggerWidget : public UUserWidget
@@ -37,6 +39,9 @@ protected:
 	APController* PlayerController;
 
 	UPROPERTY()
+	UUnknownGameInstance* GameInstance;
+
+	UPROPERTY()
 	AMonster* Monster;
 	
 	UPROPERTY(VisibleAnywhere, meta=(BindWidget))
@@ -44,4 +49,7 @@ protected:
 
 	UPROPERTY(VisibleAnywhere, meta=(BindWidget))
 	UHorizontalBox* StateBox;
+
+	UPROPERTY()
+	FString NewTextString;
 };

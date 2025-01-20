@@ -36,9 +36,9 @@ void UShelfSlotWidget::NativeOnInitialized()
 
 	InspectToyButton->OnClicked.AddDynamic(this, &UShelfSlotWidget::InspectToyTrigger);
 
-	InspectToyButton->SetVisibility(ESlateVisibility::Collapsed);
-	DescriptionBorder->SetVisibility(ESlateVisibility::Hidden);
-	ToyDescription->SetVisibility(ESlateVisibility::Hidden);
+	InspectToyButton->SetVisibility(ESlateVisibility::Visible);
+	//DescriptionBorder->SetVisibility(ESlateVisibility::Hidden);
+	//ToyDescription->SetVisibility(ESlateVisibility::Hidden);
 }
 
 void UShelfSlotWidget::NativeConstruct()
@@ -50,7 +50,7 @@ void UShelfSlotWidget::NativeOnMouseEnter(const FGeometry& InGeometry, const FPo
 {
 	Super::NativeOnMouseEnter(InGeometry, InMouseEvent);
 
-	InspectToyButton->SetVisibility(ESlateVisibility::Visible);
+	//InspectToyButton->SetVisibility(ESlateVisibility::Visible);
 	
 }
 
@@ -58,7 +58,7 @@ void UShelfSlotWidget::NativeOnMouseLeave(const FPointerEvent& InMouseEvent)
 {
 	Super::NativeOnMouseLeave(InMouseEvent);
 
-	InspectToyButton->SetVisibility(ESlateVisibility::Collapsed);
+	//InspectToyButton->SetVisibility(ESlateVisibility::Collapsed);
 }
 
 void UShelfSlotWidget::InspectToyTrigger()
@@ -81,6 +81,6 @@ void UShelfSlotWidget::InspectToyTrigger()
 		UE_LOG(LogTemp, Warning, TEXT("UShelfSlotWidget: PlayerCharacter not valid."));
 	}
 
-	DescriptionBorder->SetVisibility(ESlateVisibility::Visible);
-	ToyDescription->SetVisibility(ESlateVisibility::Visible);
+	//DescriptionBorder->SetVisibility(ESlateVisibility::Visible);
+	//ToyDescription->SetVisibility(ESlateVisibility::Visible);
 }

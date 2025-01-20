@@ -77,7 +77,7 @@ void UShelfInventoryWidget::UpdateWidget()
 					const FToyData* ToyData = GameInstance->ToyDataTable->FindRow<FToyData>(GameInstance->AcquiredToyIDs[i], GameInstance->AcquiredToyIDs[i].ToString());
 
 					ShelfSlot->ToyName->SetText(ToyData->ToyTextData.NameText);
-					ShelfSlot->ToyDescription->SetText(ToyData->ToyTextData.DescriptionText);
+					//ShelfSlot->ToyDescription->SetText(ToyData->ToyTextData.DescriptionText);
 					IconBrushTexture = ToyData->ToyAssetData.Icon;
 					ShelfSlot->ToyImage->SetBrushFromTexture(IconBrushTexture);
 					ShelfSlot->ToyID->SetText(ToyData->ToyTextData.IDText);

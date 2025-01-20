@@ -1,5 +1,7 @@
 ﻿#include "MonsterStateLoggerWidget.h"
 
+#include "Components/TextBlock.h"
+#include "Unknown/UnknownGameInstance.h"
 #include "Unknown/ActivityStations/DefendStation/Monster.h"
 #include "Unknown/PlayerCharacter/PCharacter.h"
 #include "Unknown/PlayerCharacter/PController.h"
@@ -13,6 +15,8 @@ void UMonsterStateLoggerWidget::NativeOnInitialized()
 	if (PlayerCharacter)
 	{
 		PlayerController = Cast<APController>(PlayerCharacter->GetWorld()->GetFirstPlayerController());
+
+		GameInstance = Cast<UUnknownGameInstance>(GetWorld()->GetGameInstance());
 
 		PlayerCharacter->OnMonsterStateUpdated.AddUObject(this, &UMonsterStateLoggerWidget::RefreshMonsterState);
 
@@ -41,10 +45,26 @@ void UMonsterStateLoggerWidget::NativeConstruct()
 
 void UMonsterStateLoggerWidget::SetStateText() const
 {
-	
+
 }
 
 void UMonsterStateLoggerWidget::RefreshMonsterState()
 {
-	//UE_LOG(LogTemp, Warning, TEXT("UMonsterStateLoggerWidget: Broadcast received!"));
+	if (GameInstance)
+	{
+		if (GameInstance->MonsterPositionID == 1)
+		{
+			NewTextString = "...buzz...buzz...";
+			MonsterStateText->SetText(FText::FromString(NewTextString));
+		}
+		if (GameInstance->MonsterPositionID == 3)
+		{
+			NewTextString = "A trinket is being stolen from your shelf! Act fast!";
+			MonsterStateText->SetText(FText::FromString(NewTextString));
+		}
+	}
+	else
+	{
+		UE_LOG(LogTemp, Warning, TEXT("UMonsterStateLoggerWidget: GameInstance not valid."));
+	}
 }

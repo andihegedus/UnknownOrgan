@@ -36,7 +36,7 @@ APCharacter::APCharacter()
 
 	// Interaction variables
 	LineTraceStart = {FVector::ZeroVector};
-	CheckInteractionDistance = 400.f;
+	CheckInteractionDistance = 200.f;
 }
 
 void APCharacter::BeginPlay()
@@ -74,6 +74,8 @@ void APCharacter::Tick(float DeltaSeconds)
 			}
 		}
 	}
+
+	//CheckForInteractable();
 }
 
 void APCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
@@ -240,6 +242,23 @@ void APCharacter::CheckForInteractable()
 
 		if(GetWorld()->LineTraceSingleByChannel(TraceHit, LineTraceStart, LineTraceEnd, ECC_Visibility, QueryParams))
 		{
+
+	/*LineTraceStart = GetPawnViewLocation() - 10;
+	
+	FVector LineTraceEnd{LineTraceStart + (CameraComp->GetComponentRotation().Vector() * CheckInteractionDistance)};
+	float LookDirection = FVector::DotProduct(GetActorForwardVector(), CameraComp->GetComponentRotation().Vector());
+	if (LookDirection > 0)
+	{
+	//DrawDebugLine(GetWorld(), LineTraceStart, LineTraceEnd , FColor::Magenta, false, 1.0f, 0, 1.f);
+			
+	FCollisionQueryParams QueryParams;
+	QueryParams.AddIgnoredActor(this);
+	FHitResult TraceHit;
+	FVector HalfSize = FVector(60.f, 20.f, 20.f);
+	FRotator Orientation = FRotator(0.f, 0.f, 0.f);
+		
+	if(UKismetSystemLibrary::BoxTraceSingle(GetWorld(), LineTraceStart, LineTraceEnd, HalfSize, Orientation, TraceTypeQuery1, false, Actors, EDrawDebugTrace::Persistent, TraceHit, false, FColor::Magenta, FColor::Red, 1.0f))
+	{*/
 			if (TraceHit.GetActor()->Tags.Contains("Cut"))
 			{
 				UE_LOG(LogTemp, Warning, TEXT("APCharacter: Cut!"));
@@ -300,6 +319,29 @@ void APCharacter::CheckForInteractable()
 				
 				CurrentTag = "ToInspect";
 				TagInFocus.Add(CurrentTag);
+
+				ToyInspector = Cast<AToyInspector>(TraceHit.GetActor());
+
+				if (ToyInspector)
+				{
+					if (this->GetWorld()->GetFirstPlayerController()->CurrentMouseCursor.GetValue() ==  EMouseCursor::GrabHand)
+					{
+						FRotator CurrentRotation = ToyInspector->GetActorRotation();
+						
+						float MouseX;
+						float MouseY;
+						
+						this->GetWorld()->GetFirstPlayerController()->GetInputMouseDelta(MouseX, MouseY);
+
+						FRotator NewActorRotation(CurrentRotation.Pitch + MouseX * 10, CurrentRotation.Yaw + MouseY * 10, 0);
+						
+						ToyInspector->SetActorRotation(NewActorRotation);
+					}
+					else
+					{
+						ToyInspector->StopRotateToy();
+					}
+				}
 
 				return;
 			}
