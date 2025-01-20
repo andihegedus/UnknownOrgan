@@ -3,6 +3,7 @@
 #include "CoreMinimal.h"
 #include "ToyInspector.generated.h"
 
+class UBoxComponent;
 class UUnknownGameInstance;
 class AUnknownHUD;
 class APCharacter;
@@ -48,6 +49,9 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	FName ToyTag;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	FName HitBoxTag;
+
 	UPROPERTY(EditAnywhere, Category="Item Data")
 	UDataTable* ToyDataTable;
 
@@ -62,6 +66,9 @@ protected:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	UStaticMeshComponent* ToyMeshComponent;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UBoxComponent* ToyHitBoxExtender;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	UMaterial* ToyMaterial;

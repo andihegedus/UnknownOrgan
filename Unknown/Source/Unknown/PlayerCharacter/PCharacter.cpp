@@ -138,7 +138,7 @@ void APCharacter::StartInteraction()
 			UE_LOG(LogTemp, Warning, TEXT("APCharacter: PlayerController not valid.")); 
 		}
 	}
-	if (TagInFocus.Contains("ToInspect"))
+	if (TagInFocus.Contains("ToInspect") || TagInFocus.Contains("Test"))
 	{
 		if (this->GetWorld()->GetFirstPlayerController())
 		{
@@ -358,10 +358,10 @@ void APCharacter::CheckForInteraction()
 			{
 				//UE_LOG(LogTemp, Warning, TEXT("APCharacter: No rinse :("));
 			}
-			if (CursorHit.GetActor()->Tags.Contains("ToInspect"))
+			if (CursorHit.GetActor()->Tags.Contains("ToInspect") || CursorHit.GetComponent()->ComponentTags.Contains("ToInspect"))
 			{
 				//UE_LOG(LogTemp, Warning, TEXT("APCharacter: Cursor hit on ToInspect!"));
-
+				
 				ToyInspector = Cast<AToyInspector>(CursorHit.GetActor());
 
 				if (ToyInspector)

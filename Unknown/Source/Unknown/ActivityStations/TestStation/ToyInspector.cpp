@@ -1,5 +1,6 @@
 ﻿#include "ToyInspector.h"
 
+#include "Components/BoxComponent.h"
 #include "GameFramework/PlayerController.h"
 #include "Unknown/UnknownGameInstance.h"
 #include "Unknown/Data/ItemDataStructs.h"
@@ -11,8 +12,14 @@ AToyInspector::AToyInspector()
 	ToyMeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("ToyMeshComponent"));
 	ToyMeshComponent->SetupAttachment(GetRootComponent());
 
+	ToyHitBoxExtender = CreateDefaultSubobject<UBoxComponent>(TEXT("ToyHitBoxExtender"));
+	ToyHitBoxExtender->AttachToComponent(ToyMeshComponent, FAttachmentTransformRules::KeepRelativeTransform);
+
 	ToyTag = "ToInspect";
 	this->Tags.Add(ToyTag);
+
+	HitBoxTag = "ToInspect";
+	ToyHitBoxExtender->ComponentTags.Add(HitBoxTag);
 }
 
 void AToyInspector::BeginPlay()
@@ -24,6 +31,8 @@ void AToyInspector::BeginPlay()
 	PlayerCharacter = Cast<APCharacter>(GetWorld()->GetFirstPlayerController()->GetPawn());
 
 	GameInstance = Cast<UUnknownGameInstance>(GetWorld()->GetGameInstance());
+
+	ToyMeshComponent->SetVisibility(false);
 
 }
 
@@ -39,6 +48,8 @@ void AToyInspector::StopRotateToy()
 
 void AToyInspector::SwapMesh(FText ID)
 {
+	ToyMeshComponent->SetVisibility(true);
+	
 	DesiredToyID = FName(ID.ToString());
 	
 	const FToyData* ToyData = ToyDataTable->FindRow<FToyData>(DesiredToyID, DesiredToyID.ToString());
@@ -51,6 +62,7 @@ void AToyInspector::SwapMesh(FText ID)
 		UE_LOG(LogTemp, Warning, TEXT("%s"), *TestNameFromData);
 
 		ToyMeshComponent->SetStaticMesh(ToyData->ToyAssetData.Mesh);
+		ToyMeshComponent->SetWorldScale3D(FVector(0.5,0.5,0.5));
 		ToyMeshComponent->SetMaterial(0, ToyData->ToyAssetData.ColorwayMaterial);
 	}
 	else
