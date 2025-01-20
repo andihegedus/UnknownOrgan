@@ -36,8 +36,8 @@ public:
 	UPROPERTY()
 	TArray<FName> AcquiredToyIDs;
 
-	UPROPERTY()
-	UDataTable* ToyDataTable;
+	//UPROPERTY()
+	//UDataTable* ToyDataTable;
 
 	UPROPERTY()
 	int32 MonsterPositionID;

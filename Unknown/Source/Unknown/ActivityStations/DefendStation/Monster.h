@@ -96,9 +96,6 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	UStaticMeshComponent* MonsterMeshComponent;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	UBoxComponent* MonsterTrigger;
-
 	FOnTimelineFloat UpdateFunctionFloat;
 
 	FTimerHandle MonsterProwlTimerHandle;

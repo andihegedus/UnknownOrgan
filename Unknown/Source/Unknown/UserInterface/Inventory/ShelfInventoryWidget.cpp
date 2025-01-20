@@ -7,6 +7,7 @@
 #include "Components/TextBlock.h"
 #include "Components/WrapBox.h"
 #include "Unknown/UnknownGameInstance.h"
+#include "Unknown/ActivityStations/RinseStation/OrganRinse.h"
 #include "Unknown/Data/ItemDataStructs.h"
 #include "Unknown/PlayerCharacter/PCharacter.h"
 #include "Unknown/PlayerCharacter/PController.h"
@@ -40,8 +41,6 @@ void UShelfInventoryWidget::NativeOnInitialized()
 	{
 		UE_LOG(LogTemp, Warning, TEXT("UShelfInventoryWidget: PlayerCharacter not valid."));
 	}
-
-	
 }
 
 void UShelfInventoryWidget::NativeConstruct()
@@ -63,7 +62,9 @@ void UShelfInventoryWidget::UpdateWidget()
 			{
 				if (PlayerCharacter->HUD->ShelfSlotWidgetClass)
 				{
+					//ShelfSlot = CreateWidget<UShelfSlotWidget>(this, PlayerCharacter->HUD->ShelfSlotWidgetClass);
 					ShelfSlot = CreateWidget<UShelfSlotWidget>(this, PlayerCharacter->HUD->ShelfSlotWidgetClass);
+					ShelfSlot->SetVisibility(ESlateVisibility::Visible);
 				}
 				else
 				{
@@ -74,13 +75,26 @@ void UShelfInventoryWidget::UpdateWidget()
 				{
 					InventoryScrollBox->AddChild(ShelfSlot);
 
-					const FToyData* ToyData = GameInstance->ToyDataTable->FindRow<FToyData>(GameInstance->AcquiredToyIDs[i], GameInstance->AcquiredToyIDs[i].ToString());
+					if (PlayerCharacter)
+					{
+						if (PlayerCharacter->OrganRinse)
+						{
+							const FToyData* ToyData = PlayerCharacter->OrganRinse->ToyDataTable->FindRow<FToyData>(GameInstance->AcquiredToyIDs[i], GameInstance->AcquiredToyIDs[i].ToString());
 
-					ShelfSlot->ToyName->SetText(ToyData->ToyTextData.NameText);
-					//ShelfSlot->ToyDescription->SetText(ToyData->ToyTextData.DescriptionText);
-					IconBrushTexture = ToyData->ToyAssetData.Icon;
-					ShelfSlot->ToyImage->SetBrushFromTexture(IconBrushTexture);
-					ShelfSlot->ToyID->SetText(ToyData->ToyTextData.IDText);
+							ShelfSlot->ToyName->SetText(ToyData->ToyTextData.NameText);
+							IconBrushTexture = ToyData->ToyAssetData.Icon;
+							ShelfSlot->ToyImage->SetBrushFromTexture(IconBrushTexture);
+							ShelfSlot->ToyID->SetText(ToyData->ToyTextData.IDText);
+						}
+						else
+						{
+							UE_LOG(LogTemp, Warning, TEXT("UShelfInventoryWidget: PlayerCharacter/OrganRinse ref not valid."));
+						}
+					}
+					else
+					{
+						UE_LOG(LogTemp, Warning, TEXT("UShelfInventoryWidget: PlayerCharacter not valid."));
+					}
 				}
 				else
 				{
@@ -88,15 +102,16 @@ void UShelfInventoryWidget::UpdateWidget()
 				}
 			}
 
-			/*if (ShelfSlot)
+			if (ShelfSlot)
 			{
+				//InventorySlotBox->AddChildToWrapBox(ShelfSlot);;
 				InventoryScrollBox->AddChild(ShelfSlot);
 				UE_LOG(LogTemp, Warning, TEXT("UShelfInventoryWidget: Non-array single built."));
 			}
 			else
 			{
 				UE_LOG(LogTemp, Warning, TEXT("UShelfInventoryWidget: ShelfSlot not valid."));
-			}*/
+			}
 		}
 		else
 		{

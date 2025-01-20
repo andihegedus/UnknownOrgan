@@ -22,14 +22,14 @@ void UMonsterStateLoggerWidget::NativeOnInitialized()
 
 		if (PlayerController)
 		{
-			UE_LOG(LogTemp, Warning, TEXT("UOrganCutterWidget: PlayerController valid!"));
+			UE_LOG(LogTemp, Warning, TEXT("UMonsterStateLoggerWidget: PlayerController valid!"));
 			PlayerController->bShowMouseCursor = true;
 			PlayerController->bEnableClickEvents = true; 
 			PlayerController->bEnableMouseOverEvents = true;
 		}
 		else
 		{
-			UE_LOG(LogTemp, Warning, TEXT("UOrganCutterWidget: PlayerController not valid."));
+			UE_LOG(LogTemp, Warning, TEXT("UMonsterStateLoggerWidget: PlayerController not valid."));
 		}
 	}
 	else
@@ -54,13 +54,19 @@ void UMonsterStateLoggerWidget::RefreshMonsterState()
 	{
 		if (GameInstance->MonsterPositionID == 1)
 		{
+			this->SetVisibility(ESlateVisibility::HitTestInvisible);
 			NewTextString = "...buzz...buzz...";
 			MonsterStateText->SetText(FText::FromString(NewTextString));
 		}
-		if (GameInstance->MonsterPositionID == 3)
+		else if (GameInstance->MonsterPositionID == 3)
 		{
+			this->SetVisibility(ESlateVisibility::HitTestInvisible);
 			NewTextString = "A trinket is being stolen from your shelf! Act fast!";
 			MonsterStateText->SetText(FText::FromString(NewTextString));
+		}
+		else
+		{
+			this->SetVisibility(ESlateVisibility::Collapsed);
 		}
 	}
 	else

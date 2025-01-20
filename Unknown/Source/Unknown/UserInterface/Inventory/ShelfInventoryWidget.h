@@ -56,7 +56,7 @@ protected:
 	UTexture2D* IconBrushTexture;
 
 	//UPROPERTY(VisibleAnywhere, meta = (BindWidget))
-	//UHorizontalBox* InventorySlotBox;
+	//UWrapBox* InventorySlotBox;
 	
 	UPROPERTY()
 	UShelfSlotWidget* ShelfSlot;

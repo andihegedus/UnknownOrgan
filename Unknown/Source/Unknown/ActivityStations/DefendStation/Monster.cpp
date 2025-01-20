@@ -12,9 +12,6 @@ AMonster::AMonster()
 	MonsterMeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("MonsterMeshComponent"));
 	MonsterMeshComponent->SetupAttachment(GetRootComponent());
 
-	MonsterTrigger = CreateDefaultSubobject<UBoxComponent>(TEXT("MonsterTrigger"));
-	MonsterTrigger->AttachToComponent(MonsterMeshComponent, FAttachmentTransformRules::KeepRelativeTransform);
-
 	MonsterTimelineComp = CreateDefaultSubobject<UTimelineComponent>(TEXT("MonsterTimelineComp"));
 	
 	InitialMonsterLocation = MonsterMeshComponent->GetComponentLocation();
@@ -71,7 +68,7 @@ void AMonster::UpdateTimelineComp(float Output)
 			MonsterMeshComponent->SetRelativeLocation(MonsterLocation2);
 			break;
 		case 3:
-			MonsterLocation3 = FVector(MonsterLocation2.X + 300.f, MonsterLocation2.Y + 400.f, MonsterLocation2.Z);
+			MonsterLocation3 = FVector(MonsterLocation2.X + 150.f, MonsterLocation2.Y + 400.f, MonsterLocation2.Z);
 			MonsterMeshComponent->SetRelativeLocation(MonsterLocation3);
 			break;
 		case 0:

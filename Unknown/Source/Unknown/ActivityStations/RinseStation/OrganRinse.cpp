@@ -127,6 +127,11 @@ void AOrganRinse::SpawnOrgansToRinse()
 			UE_LOG(LogTemp, Warning, TEXT("AOrganRinse: No dissected organs available."));
 		}
 	}
+
+	if (GameInstance)
+	{
+		GameInstance->SaveGame();
+	}
 }
 
 void AOrganRinse::UpdateTimelineComp(float Output)
@@ -146,7 +151,6 @@ void AOrganRinse::UpdateTimelineComp(float Output)
 		if (GameInstance)
 		{
 			GameInstance->AcquiredToyIDs.Add(DesiredToyID);
-			GameInstance->ToyDataTable = ToyDataTable;
 
 			if (GameInstance->AcquiredToyIDs.Num() >= 1)
 			{

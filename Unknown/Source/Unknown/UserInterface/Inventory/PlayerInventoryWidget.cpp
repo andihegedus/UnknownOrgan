@@ -56,7 +56,7 @@ void UPlayerInventoryWidget::NativeOnInitialized()
 	OrganCutter->SetVisibility(ESlateVisibility::Visible);
 	RinseTool->SetVisibility(ESlateVisibility::Collapsed);
 	ShelfInventory->SetVisibility(ESlateVisibility::Collapsed);
-	MonsterStateLogger->SetVisibility(ESlateVisibility::Hidden);
+	//MonsterStateLogger->SetVisibility(ESlateVisibility::Hidden);
 }
 
 void UPlayerInventoryWidget::NativeConstruct()
@@ -91,12 +91,12 @@ void UPlayerInventoryWidget::OnLeftArrowClicked()
 		else
 		{
 			OrganCutter->ResetCutter();
+			OrganCutter->SetVisibility(ESlateVisibility::Hidden);
 			CutText->SetVisibility(ESlateVisibility::Collapsed);
 			CutBorder->SetBrushColor(FLinearColor::Gray);
 		}
 		if (PlayerCharacter->TagInFocus.Contains("Rinse") || PlayerCharacter->TagInFocus.Contains("ToRinse"))
 		{
-			OrganCutter->SetVisibility(ESlateVisibility::Hidden);
 			RinseText->SetVisibility(ESlateVisibility::Visible);
 			RinseBorder->SetBrushColor(FLinearColor::Blue);
 		}
@@ -117,7 +117,7 @@ void UPlayerInventoryWidget::OnLeftArrowClicked()
 		}
 		if (PlayerCharacter->TagInFocus.Contains("Test") || PlayerCharacter->TagInFocus.Contains("ToInspect"))
 		{
-			OrganCutter->SetVisibility(ESlateVisibility::Hidden);
+			//ShelfInventory->UpdateWidget();
 			ShelfInventory->SetVisibility(ESlateVisibility::Visible);
 			TestText->SetVisibility(ESlateVisibility::Visible);
 			TestBorder->SetBrushColor(FLinearColor::Green);
@@ -150,12 +150,12 @@ void UPlayerInventoryWidget::OnRightArrowClicked()
 		else
 		{
 			OrganCutter->ResetCutter();
+			OrganCutter->SetVisibility(ESlateVisibility::Hidden);
 			CutText->SetVisibility(ESlateVisibility::Collapsed);
 			CutBorder->SetBrushColor(FLinearColor::Gray);
 		}
 		if (PlayerCharacter->TagInFocus.Contains("Rinse") || PlayerCharacter->TagInFocus.Contains("ToRinse"))
 		{
-			OrganCutter->SetVisibility(ESlateVisibility::Hidden);
 			RinseText->SetVisibility(ESlateVisibility::Visible);
 			RinseBorder->SetBrushColor(FLinearColor::Blue);
 		}
@@ -178,7 +178,6 @@ void UPlayerInventoryWidget::OnRightArrowClicked()
 		if (PlayerCharacter->TagInFocus.Contains("Test") || PlayerCharacter->TagInFocus.Contains("ToInspect"))
 		{
 			//ShelfInventory->UpdateWidget();
-			OrganCutter->SetVisibility(ESlateVisibility::Hidden);
 			ShelfInventory->SetVisibility(ESlateVisibility::Visible);
 			TestText->SetVisibility(ESlateVisibility::Visible);
 			TestBorder->SetBrushColor(FLinearColor::Green);

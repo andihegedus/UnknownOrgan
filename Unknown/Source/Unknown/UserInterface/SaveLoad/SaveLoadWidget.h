@@ -6,7 +6,9 @@
 
 class APCharacter;
 class APController;
+class UUnknownGameInstance;
 class UButton;
+class AUnknownHUD;
 
 UCLASS()
 class USaveLoadWidget : public UUserWidget
@@ -16,7 +18,11 @@ class USaveLoadWidget : public UUserWidget
 public:
 	// FUNCTIONS
 	// -----------------------------
-	void UpdateWidget();
+	UFUNCTION()
+	void NewGame();
+
+	UFUNCTION()
+	void LoadGame();
 
 	// PROPERTIES & VARIABLES
 	// -----------------------------
@@ -27,7 +33,11 @@ public:
 	UPROPERTY()
 	APController* PlayerController;
 	
+	UPROPERTY()
+	UUnknownGameInstance* GameInstance;
 
+	UPROPERTY()
+	AUnknownHUD* HUD;
 
 protected:
 	// FUNCTIONS
@@ -36,6 +46,7 @@ protected:
 	virtual void NativeOnInitialized() override;
 
 	virtual void NativeConstruct() override;
+	
 
 	// PROPERTIES & VARIABLES
 	// -----------------------------

@@ -44,8 +44,8 @@ public:
 	UPROPERTY(VisibleAnywhere, meta = (BindWidget))
 	URinseObjectsWidget* RinseTool;
 
-	UPROPERTY(VisibleAnywhere, meta = (BindWidget))
-	UMonsterStateLoggerWidget* MonsterStateLogger;
+	//UPROPERTY(VisibleAnywhere, meta = (BindWidget))
+	//UMonsterStateLoggerWidget* MonsterStateLogger;
 
 	UPROPERTY(VisibleAnywhere, meta = (BindWidget))
 	UOrganCutterWidget* OrganCutter;

@@ -43,9 +43,6 @@ public:
 	UPROPERTY(VisibleAnywhere, meta = (BindWidget))
 	UTextBlock* ToyID;
 
-	//UPROPERTY(VisibleAnywhere, meta = (BindWidget))
-	//UTextBlock* ToyDescription;
-
 	UPROPERTY()
 	FText DesiredID;
 
@@ -57,15 +54,8 @@ protected:
 
 	virtual void NativeConstruct() override;
 
-	virtual void NativeOnMouseEnter(const FGeometry& InGeometry, const FPointerEvent& InMouseEvent) override;
-
-	virtual void NativeOnMouseLeave(const FPointerEvent& InMouseEvent) override;
-
 	// PROPERTIES & VARIABLES
 	// -----------------------------
-
-	//UPROPERTY(VisibleAnywhere, meta = (BindWidget))
-	//UBorder* DescriptionBorder;
 
 	UPROPERTY(VisibleAnywhere, meta = (BindWidget))
 	UButton* InspectToyButton;

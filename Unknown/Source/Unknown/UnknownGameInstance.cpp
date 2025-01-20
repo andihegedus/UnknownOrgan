@@ -19,6 +19,9 @@ void UUnknownGameInstance::CreateSaveFile()
 	GameSaveInstance = Cast<USaveData>(UGameplayStatics::CreateSaveGameObject(USaveData::StaticClass()));
 
 	UGameplayStatics::SaveGameToSlot(GameSaveInstance, "Save1", 0);
+
+	GameSaveInstance->SavedIDs.Empty();
+	UGameplayStatics::DeleteGameInSlot("Save1", 0);
 }
 
 void UUnknownGameInstance::SaveGame()

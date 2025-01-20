@@ -62,7 +62,8 @@ void AToyInspector::SwapMesh(FText ID)
 		UE_LOG(LogTemp, Warning, TEXT("%s"), *TestNameFromData);
 
 		ToyMeshComponent->SetStaticMesh(ToyData->ToyAssetData.Mesh);
-		ToyMeshComponent->SetWorldScale3D(FVector(0.5,0.5,0.5));
+		ToyMeshComponent->SetWorldScale3D(FVector(0.3,0.3,0.3));
+		ToyMeshComponent->SetWorldRotation(FRotator(0,180,0));
 		ToyMeshComponent->SetMaterial(0, ToyData->ToyAssetData.ColorwayMaterial);
 	}
 	else

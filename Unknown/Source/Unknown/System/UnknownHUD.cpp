@@ -1,5 +1,7 @@
 #include "UnknownHUD.h"
 
+#include "Unknown/UnknownGameInstance.h"
+#include "Unknown/PlayerCharacter/PCharacter.h"
 #include "Unknown/UserInterface/Interaction/InteractionWidget.h"
 #include "Unknown/UserInterface/Interaction/MonsterStateLoggerWidget.h"
 #include "Unknown/UserInterface/Interaction/OrganCutterWidget.h"
@@ -66,12 +68,14 @@ void AUnknownHUD::BeginPlay()
 		RinseObjectsWidget->AddToViewport();
 		RinseObjectsWidget->SetVisibility(ESlateVisibility::Collapsed);
 	}
-	if (MonsterStateLoggerWidgetClass)
+	/*if (MonsterStateLoggerWidgetClass)
 	{
 		MonsterStateLoggerWidget = CreateWidget<UMonsterStateLoggerWidget>(GetWorld(), MonsterStateLoggerWidgetClass);
 		MonsterStateLoggerWidget->AddToViewport();
 		MonsterStateLoggerWidget->SetVisibility(ESlateVisibility::Collapsed);
-	}
+	}*/
+
+	GameInstance = Cast<UUnknownGameInstance>(GetWorld()->GetGameInstance());
 }
 
 void AUnknownHUD::ShowHideSaveLoadWidget()
@@ -83,12 +87,23 @@ void AUnknownHUD::ShowHideSaveLoadWidget()
 			SaveLoadWidget->SetVisibility(ESlateVisibility::Collapsed);
 
 			ShowPlayerInventoryWidget();
+			
+			if (ShelfInventoryWidget)
+			{
+				ShelfInventoryWidget->UpdateWidget();
+			}
+			
 		}
 		else
 		{
 			SaveLoadWidget->SetVisibility(ESlateVisibility::Visible);
 
 			HidePlayerInventoryWidget();
+
+			if (ShelfInventoryWidget)
+			{
+				ShelfInventoryWidget->UpdateWidget();
+			}
 		}
 		
 	}
@@ -220,16 +235,16 @@ void AUnknownHUD::ShowMonsterLogger()
 {
 	if (PlayerInventoryWidget)
 	{
-		PlayerInventoryWidget->MonsterStateLogger->SetVisibility(ESlateVisibility::Visible);
+		//PlayerInventoryWidget->MonsterStateLogger->SetVisibility(ESlateVisibility::Visible);
 	}
 }
 
 void AUnknownHUD::HideMonsterLogger()
 {
-	if (MonsterStateLoggerWidget)
+	/*if (MonsterStateLoggerWidget)
 	{
 		PlayerInventoryWidget->MonsterStateLogger->SetVisibility(ESlateVisibility::Collapsed);
-	}
+	}*/
 }
 
 

@@ -15,6 +15,7 @@ class UPlayerInventoryWidget;
 class UShelfInventoryWidget;
 class UOrganCutterWidget;
 class URinseObjectsWidget;
+class UUnknownGameInstance;
 
 UCLASS()
 class UNKNOWN_API AUnknownHUD : public AHUD
@@ -94,14 +95,17 @@ public:
 	UPROPERTY(EditDefaultsOnly, Category="Widgets")
 	TSubclassOf<UShelfSlotWidget> ShelfSlotWidgetClass;
 	
-	UPROPERTY(EditDefaultsOnly, Category="Widgets")
-	TSubclassOf<UMonsterStateLoggerWidget> MonsterStateLoggerWidgetClass;
+	//UPROPERTY(EditDefaultsOnly, Category="Widgets")
+	//TSubclassOf<UMonsterStateLoggerWidget> MonsterStateLoggerWidgetClass;
 
 	UPROPERTY()
 	UPlayerInventoryWidget* PlayerInventoryWidget;
 
 	UPROPERTY()
 	URinseObjectsWidget* RinseObjectsWidget;
+
+	UPROPERTY()
+	UUnknownGameInstance* GameInstance;
 
 protected:
 	// PROPERTIES & VARIABLES
@@ -125,6 +129,6 @@ protected:
 	UPROPERTY()
 	UShelfSlotWidget* ShelfSlotWidget;
 	
-	UPROPERTY()
-	UMonsterStateLoggerWidget* MonsterStateLoggerWidget;
+	//UPROPERTY()
+	//UMonsterStateLoggerWidget* MonsterStateLoggerWidget;
 };
