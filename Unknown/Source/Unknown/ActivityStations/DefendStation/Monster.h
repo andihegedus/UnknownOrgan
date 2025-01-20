@@ -14,6 +14,7 @@ class UBoxComponent;
 class UCurveFloat;
 class FName;
 class UPrimitiveComponent;
+class UAudioComponent;
 
 //DECLARE_MULTICAST_DELEGATE(FOnMonsterStateUpdated);
 
@@ -107,4 +108,7 @@ protected:
 	float MonsterTimerLoopCount;
 
 	bool bIsProwling;
+
+	//UPROPERTY()
+	//UAudioComponent* AudioComponent;
 };

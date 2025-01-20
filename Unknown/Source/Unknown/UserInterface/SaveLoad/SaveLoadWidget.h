@@ -57,8 +57,8 @@ protected:
 	UPROPERTY(VisibleAnywhere, meta = (BindWidget))
 	UButton* LoadGameButton;
 	
-	UPROPERTY(VisibleAnywhere, meta = (BindWidget))
-	UButton* SettingsButton;
+	//UPROPERTY(VisibleAnywhere, meta = (BindWidget))
+	//UButton* SettingsButton;
 	
 	
 };

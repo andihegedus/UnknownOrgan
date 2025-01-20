@@ -1,5 +1,6 @@
 ﻿#include "Monster.h"
 
+#include "Components/AudioComponent.h"
 #include "Components/BoxComponent.h"
 #include "Components/TimelineComponent.h"
 #include "GameFramework/PlayerController.h"
@@ -89,11 +90,11 @@ void AMonster::MonsterTimer()
 		
 		GetWorld()->GetTimerManager().SetTimer(MonsterProwlTimerHandle, this, &AMonster::MonsterTimer, 1.f, true);
 
-		if (MonsterTimerLoopCount < 20.f)
+		if (MonsterTimerLoopCount < 30.f)
 		{
 			MonsterTimerLoopCount += 1.f;
 		}
-		else if (MonsterTimerLoopCount >= 20.f)
+		else if (MonsterTimerLoopCount >= 30.f)
 		{
 			if (MonsterPositionID > 0 && MonsterPositionID < 3)
 			{
@@ -119,6 +120,7 @@ void AMonster::MonsterTimer()
 				if (MonsterPositionID == 3)
 				{
 					//OnMonsterStateUpdated.Broadcast();
+					//AudioComponent->Play();
 					
 					if (GameInstance)
 					{
@@ -160,11 +162,11 @@ void AMonster::MonsterTimer()
 		GetWorld()->GetTimerManager().ClearTimer(MonsterProwlTimerHandle);
 		GetWorld()->GetTimerManager().SetTimer(MonsterIdleTimerHandle, this, &AMonster::MonsterTimer, 1.f, true);
 
-		if (MonsterTimerLoopCount < 5.f)
+		if (MonsterTimerLoopCount < 60.f)
 		{
 			MonsterTimerLoopCount += 1.f;
 		}
-		else if (MonsterTimerLoopCount >=  5.f)
+		else if (MonsterTimerLoopCount >=  60.f)
 		{
 			GetWorld()->GetTimerManager().ClearTimer(MonsterIdleTimerHandle);
 			bIsProwling = true;
