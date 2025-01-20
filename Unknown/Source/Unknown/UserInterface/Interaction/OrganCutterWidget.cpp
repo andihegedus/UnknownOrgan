@@ -95,6 +95,7 @@ void UOrganCutterWidget::CloseAndDestroy(float Value)
 		OrganImage->SetVisibility(ESlateVisibility::Hidden);
 		OrganImage2->SetVisibility(ESlateVisibility::Visible);
 		OrganImage3->SetVisibility(ESlateVisibility::Visible);
+		OrganImage4->SetVisibility(ESlateVisibility::Visible);
 		
 		OrganCutterSlider->SetVisibility(ESlateVisibility::Hidden);
 		OrganSlider2->SetVisibility(ESlateVisibility::Visible);

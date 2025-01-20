@@ -222,7 +222,7 @@ void APCharacter::RotatePlayerCameraRight()
 
 void APCharacter::CheckForInteractable()
 {
-	LineTraceStart = GetPawnViewLocation();
+	LineTraceStart = GetPawnViewLocation() - 50.f;
 	
 	FVector LineTraceEnd{LineTraceStart + (CameraComp->GetComponentRotation().Vector() * CheckInteractionDistance)};
 	float LookDirection = FVector::DotProduct(GetActorForwardVector(), CameraComp->GetComponentRotation().Vector());
