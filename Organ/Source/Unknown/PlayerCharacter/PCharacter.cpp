@@ -220,7 +220,7 @@ void APCharacter::CheckForInteractable()
 	if (LookDirection > 0)
 	{
 		// Visualize the trace hit line
-		//DrawDebugLine(GetWorld(), LineTraceStart, LineTraceEnd, FColor::Magenta, false, 1.0f, 0, 2.f);
+		DrawDebugLine(GetWorld(), LineTraceStart, LineTraceEnd, FColor::Magenta, false, 1.0f, 0, 2.f);
 
 		FCollisionQueryParams QueryParams;
 
@@ -232,7 +232,7 @@ void APCharacter::CheckForInteractable()
 		{
 			if (TraceHit.GetActor()->Tags.Contains("Cut"))
 			{
-				UE_LOG(LogTemp, Warning, TEXT("APCharacter: Cut!"));
+				//UE_LOG(LogTemp, Warning, TEXT("APCharacter: Cut!"));
 				
 				CurrentTag = "Cut";
 				TagInFocus.Add(CurrentTag);
@@ -241,7 +241,7 @@ void APCharacter::CheckForInteractable()
 			}
 			if (TraceHit.GetActor()->Tags.Contains("Rinse"))
 			{
-				UE_LOG(LogTemp, Warning, TEXT("APCharacter: Rinse!"));
+				//UE_LOG(LogTemp, Warning, TEXT("APCharacter: Rinse!"));
 				
 				CurrentTag = "Rinse";
 				TagInFocus.Add(CurrentTag);
@@ -250,7 +250,7 @@ void APCharacter::CheckForInteractable()
 			}
 			if (TraceHit.GetActor()->Tags.Contains("Test"))
 			{
-				UE_LOG(LogTemp, Warning, TEXT("APCharacter: Test!"));
+				//UE_LOG(LogTemp, Warning, TEXT("APCharacter: Test!"));
 				
 				CurrentTag = "Test";
 				TagInFocus.Add(CurrentTag);
@@ -259,7 +259,7 @@ void APCharacter::CheckForInteractable()
 			}
 			if (TraceHit.GetActor()->Tags.Contains("Door"))
 			{
-				UE_LOG(LogTemp, Warning, TEXT("APCharacter: Door!"));
+				//UE_LOG(LogTemp, Warning, TEXT("APCharacter: Door!"));
 				
 				CurrentTag = "Door";
 				TagInFocus.Add(CurrentTag);
@@ -321,7 +321,7 @@ void APCharacter::CheckForInteractable()
 			}
 			if (TraceHit.GetActor()->Tags.Contains("ToSwat"))
 			{
-				UE_LOG(LogTemp, Warning, TEXT("APCharacter: Monster to swat!"));
+				//UE_LOG(LogTemp, Warning, TEXT("APCharacter: Monster to swat!"));
 				
 				CurrentTag = "ToSwat";
 				TagInFocus.Add(CurrentTag);

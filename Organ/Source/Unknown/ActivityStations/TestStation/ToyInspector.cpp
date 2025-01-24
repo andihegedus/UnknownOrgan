@@ -38,12 +38,12 @@ void AToyInspector::BeginPlay()
 
 void AToyInspector::RotateToy()
 {
-	UE_LOG(LogTemp, Warning, TEXT("AToyInspector: Rotate!"));
+	//UE_LOG(LogTemp, Warning, TEXT("AToyInspector: Rotate!"));
 }
 
 void AToyInspector::StopRotateToy()
 {
-	UE_LOG(LogTemp, Warning, TEXT("AToyInspector: Stop!"));
+	//UE_LOG(LogTemp, Warning, TEXT("AToyInspector: Stop!"));
 }
 
 void AToyInspector::SwapMesh(FText ID)

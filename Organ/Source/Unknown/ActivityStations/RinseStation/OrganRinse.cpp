@@ -62,6 +62,8 @@ void AOrganRinse::CloseAndDestroy()
 
 void AOrganRinse::SpawnOrgansToRinse()
 {
+	//UE_LOG(LogTemp, Warning, TEXT("AOrganRinse: SpawnOrgan triggered!"));
+	
 	if (GameInstance)
 	{
 		if (GameInstance->bOrganDissected)
@@ -124,13 +126,21 @@ void AOrganRinse::SpawnOrgansToRinse()
 		}
 		else
 		{
-			UE_LOG(LogTemp, Warning, TEXT("AOrganRinse: No dissected organs available."));
+			//UE_LOG(LogTemp, Warning, TEXT("AOrganRinse: No dissected organs available."));
 		}
+	}
+	else
+	{
+		UE_LOG(LogTemp, Warning, TEXT("AOrganRinse: GameInstance not valid."));
 	}
 
 	if (GameInstance)
 	{
 		GameInstance->SaveGame();
+	}
+	else
+	{
+		UE_LOG(LogTemp, Warning, TEXT("AOrganRinse: Save game unsuccessful."));
 	}
 }
 
