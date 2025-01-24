@@ -9,6 +9,7 @@ class UShelfInventoryWidget;
 class UHorizontalBox;
 class URinseObjectsWidget;
 class UOrganCutterWidget;
+class UUnknownGameInstance;
 class APCharacter;
 class APController;
 class UButton;
@@ -41,11 +42,14 @@ public:
 	UPROPERTY()
 	APController* PlayerController;
 
+	UPROPERTY()
+	UUnknownGameInstance* GameInstance;
+
 	UPROPERTY(VisibleAnywhere, meta = (BindWidget))
 	URinseObjectsWidget* RinseTool;
 
-	//UPROPERTY(VisibleAnywhere, meta = (BindWidget))
-	//UMonsterStateLoggerWidget* MonsterStateLogger;
+	UPROPERTY(VisibleAnywhere, meta = (BindWidget))
+	UMonsterStateLoggerWidget* MonsterStateLogger;
 
 	UPROPERTY(VisibleAnywhere, meta = (BindWidget))
 	UOrganCutterWidget* OrganCutter;

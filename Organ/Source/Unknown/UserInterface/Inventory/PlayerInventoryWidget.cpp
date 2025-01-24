@@ -6,6 +6,7 @@
 #include "Components/Button.h"
 #include "Components/TextBlock.h"
 #include "GameFramework/PlayerController.h"
+#include "Unknown/UnknownGameInstance.h"
 #include "Unknown/PlayerCharacter/PCharacter.h"
 #include "Unknown/PlayerCharacter/PController.h"
 #include "Unknown/UserInterface/Interaction/MonsterStateLoggerWidget.h"
@@ -22,6 +23,8 @@ void UPlayerInventoryWidget::NativeOnInitialized()
 	if (PlayerCharacter)
 	{
 		PlayerController = Cast<APController>(PlayerCharacter->GetWorld()->GetFirstPlayerController());
+
+		GameInstance = Cast<UUnknownGameInstance>(GetWorld()->GetGameInstance());
 
 		if (PlayerController)
 		{
@@ -56,7 +59,7 @@ void UPlayerInventoryWidget::NativeOnInitialized()
 	OrganCutter->SetVisibility(ESlateVisibility::Visible);
 	RinseTool->SetVisibility(ESlateVisibility::Collapsed);
 	ShelfInventory->SetVisibility(ESlateVisibility::Collapsed);
-	//MonsterStateLogger->SetVisibility(ESlateVisibility::Hidden);
+	MonsterStateLogger->SetVisibility(ESlateVisibility::Hidden);
 }
 
 void UPlayerInventoryWidget::NativeConstruct()
@@ -117,7 +120,7 @@ void UPlayerInventoryWidget::OnLeftArrowClicked()
 		}
 		if (PlayerCharacter->TagInFocus.Contains("Test") || PlayerCharacter->TagInFocus.Contains("ToInspect"))
 		{
-			//ShelfInventory->UpdateWidget();
+			ShelfInventory->UpdateWidget();
 			ShelfInventory->SetVisibility(ESlateVisibility::Visible);
 			TestText->SetVisibility(ESlateVisibility::Visible);
 			TestBorder->SetBrushColor(FLinearColor::Green);
@@ -177,7 +180,7 @@ void UPlayerInventoryWidget::OnRightArrowClicked()
 		}
 		if (PlayerCharacter->TagInFocus.Contains("Test") || PlayerCharacter->TagInFocus.Contains("ToInspect"))
 		{
-			//ShelfInventory->UpdateWidget();
+			ShelfInventory->UpdateWidget();
 			ShelfInventory->SetVisibility(ESlateVisibility::Visible);
 			TestText->SetVisibility(ESlateVisibility::Visible);
 			TestBorder->SetBrushColor(FLinearColor::Green);

@@ -58,11 +58,19 @@ void UMonsterStateLoggerWidget::RefreshMonsterState()
 			NewTextString = "...buzz...buzz...";
 			MonsterStateText->SetText(FText::FromString(NewTextString));
 		}
+		else if (GameInstance->MonsterPositionID == 2)
+		{
+			this->SetVisibility(ESlateVisibility::Hidden);
+		}
 		else if (GameInstance->MonsterPositionID == 3)
 		{
 			this->SetVisibility(ESlateVisibility::HitTestInvisible);
 			NewTextString = "A trinket is being stolen from your shelf! Act fast!";
 			MonsterStateText->SetText(FText::FromString(NewTextString));
+		}
+		else if (GameInstance->MonsterPositionID == 0)
+		{
+			this->SetVisibility(ESlateVisibility::Hidden);
 		}
 		else
 		{

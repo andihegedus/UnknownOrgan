@@ -51,9 +51,9 @@ void APCharacter::Tick(float DeltaSeconds)
 	
 	if (GameInstance)
 	{
-		if (GameInstance->MonsterPositionID == 1 || GameInstance->MonsterPositionID == 3)
+		if (GameInstance->MonsterPositionID == 1 || GameInstance->MonsterPositionID == 2 || GameInstance->MonsterPositionID == 3 || GameInstance->MonsterPositionID == 0)
 		{
-			//OnMonsterStateUpdated.Broadcast();
+			OnMonsterStateUpdated.Broadcast();
 			//OnInventoryStateUpdated.Broadcast();
 		}
 	}
@@ -421,6 +421,12 @@ void APCharacter::CheckForInteraction()
 						if (SwatCount > 5)
 						{
 							Monster->bIsRetreating = true;
+
+							if (GameInstance)
+							{
+								GameInstance->bIsRetreating = true;
+							}
+							
 							Monster->MonsterRetreatTimer();
 
 							this->GetWorld()->GetFirstPlayerController()->CurrentMouseCursor = EMouseCursor::Default;

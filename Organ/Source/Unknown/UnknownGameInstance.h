@@ -45,4 +45,8 @@ public:
 	bool bOrganExtruded;
 
 	bool bOrganDissected;
+
+	bool bIsRetreating;
+
+	bool bIsInTutorial;
 };

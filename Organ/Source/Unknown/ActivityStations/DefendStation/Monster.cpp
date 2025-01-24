@@ -38,6 +38,7 @@ void AMonster::BeginPlay()
 	if (GameInstance)
 	{
 		GameInstance->MonsterPositionID = MonsterPositionID;
+		GameInstance->bIsRetreating = bIsRetreating;
 	}
 
 	UpdateFunctionFloat.BindDynamic(this, &AMonster::UpdateTimelineComp);
@@ -61,15 +62,15 @@ void AMonster::UpdateTimelineComp(float Output)
 	switch (MonsterPositionID)
 	{
 		case 1:
-			MonsterLocation1 = FVector(InitialMonsterLocation.X + 200.f, InitialMonsterLocation.Y + 100.f, InitialMonsterLocation.Z);
+			MonsterLocation1 = FVector(InitialMonsterLocation.X + 200.f, InitialMonsterLocation.Y - 25.f, InitialMonsterLocation.Z);
 			MonsterMeshComponent->SetRelativeLocation(MonsterLocation1);
 			break;
 		case 2:
-			MonsterLocation2 = FVector(MonsterLocation1.X + 100.f, MonsterLocation1.Y - 200.f, MonsterLocation1.Z);
+			MonsterLocation2 = FVector(MonsterLocation1.X + 100.f, MonsterLocation1.Y - 75.f, MonsterLocation1.Z);
 			MonsterMeshComponent->SetRelativeLocation(MonsterLocation2);
 			break;
 		case 3:
-			MonsterLocation3 = FVector(MonsterLocation2.X + 150.f, MonsterLocation2.Y + 400.f, MonsterLocation2.Z);
+			MonsterLocation3 = FVector(MonsterLocation2.X + 250.f, MonsterLocation2.Y + 425.f, MonsterLocation2.Z);
 			MonsterMeshComponent->SetRelativeLocation(MonsterLocation3);
 			break;
 		case 0:
@@ -90,11 +91,11 @@ void AMonster::MonsterTimer()
 		
 		GetWorld()->GetTimerManager().SetTimer(MonsterProwlTimerHandle, this, &AMonster::MonsterTimer, 1.f, true);
 
-		if (MonsterTimerLoopCount < 30.f)
+		if (MonsterTimerLoopCount < 20.f)
 		{
 			MonsterTimerLoopCount += 1.f;
 		}
-		else if (MonsterTimerLoopCount >= 30.f)
+		else if (MonsterTimerLoopCount >= 20.f)
 		{
 			if (MonsterPositionID > 0 && MonsterPositionID < 3)
 			{
@@ -162,11 +163,11 @@ void AMonster::MonsterTimer()
 		GetWorld()->GetTimerManager().ClearTimer(MonsterProwlTimerHandle);
 		GetWorld()->GetTimerManager().SetTimer(MonsterIdleTimerHandle, this, &AMonster::MonsterTimer, 1.f, true);
 
-		if (MonsterTimerLoopCount < 60.f)
+		if (MonsterTimerLoopCount < 20.f)
 		{
 			MonsterTimerLoopCount += 1.f;
 		}
-		else if (MonsterTimerLoopCount >=  60.f)
+		else if (MonsterTimerLoopCount >=  20.f)
 		{
 			GetWorld()->GetTimerManager().ClearTimer(MonsterIdleTimerHandle);
 			bIsProwling = true;
@@ -213,6 +214,12 @@ void AMonster::MonsterRetreatTimer()
 				bIsProwling = false;
 				bIsRetreating = false;
 				MonsterPositionID = 0;
+
+				if (GameInstance)
+				{
+					GameInstance->MonsterPositionID = MonsterPositionID;
+				}
+				
 				MonsterTimerLoopCount = 0;
 				MoveMonster();
 				MonsterTimer();

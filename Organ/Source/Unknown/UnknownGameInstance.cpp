@@ -23,6 +23,8 @@ void UUnknownGameInstance::CreateSaveFile()
 	GameSaveInstance->SavedIDs.Empty();
 	
 	UGameplayStatics::SaveGameToSlot(GameSaveInstance, "Save1", 0);
+
+	bIsInTutorial = true;
 }
 
 void UUnknownGameInstance::SaveGame()
@@ -52,4 +54,6 @@ void UUnknownGameInstance::LoadGame()
 	{
 		CreateSaveFile();
 	}
+
+	bIsInTutorial = false;
 }
