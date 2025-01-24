@@ -68,9 +68,9 @@ void UShelfInventoryWidget::UpdateWidget()
 				}
 				else
 				{
-					//UE_LOG(LogTemp, Warning, TEXT("UShelfInventoryWidget: ShelfSlotClass not valid."));
+					UE_LOG(LogTemp, Warning, TEXT("UShelfInventoryWidget: ShelfSlotClass not valid."));
 				}
-				
+					
 				if (ShelfSlot)
 				{
 					InventoryScrollBox->AddChild(ShelfSlot);
@@ -117,10 +117,11 @@ void UShelfInventoryWidget::UpdateWidget()
 		{
 			//UE_LOG(LogTemp, Warning, TEXT("UShelfInventoryWidget: ShelfSlotClass not valid."));
 		}
-			
+				
 	}
 	else
 	{
 		UE_LOG(LogTemp, Warning, TEXT("UShelfInventoryWidget: No IDs in GameInstance array."));
 	}
+	
 }

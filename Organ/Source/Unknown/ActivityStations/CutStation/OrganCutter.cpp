@@ -37,7 +37,7 @@ void AOrganCutter::BeginPlay()
 
 void AOrganCutter::CloseAndDestroy()
 {
-	HUD->HideInteractionWidget();
+	//HUD->HideInteractionWidget();
 }
 
 void AOrganCutter::SwapOrganMesh()

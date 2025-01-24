@@ -16,12 +16,13 @@ void UUnknownGameInstance::Init()
 
 void UUnknownGameInstance::CreateSaveFile()
 {
+	UGameplayStatics::DeleteGameInSlot("Save1", 0);
+	
 	GameSaveInstance = Cast<USaveData>(UGameplayStatics::CreateSaveGameObject(USaveData::StaticClass()));
 
-	UGameplayStatics::SaveGameToSlot(GameSaveInstance, "Save1", 0);
-
 	GameSaveInstance->SavedIDs.Empty();
-	UGameplayStatics::DeleteGameInSlot("Save1", 0);
+	
+	UGameplayStatics::SaveGameToSlot(GameSaveInstance, "Save1", 0);
 }
 
 void UUnknownGameInstance::SaveGame()

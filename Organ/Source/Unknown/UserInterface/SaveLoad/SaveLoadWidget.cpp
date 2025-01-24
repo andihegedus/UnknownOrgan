@@ -54,6 +54,10 @@ void USaveLoadWidget::NewGame()
 	{
 		GameInstance->CreateSaveFile();
 	}
+	else
+	{
+		UE_LOG(LogTemp, Warning, TEXT("USaveLoadWidget: GameInstance not valid."));
+	}
 
 	if (HUD)
 	{
@@ -66,6 +70,10 @@ void USaveLoadWidget::LoadGame()
 	if (GameInstance)
 	{
 		GameInstance->LoadGame();
+	}
+	else
+	{
+		UE_LOG(LogTemp, Warning, TEXT("USaveLoadWidget: GameInstance not valid."));
 	}
 
 	if (HUD)
