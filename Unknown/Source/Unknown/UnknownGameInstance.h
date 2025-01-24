@@ -8,7 +8,7 @@ class USaveData;
 class FName;
 
 UCLASS()
-class UUnknownGameInstance : public UGameInstance
+class UNKNOWN_API UUnknownGameInstance : public UGameInstance
 {
 	GENERATED_BODY()
 	

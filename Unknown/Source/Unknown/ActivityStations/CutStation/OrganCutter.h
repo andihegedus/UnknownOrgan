@@ -12,7 +12,7 @@ class UStaticMeshComponent;
 class UStaticMesh;
 
 UCLASS()
-class AOrganCutter: public APawn
+class UNKNOWN_API AOrganCutter: public APawn
 {
 	GENERATED_BODY()
 	

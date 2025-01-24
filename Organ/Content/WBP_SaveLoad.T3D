@@ -1,0 +1,380 @@
+Begin Object Class=/Script/UMGEditor.WidgetBlueprint Name="WBP_SaveLoad" ExportPath=/Script/UMGEditor.WidgetBlueprint'"/Game/Widgets/WBP_SaveLoad.WBP_SaveLoad"'
+   Begin Object Class=/Script/UMG.WidgetTree Name="WidgetTree" Archetype=/Script/UMG.WidgetTree'/Script/UMGEditor.Default__WidgetBlueprint:WidgetTree' ExportPath=/Script/UMG.WidgetTree'"/Game/Widgets/WBP_SaveLoad.WBP_SaveLoad:WidgetTree"'
+      Begin Object Class=/Script/UMG.Button Name="LoadGameButton" ExportPath=/Script/UMG.Button'"/Game/Widgets/WBP_SaveLoad.WBP_SaveLoad:WidgetTree.LoadGameButton"'
+         Begin Object Class=/Script/UMG.ButtonSlot Name="ButtonSlot_0" ExportPath=/Script/UMG.ButtonSlot'"/Game/Widgets/WBP_SaveLoad.WBP_SaveLoad:WidgetTree.LoadGameButton.ButtonSlot_0"'
+         End Object
+      End Object
+      Begin Object Class=/Script/UMG.Overlay Name="Overlay_1" ExportPath=/Script/UMG.Overlay'"/Game/Widgets/WBP_SaveLoad.WBP_SaveLoad:WidgetTree.Overlay_1"'
+         Begin Object Class=/Script/UMG.OverlaySlot Name="OverlaySlot_1" ExportPath=/Script/UMG.OverlaySlot'"/Game/Widgets/WBP_SaveLoad.WBP_SaveLoad:WidgetTree.Overlay_1.OverlaySlot_1"'
+         End Object
+      End Object
+      Begin Object Class=/Script/UMG.Button Name="NewGameButton" ExportPath=/Script/UMG.Button'"/Game/Widgets/WBP_SaveLoad.WBP_SaveLoad:WidgetTree.NewGameButton"'
+         Begin Object Class=/Script/UMG.ButtonSlot Name="ButtonSlot_0" ExportPath=/Script/UMG.ButtonSlot'"/Game/Widgets/WBP_SaveLoad.WBP_SaveLoad:WidgetTree.NewGameButton.ButtonSlot_0"'
+         End Object
+      End Object
+      Begin Object Class=/Script/UMG.Overlay Name="Overlay" ExportPath=/Script/UMG.Overlay'"/Game/Widgets/WBP_SaveLoad.WBP_SaveLoad:WidgetTree.Overlay"'
+         Begin Object Class=/Script/UMG.OverlaySlot Name="OverlaySlot_1" ExportPath=/Script/UMG.OverlaySlot'"/Game/Widgets/WBP_SaveLoad.WBP_SaveLoad:WidgetTree.Overlay.OverlaySlot_1"'
+         End Object
+      End Object
+      Begin Object Class=/Script/UMG.TextBlock Name="TextBlock_1" ExportPath=/Script/UMG.TextBlock'"/Game/Widgets/WBP_SaveLoad.WBP_SaveLoad:WidgetTree.TextBlock_1"'
+      End Object
+      Begin Object Class=/Script/UMG.TextBlock Name="TextBlock" ExportPath=/Script/UMG.TextBlock'"/Game/Widgets/WBP_SaveLoad.WBP_SaveLoad:WidgetTree.TextBlock"'
+      End Object
+      Begin Object Class=/Script/UMG.CanvasPanel Name="CanvasPanel_32" ExportPath=/Script/UMG.CanvasPanel'"/Game/Widgets/WBP_SaveLoad.WBP_SaveLoad:WidgetTree.CanvasPanel_32"'
+         Begin Object Class=/Script/UMG.CanvasPanelSlot Name="CanvasPanelSlot_1" ExportPath=/Script/UMG.CanvasPanelSlot'"/Game/Widgets/WBP_SaveLoad.WBP_SaveLoad:WidgetTree.CanvasPanel_32.CanvasPanelSlot_1"'
+         End Object
+         Begin Object Class=/Script/UMG.CanvasPanelSlot Name="CanvasPanelSlot_3" ExportPath=/Script/UMG.CanvasPanelSlot'"/Game/Widgets/WBP_SaveLoad.WBP_SaveLoad:WidgetTree.CanvasPanel_32.CanvasPanelSlot_3"'
+         End Object
+      End Object
+      Begin Object Class=/Script/UMG.Overlay Name="Overlay_57" ExportPath=/Script/UMG.Overlay'"/Game/Widgets/WBP_SaveLoad.WBP_SaveLoad:WidgetTree.Overlay_57"'
+         Begin Object Class=/Script/UMG.OverlaySlot Name="OverlaySlot_5" ExportPath=/Script/UMG.OverlaySlot'"/Game/Widgets/WBP_SaveLoad.WBP_SaveLoad:WidgetTree.Overlay_57.OverlaySlot_5"'
+         End Object
+      End Object
+      Begin Object Class=/Script/UMG.Image Name="Image_43" ExportPath=/Script/UMG.Image'"/Game/Widgets/WBP_SaveLoad.WBP_SaveLoad:WidgetTree.Image_43"'
+      End Object
+      Begin Object Class=/Script/UMG.HorizontalBox Name="HorizontalBox" ExportPath=/Script/UMG.HorizontalBox'"/Game/Widgets/WBP_SaveLoad.WBP_SaveLoad:WidgetTree.HorizontalBox"'
+         Begin Object Class=/Script/UMG.HorizontalBoxSlot Name="HorizontalBoxSlot_6" ExportPath=/Script/UMG.HorizontalBoxSlot'"/Game/Widgets/WBP_SaveLoad.WBP_SaveLoad:WidgetTree.HorizontalBox.HorizontalBoxSlot_6"'
+         End Object
+      End Object
+      Begin Object Class=/Script/UMG.VerticalBox Name="VerticalBox_84" ExportPath=/Script/UMG.VerticalBox'"/Game/Widgets/WBP_SaveLoad.WBP_SaveLoad:WidgetTree.VerticalBox_84"'
+         Begin Object Class=/Script/UMG.VerticalBoxSlot Name="VerticalBoxSlot_3" ExportPath=/Script/UMG.VerticalBoxSlot'"/Game/Widgets/WBP_SaveLoad.WBP_SaveLoad:WidgetTree.VerticalBox_84.VerticalBoxSlot_3"'
+         End Object
+         Begin Object Class=/Script/UMG.VerticalBoxSlot Name="VerticalBoxSlot_4" ExportPath=/Script/UMG.VerticalBoxSlot'"/Game/Widgets/WBP_SaveLoad.WBP_SaveLoad:WidgetTree.VerticalBox_84.VerticalBoxSlot_4"'
+         End Object
+         Begin Object Class=/Script/UMG.VerticalBoxSlot Name="VerticalBoxSlot_10" ExportPath=/Script/UMG.VerticalBoxSlot'"/Game/Widgets/WBP_SaveLoad.WBP_SaveLoad:WidgetTree.VerticalBox_84.VerticalBoxSlot_10"'
+         End Object
+         Begin Object Class=/Script/UMG.VerticalBoxSlot Name="VerticalBoxSlot_7" ExportPath=/Script/UMG.VerticalBoxSlot'"/Game/Widgets/WBP_SaveLoad.WBP_SaveLoad:WidgetTree.VerticalBox_84.VerticalBoxSlot_7"'
+         End Object
+         Begin Object Class=/Script/UMG.VerticalBoxSlot Name="VerticalBoxSlot_8" ExportPath=/Script/UMG.VerticalBoxSlot'"/Game/Widgets/WBP_SaveLoad.WBP_SaveLoad:WidgetTree.VerticalBox_84.VerticalBoxSlot_8"'
+         End Object
+         Begin Object Class=/Script/UMG.VerticalBoxSlot Name="VerticalBoxSlot_13" ExportPath=/Script/UMG.VerticalBoxSlot'"/Game/Widgets/WBP_SaveLoad.WBP_SaveLoad:WidgetTree.VerticalBox_84.VerticalBoxSlot_13"'
+         End Object
+         Begin Object Class=/Script/UMG.VerticalBoxSlot Name="VerticalBoxSlot_1" ExportPath=/Script/UMG.VerticalBoxSlot'"/Game/Widgets/WBP_SaveLoad.WBP_SaveLoad:WidgetTree.VerticalBox_84.VerticalBoxSlot_1"'
+         End Object
+         Begin Object Class=/Script/UMG.VerticalBoxSlot Name="VerticalBoxSlot_0" ExportPath=/Script/UMG.VerticalBoxSlot'"/Game/Widgets/WBP_SaveLoad.WBP_SaveLoad:WidgetTree.VerticalBox_84.VerticalBoxSlot_0"'
+         End Object
+         Begin Object Class=/Script/UMG.VerticalBoxSlot Name="VerticalBoxSlot_9" ExportPath=/Script/UMG.VerticalBoxSlot'"/Game/Widgets/WBP_SaveLoad.WBP_SaveLoad:WidgetTree.VerticalBox_84.VerticalBoxSlot_9"'
+         End Object
+      End Object
+      Begin Object Class=/Script/UMG.HorizontalBox Name="HorizontalBox_1" ExportPath=/Script/UMG.HorizontalBox'"/Game/Widgets/WBP_SaveLoad.WBP_SaveLoad:WidgetTree.HorizontalBox_1"'
+         Begin Object Class=/Script/UMG.HorizontalBoxSlot Name="HorizontalBoxSlot_6" ExportPath=/Script/UMG.HorizontalBoxSlot'"/Game/Widgets/WBP_SaveLoad.WBP_SaveLoad:WidgetTree.HorizontalBox_1.HorizontalBoxSlot_6"'
+         End Object
+      End Object
+      Begin Object Class=/Script/UMG.HorizontalBox Name="HorizontalBox_40" ExportPath=/Script/UMG.HorizontalBox'"/Game/Widgets/WBP_SaveLoad.WBP_SaveLoad:WidgetTree.HorizontalBox_40"'
+         Begin Object Class=/Script/UMG.HorizontalBoxSlot Name="HorizontalBoxSlot_0" ExportPath=/Script/UMG.HorizontalBoxSlot'"/Game/Widgets/WBP_SaveLoad.WBP_SaveLoad:WidgetTree.HorizontalBox_40.HorizontalBoxSlot_0"'
+         End Object
+         Begin Object Class=/Script/UMG.HorizontalBoxSlot Name="HorizontalBoxSlot_1" ExportPath=/Script/UMG.HorizontalBoxSlot'"/Game/Widgets/WBP_SaveLoad.WBP_SaveLoad:WidgetTree.HorizontalBox_40.HorizontalBoxSlot_1"'
+         End Object
+      End Object
+      Begin Object Class=/Script/UMG.SizeBox Name="SizeBox_46" ExportPath=/Script/UMG.SizeBox'"/Game/Widgets/WBP_SaveLoad.WBP_SaveLoad:WidgetTree.SizeBox_46"'
+         Begin Object Class=/Script/UMG.SizeBoxSlot Name="SizeBoxSlot_0" ExportPath=/Script/UMG.SizeBoxSlot'"/Game/Widgets/WBP_SaveLoad.WBP_SaveLoad:WidgetTree.SizeBox_46.SizeBoxSlot_0"'
+         End Object
+      End Object
+      Begin Object Class=/Script/UMG.Image Name="Image_74" ExportPath=/Script/UMG.Image'"/Game/Widgets/WBP_SaveLoad.WBP_SaveLoad:WidgetTree.Image_74"'
+      End Object
+      Begin Object Class=/Script/UMG.Spacer Name="Spacer" ExportPath=/Script/UMG.Spacer'"/Game/Widgets/WBP_SaveLoad.WBP_SaveLoad:WidgetTree.Spacer"'
+      End Object
+      Begin Object Class=/Script/UMG.Spacer Name="Spacer_1" ExportPath=/Script/UMG.Spacer'"/Game/Widgets/WBP_SaveLoad.WBP_SaveLoad:WidgetTree.Spacer_1"'
+      End Object
+      Begin Object Class=/Script/UMG.Spacer Name="Spacer_129" ExportPath=/Script/UMG.Spacer'"/Game/Widgets/WBP_SaveLoad.WBP_SaveLoad:WidgetTree.Spacer_129"'
+      End Object
+      Begin Object Class=/Script/UMG.TextBlock Name="TextBlock_135" ExportPath=/Script/UMG.TextBlock'"/Game/Widgets/WBP_SaveLoad.WBP_SaveLoad:WidgetTree.TextBlock_135"'
+      End Object
+      Begin Object Class=/Script/UMG.TextBlock Name="TextBlock_145" ExportPath=/Script/UMG.TextBlock'"/Game/Widgets/WBP_SaveLoad.WBP_SaveLoad:WidgetTree.TextBlock_145"'
+      End Object
+      Begin Object Class=/Script/UMG.TextBlock Name="TextBlock_50" ExportPath=/Script/UMG.TextBlock'"/Game/Widgets/WBP_SaveLoad.WBP_SaveLoad:WidgetTree.TextBlock_50"'
+      End Object
+      Begin Object Class=/Script/UMG.TextBlock Name="TextBlock_67" ExportPath=/Script/UMG.TextBlock'"/Game/Widgets/WBP_SaveLoad.WBP_SaveLoad:WidgetTree.TextBlock_67"'
+      End Object
+   End Object
+   Begin Object Class=/Script/Engine.EdGraph Name="EventGraph" ExportPath=/Script/Engine.EdGraph'"/Game/Widgets/WBP_SaveLoad.WBP_SaveLoad:EventGraph"'
+      Begin Object Class=/Script/BlueprintGraph.K2Node_Event Name="K2Node_Event_0" ExportPath=/Script/BlueprintGraph.K2Node_Event'"/Game/Widgets/WBP_SaveLoad.WBP_SaveLoad:EventGraph.K2Node_Event_0"'
+      End Object
+      Begin Object Class=/Script/BlueprintGraph.K2Node_Event Name="K2Node_Event_1" ExportPath=/Script/BlueprintGraph.K2Node_Event'"/Game/Widgets/WBP_SaveLoad.WBP_SaveLoad:EventGraph.K2Node_Event_1"'
+      End Object
+      Begin Object Class=/Script/BlueprintGraph.K2Node_Event Name="K2Node_Event_2" ExportPath=/Script/BlueprintGraph.K2Node_Event'"/Game/Widgets/WBP_SaveLoad.WBP_SaveLoad:EventGraph.K2Node_Event_2"'
+      End Object
+   End Object
+   Begin Object Name="WidgetTree" ExportPath=/Script/UMG.WidgetTree'"/Game/Widgets/WBP_SaveLoad.WBP_SaveLoad:WidgetTree"'
+      Begin Object Name="LoadGameButton" ExportPath=/Script/UMG.Button'"/Game/Widgets/WBP_SaveLoad.WBP_SaveLoad:WidgetTree.LoadGameButton"'
+         Begin Object Name="ButtonSlot_0" ExportPath=/Script/UMG.ButtonSlot'"/Game/Widgets/WBP_SaveLoad.WBP_SaveLoad:WidgetTree.LoadGameButton.ButtonSlot_0"'
+            Parent=/Script/UMG.Button'"WBP_SaveLoad:WidgetTree.LoadGameButton"'
+            Content=/Script/UMG.TextBlock'"WBP_SaveLoad:WidgetTree.TextBlock_1"'
+         End Object
+         WidgetStyle=(Normal=(DrawAs=Image,TintColor=(SpecifiedColor=(R=1.000000,G=1.000000,B=1.000000,A=1.000000)),ResourceObject=/Script/Engine.Texture2D'"/Game/Images/ButtonTex.ButtonTex"'),Hovered=(ResourceObject=/Script/Engine.Texture2D'"/Game/Images/ButtonTex.ButtonTex"'))
+         Slots(0)=/Script/UMG.ButtonSlot'"ButtonSlot_0"'
+         Slot=/Script/UMG.OverlaySlot'"WBP_SaveLoad:WidgetTree.Overlay_1.OverlaySlot_1"'
+         bIsVariable=False
+         bExpandedInDesigner=True
+         DisplayLabel="LoadGameButton"
+      End Object
+      Begin Object Name="Overlay_1" ExportPath=/Script/UMG.Overlay'"/Game/Widgets/WBP_SaveLoad.WBP_SaveLoad:WidgetTree.Overlay_1"'
+         Begin Object Name="OverlaySlot_1" ExportPath=/Script/UMG.OverlaySlot'"/Game/Widgets/WBP_SaveLoad.WBP_SaveLoad:WidgetTree.Overlay_1.OverlaySlot_1"'
+            Parent=/Script/UMG.Overlay'"WBP_SaveLoad:WidgetTree.Overlay_1"'
+            Content=/Script/UMG.Button'"WBP_SaveLoad:WidgetTree.LoadGameButton"'
+         End Object
+         Slots(0)=/Script/UMG.OverlaySlot'"OverlaySlot_1"'
+         Slot=/Script/UMG.HorizontalBoxSlot'"WBP_SaveLoad:WidgetTree.HorizontalBox_1.HorizontalBoxSlot_6"'
+         bExpandedInDesigner=True
+      End Object
+      Begin Object Name="NewGameButton" ExportPath=/Script/UMG.Button'"/Game/Widgets/WBP_SaveLoad.WBP_SaveLoad:WidgetTree.NewGameButton"'
+         Begin Object Name="ButtonSlot_0" ExportPath=/Script/UMG.ButtonSlot'"/Game/Widgets/WBP_SaveLoad.WBP_SaveLoad:WidgetTree.NewGameButton.ButtonSlot_0"'
+            Parent=/Script/UMG.Button'"WBP_SaveLoad:WidgetTree.NewGameButton"'
+            Content=/Script/UMG.TextBlock'"WBP_SaveLoad:WidgetTree.TextBlock"'
+         End Object
+         WidgetStyle=(Normal=(DrawAs=Image,TintColor=(SpecifiedColor=(R=1.000000,G=1.000000,B=1.000000,A=1.000000)),ResourceObject=/Script/Engine.Texture2D'"/Game/Images/ButtonTex.ButtonTex"'),Hovered=(ResourceObject=/Script/Engine.Texture2D'"/Game/Images/ButtonTex.ButtonTex"'))
+         Slots(0)=/Script/UMG.ButtonSlot'"ButtonSlot_0"'
+         Slot=/Script/UMG.OverlaySlot'"WBP_SaveLoad:WidgetTree.Overlay.OverlaySlot_1"'
+         bIsVariable=False
+         DisplayLabel="NewGameButton"
+      End Object
+      Begin Object Name="Overlay" ExportPath=/Script/UMG.Overlay'"/Game/Widgets/WBP_SaveLoad.WBP_SaveLoad:WidgetTree.Overlay"'
+         Begin Object Name="OverlaySlot_1" ExportPath=/Script/UMG.OverlaySlot'"/Game/Widgets/WBP_SaveLoad.WBP_SaveLoad:WidgetTree.Overlay.OverlaySlot_1"'
+            Parent=/Script/UMG.Overlay'"WBP_SaveLoad:WidgetTree.Overlay"'
+            Content=/Script/UMG.Button'"WBP_SaveLoad:WidgetTree.NewGameButton"'
+         End Object
+         Slots(0)=/Script/UMG.OverlaySlot'"OverlaySlot_1"'
+         Slot=/Script/UMG.HorizontalBoxSlot'"WBP_SaveLoad:WidgetTree.HorizontalBox.HorizontalBoxSlot_6"'
+      End Object
+      Begin Object Name="TextBlock_1" ExportPath=/Script/UMG.TextBlock'"/Game/Widgets/WBP_SaveLoad.WBP_SaveLoad:WidgetTree.TextBlock_1"'
+         Text=NSLOCTEXT("[4741DD52F1E42FD1B37F1D81C42928D3]", "52A54EFB4F83FD2C593E9387D207AF95", "Load Game")
+         ColorAndOpacity=(SpecifiedColor=(R=0.000000,G=0.000000,B=0.000000,A=1.000000))
+         Font=(Size=45)
+         Slot=/Script/UMG.ButtonSlot'"WBP_SaveLoad:WidgetTree.LoadGameButton.ButtonSlot_0"'
+      End Object
+      Begin Object Name="TextBlock" ExportPath=/Script/UMG.TextBlock'"/Game/Widgets/WBP_SaveLoad.WBP_SaveLoad:WidgetTree.TextBlock"'
+         Text=NSLOCTEXT("[4741DD52F1E42FD1B37F1D81C42928D3]", "33051FF94B57701939864BA828B7B4DE", "New Game")
+         ColorAndOpacity=(SpecifiedColor=(R=0.000000,G=0.000000,B=0.000000,A=1.000000))
+         Font=(Size=45)
+         Slot=/Script/UMG.ButtonSlot'"WBP_SaveLoad:WidgetTree.NewGameButton.ButtonSlot_0"'
+      End Object
+      Begin Object Name="CanvasPanel_32" ExportPath=/Script/UMG.CanvasPanel'"/Game/Widgets/WBP_SaveLoad.WBP_SaveLoad:WidgetTree.CanvasPanel_32"'
+         Begin Object Name="CanvasPanelSlot_1" ExportPath=/Script/UMG.CanvasPanelSlot'"/Game/Widgets/WBP_SaveLoad.WBP_SaveLoad:WidgetTree.CanvasPanel_32.CanvasPanelSlot_1"'
+            LayoutData=(Offsets=(Right=10.074591,Bottom=-1.472274),Anchors=(Maximum=(X=1.000000,Y=1.000000)))
+            bAutoSize=True
+            ZOrder=5
+            Parent=/Script/UMG.CanvasPanel'"WBP_SaveLoad:WidgetTree.CanvasPanel_32"'
+            Content=/Script/UMG.Overlay'"WBP_SaveLoad:WidgetTree.Overlay_57"'
+         End Object
+         Begin Object Name="CanvasPanelSlot_3" ExportPath=/Script/UMG.CanvasPanelSlot'"/Game/Widgets/WBP_SaveLoad.WBP_SaveLoad:WidgetTree.CanvasPanel_32.CanvasPanelSlot_3"'
+            LayoutData=(Offsets=(Right=0.000000,Bottom=0.000000),Anchors=(Maximum=(X=1.000000,Y=1.000000)))
+            bAutoSize=True
+            ZOrder=-9
+            Parent=/Script/UMG.CanvasPanel'"WBP_SaveLoad:WidgetTree.CanvasPanel_32"'
+            Content=/Script/UMG.Image'"WBP_SaveLoad:WidgetTree.Image_43"'
+         End Object
+         Slots(0)=/Script/UMG.CanvasPanelSlot'"CanvasPanelSlot_1"'
+         Slots(1)=/Script/UMG.CanvasPanelSlot'"CanvasPanelSlot_3"'
+         bExpandedInDesigner=True
+      End Object
+      Begin Object Name="Overlay_57" ExportPath=/Script/UMG.Overlay'"/Game/Widgets/WBP_SaveLoad.WBP_SaveLoad:WidgetTree.Overlay_57"'
+         Begin Object Name="OverlaySlot_5" ExportPath=/Script/UMG.OverlaySlot'"/Game/Widgets/WBP_SaveLoad.WBP_SaveLoad:WidgetTree.Overlay_57.OverlaySlot_5"'
+            Parent=/Script/UMG.Overlay'"WBP_SaveLoad:WidgetTree.Overlay_57"'
+            Content=/Script/UMG.HorizontalBox'"WBP_SaveLoad:WidgetTree.HorizontalBox_40"'
+         End Object
+         Slots(0)=/Script/UMG.OverlaySlot'"OverlaySlot_5"'
+         Slot=/Script/UMG.CanvasPanelSlot'"WBP_SaveLoad:WidgetTree.CanvasPanel_32.CanvasPanelSlot_1"'
+         bExpandedInDesigner=True
+      End Object
+      Begin Object Name="Image_43" ExportPath=/Script/UMG.Image'"/Game/Widgets/WBP_SaveLoad.WBP_SaveLoad:WidgetTree.Image_43"'
+         Brush=(ResourceObject=/Script/Engine.Texture2D'"/Game/Images/UITex.UITex"')
+         Slot=/Script/UMG.CanvasPanelSlot'"WBP_SaveLoad:WidgetTree.CanvasPanel_32.CanvasPanelSlot_3"'
+         bIsVariable=False
+      End Object
+      Begin Object Name="HorizontalBox" ExportPath=/Script/UMG.HorizontalBox'"/Game/Widgets/WBP_SaveLoad.WBP_SaveLoad:WidgetTree.HorizontalBox"'
+         Begin Object Name="HorizontalBoxSlot_6" ExportPath=/Script/UMG.HorizontalBoxSlot'"/Game/Widgets/WBP_SaveLoad.WBP_SaveLoad:WidgetTree.HorizontalBox.HorizontalBoxSlot_6"'
+            Parent=/Script/UMG.HorizontalBox'"WBP_SaveLoad:WidgetTree.HorizontalBox"'
+            Content=/Script/UMG.Overlay'"WBP_SaveLoad:WidgetTree.Overlay"'
+         End Object
+         Slots(0)=/Script/UMG.HorizontalBoxSlot'"HorizontalBoxSlot_6"'
+         Slot=/Script/UMG.VerticalBoxSlot'"WBP_SaveLoad:WidgetTree.VerticalBox_84.VerticalBoxSlot_3"'
+      End Object
+      Begin Object Name="VerticalBox_84" ExportPath=/Script/UMG.VerticalBox'"/Game/Widgets/WBP_SaveLoad.WBP_SaveLoad:WidgetTree.VerticalBox_84"'
+         Begin Object Name="VerticalBoxSlot_3" ExportPath=/Script/UMG.VerticalBoxSlot'"/Game/Widgets/WBP_SaveLoad.WBP_SaveLoad:WidgetTree.VerticalBox_84.VerticalBoxSlot_3"'
+            HorizontalAlignment=HAlign_Left
+            VerticalAlignment=VAlign_Top
+            Parent=/Script/UMG.VerticalBox'"WBP_SaveLoad:WidgetTree.VerticalBox_84"'
+            Content=/Script/UMG.HorizontalBox'"WBP_SaveLoad:WidgetTree.HorizontalBox"'
+         End Object
+         Begin Object Name="VerticalBoxSlot_4" ExportPath=/Script/UMG.VerticalBoxSlot'"/Game/Widgets/WBP_SaveLoad.WBP_SaveLoad:WidgetTree.VerticalBox_84.VerticalBoxSlot_4"'
+            HorizontalAlignment=HAlign_Left
+            VerticalAlignment=VAlign_Top
+            Parent=/Script/UMG.VerticalBox'"WBP_SaveLoad:WidgetTree.VerticalBox_84"'
+            Content=/Script/UMG.HorizontalBox'"WBP_SaveLoad:WidgetTree.HorizontalBox_1"'
+         End Object
+         Begin Object Name="VerticalBoxSlot_10" ExportPath=/Script/UMG.VerticalBoxSlot'"/Game/Widgets/WBP_SaveLoad.WBP_SaveLoad:WidgetTree.VerticalBox_84.VerticalBoxSlot_10"'
+            Padding=(Left=20.000000,Top=20.000000,Right=20.000000,Bottom=20.000000)
+            Parent=/Script/UMG.VerticalBox'"WBP_SaveLoad:WidgetTree.VerticalBox_84"'
+            Content=/Script/UMG.Spacer'"WBP_SaveLoad:WidgetTree.Spacer"'
+         End Object
+         Begin Object Name="VerticalBoxSlot_7" ExportPath=/Script/UMG.VerticalBoxSlot'"/Game/Widgets/WBP_SaveLoad.WBP_SaveLoad:WidgetTree.VerticalBox_84.VerticalBoxSlot_7"'
+            Padding=(Left=20.000000,Top=20.000000,Right=20.000000,Bottom=20.000000)
+            Parent=/Script/UMG.VerticalBox'"WBP_SaveLoad:WidgetTree.VerticalBox_84"'
+            Content=/Script/UMG.Spacer'"WBP_SaveLoad:WidgetTree.Spacer_1"'
+         End Object
+         Begin Object Name="VerticalBoxSlot_8" ExportPath=/Script/UMG.VerticalBoxSlot'"/Game/Widgets/WBP_SaveLoad.WBP_SaveLoad:WidgetTree.VerticalBox_84.VerticalBoxSlot_8"'
+            Padding=(Left=20.000000,Top=20.000000,Right=20.000000,Bottom=20.000000)
+            Parent=/Script/UMG.VerticalBox'"WBP_SaveLoad:WidgetTree.VerticalBox_84"'
+            Content=/Script/UMG.Spacer'"WBP_SaveLoad:WidgetTree.Spacer_129"'
+         End Object
+         Begin Object Name="VerticalBoxSlot_13" ExportPath=/Script/UMG.VerticalBoxSlot'"/Game/Widgets/WBP_SaveLoad.WBP_SaveLoad:WidgetTree.VerticalBox_84.VerticalBoxSlot_13"'
+            Parent=/Script/UMG.VerticalBox'"WBP_SaveLoad:WidgetTree.VerticalBox_84"'
+            Content=/Script/UMG.TextBlock'"WBP_SaveLoad:WidgetTree.TextBlock_135"'
+         End Object
+         Begin Object Name="VerticalBoxSlot_1" ExportPath=/Script/UMG.VerticalBoxSlot'"/Game/Widgets/WBP_SaveLoad.WBP_SaveLoad:WidgetTree.VerticalBox_84.VerticalBoxSlot_1"'
+            Parent=/Script/UMG.VerticalBox'"WBP_SaveLoad:WidgetTree.VerticalBox_84"'
+            Content=/Script/UMG.TextBlock'"WBP_SaveLoad:WidgetTree.TextBlock_145"'
+         End Object
+         Begin Object Name="VerticalBoxSlot_0" ExportPath=/Script/UMG.VerticalBoxSlot'"/Game/Widgets/WBP_SaveLoad.WBP_SaveLoad:WidgetTree.VerticalBox_84.VerticalBoxSlot_0"'
+            Parent=/Script/UMG.VerticalBox'"WBP_SaveLoad:WidgetTree.VerticalBox_84"'
+            Content=/Script/UMG.TextBlock'"WBP_SaveLoad:WidgetTree.TextBlock_50"'
+         End Object
+         Begin Object Name="VerticalBoxSlot_9" ExportPath=/Script/UMG.VerticalBoxSlot'"/Game/Widgets/WBP_SaveLoad.WBP_SaveLoad:WidgetTree.VerticalBox_84.VerticalBoxSlot_9"'
+            HorizontalAlignment=HAlign_Left
+            VerticalAlignment=VAlign_Top
+            Parent=/Script/UMG.VerticalBox'"WBP_SaveLoad:WidgetTree.VerticalBox_84"'
+            Content=/Script/UMG.TextBlock'"WBP_SaveLoad:WidgetTree.TextBlock_67"'
+         End Object
+         Slots(0)=/Script/UMG.VerticalBoxSlot'"VerticalBoxSlot_9"'
+         Slots(1)=/Script/UMG.VerticalBoxSlot'"VerticalBoxSlot_13"'
+         Slots(2)=/Script/UMG.VerticalBoxSlot'"VerticalBoxSlot_7"'
+         Slots(3)=/Script/UMG.VerticalBoxSlot'"VerticalBoxSlot_3"'
+         Slots(4)=/Script/UMG.VerticalBoxSlot'"VerticalBoxSlot_10"'
+         Slots(5)=/Script/UMG.VerticalBoxSlot'"VerticalBoxSlot_4"'
+         Slots(6)=/Script/UMG.VerticalBoxSlot'"VerticalBoxSlot_8"'
+         Slots(7)=/Script/UMG.VerticalBoxSlot'"VerticalBoxSlot_0"'
+         Slots(8)=/Script/UMG.VerticalBoxSlot'"VerticalBoxSlot_1"'
+         Slot=/Script/UMG.HorizontalBoxSlot'"WBP_SaveLoad:WidgetTree.HorizontalBox_40.HorizontalBoxSlot_1"'
+         bExpandedInDesigner=True
+      End Object
+      Begin Object Name="HorizontalBox_1" ExportPath=/Script/UMG.HorizontalBox'"/Game/Widgets/WBP_SaveLoad.WBP_SaveLoad:WidgetTree.HorizontalBox_1"'
+         Begin Object Name="HorizontalBoxSlot_6" ExportPath=/Script/UMG.HorizontalBoxSlot'"/Game/Widgets/WBP_SaveLoad.WBP_SaveLoad:WidgetTree.HorizontalBox_1.HorizontalBoxSlot_6"'
+            Parent=/Script/UMG.HorizontalBox'"WBP_SaveLoad:WidgetTree.HorizontalBox_1"'
+            Content=/Script/UMG.Overlay'"WBP_SaveLoad:WidgetTree.Overlay_1"'
+         End Object
+         Slots(0)=/Script/UMG.HorizontalBoxSlot'"HorizontalBoxSlot_6"'
+         Slot=/Script/UMG.VerticalBoxSlot'"WBP_SaveLoad:WidgetTree.VerticalBox_84.VerticalBoxSlot_4"'
+      End Object
+      Begin Object Name="HorizontalBox_40" ExportPath=/Script/UMG.HorizontalBox'"/Game/Widgets/WBP_SaveLoad.WBP_SaveLoad:WidgetTree.HorizontalBox_40"'
+         Begin Object Name="HorizontalBoxSlot_0" ExportPath=/Script/UMG.HorizontalBoxSlot'"/Game/Widgets/WBP_SaveLoad.WBP_SaveLoad:WidgetTree.HorizontalBox_40.HorizontalBoxSlot_0"'
+            HorizontalAlignment=HAlign_Left
+            VerticalAlignment=VAlign_Center
+            Parent=/Script/UMG.HorizontalBox'"WBP_SaveLoad:WidgetTree.HorizontalBox_40"'
+            Content=/Script/UMG.SizeBox'"WBP_SaveLoad:WidgetTree.SizeBox_46"'
+         End Object
+         Begin Object Name="HorizontalBoxSlot_1" ExportPath=/Script/UMG.HorizontalBoxSlot'"/Game/Widgets/WBP_SaveLoad.WBP_SaveLoad:WidgetTree.HorizontalBox_40.HorizontalBoxSlot_1"'
+            Padding=(Left=100.000000,Top=300.000000,Right=400.000000,Bottom=300.000000)
+            HorizontalAlignment=HAlign_Right
+            VerticalAlignment=VAlign_Bottom
+            Parent=/Script/UMG.HorizontalBox'"WBP_SaveLoad:WidgetTree.HorizontalBox_40"'
+            Content=/Script/UMG.VerticalBox'"WBP_SaveLoad:WidgetTree.VerticalBox_84"'
+         End Object
+         Slots(0)=/Script/UMG.HorizontalBoxSlot'"HorizontalBoxSlot_0"'
+         Slots(1)=/Script/UMG.HorizontalBoxSlot'"HorizontalBoxSlot_1"'
+         Slot=/Script/UMG.OverlaySlot'"WBP_SaveLoad:WidgetTree.Overlay_57.OverlaySlot_5"'
+         bExpandedInDesigner=True
+      End Object
+      Begin Object Name="SizeBox_46" ExportPath=/Script/UMG.SizeBox'"/Game/Widgets/WBP_SaveLoad.WBP_SaveLoad:WidgetTree.SizeBox_46"'
+         Begin Object Name="SizeBoxSlot_0" ExportPath=/Script/UMG.SizeBoxSlot'"/Game/Widgets/WBP_SaveLoad.WBP_SaveLoad:WidgetTree.SizeBox_46.SizeBoxSlot_0"'
+            Parent=/Script/UMG.SizeBox'"WBP_SaveLoad:WidgetTree.SizeBox_46"'
+            Content=/Script/UMG.Image'"WBP_SaveLoad:WidgetTree.Image_74"'
+         End Object
+         WidthOverride=1080.000000
+         HeightOverride=1080.000000
+         bOverride_WidthOverride=True
+         bOverride_HeightOverride=True
+         Slots(0)=/Script/UMG.SizeBoxSlot'"SizeBoxSlot_0"'
+         Slot=/Script/UMG.HorizontalBoxSlot'"WBP_SaveLoad:WidgetTree.HorizontalBox_40.HorizontalBoxSlot_0"'
+      End Object
+      Begin Object Name="Image_74" ExportPath=/Script/UMG.Image'"/Game/Widgets/WBP_SaveLoad.WBP_SaveLoad:WidgetTree.Image_74"'
+         Brush=(ImageSize=(X=600.000000,Y=600.000000),ResourceObject=/Script/Engine.Texture2D'"/Game/Images/OrganSplash.OrganSplash"')
+         Slot=/Script/UMG.SizeBoxSlot'"WBP_SaveLoad:WidgetTree.SizeBox_46.SizeBoxSlot_0"'
+         bIsVariable=False
+      End Object
+      Begin Object Name="Spacer" ExportPath=/Script/UMG.Spacer'"/Game/Widgets/WBP_SaveLoad.WBP_SaveLoad:WidgetTree.Spacer"'
+         Slot=/Script/UMG.VerticalBoxSlot'"WBP_SaveLoad:WidgetTree.VerticalBox_84.VerticalBoxSlot_10"'
+      End Object
+      Begin Object Name="Spacer_1" ExportPath=/Script/UMG.Spacer'"/Game/Widgets/WBP_SaveLoad.WBP_SaveLoad:WidgetTree.Spacer_1"'
+         Slot=/Script/UMG.VerticalBoxSlot'"WBP_SaveLoad:WidgetTree.VerticalBox_84.VerticalBoxSlot_7"'
+      End Object
+      Begin Object Name="Spacer_129" ExportPath=/Script/UMG.Spacer'"/Game/Widgets/WBP_SaveLoad.WBP_SaveLoad:WidgetTree.Spacer_129"'
+         Slot=/Script/UMG.VerticalBoxSlot'"WBP_SaveLoad:WidgetTree.VerticalBox_84.VerticalBoxSlot_8"'
+      End Object
+      Begin Object Name="TextBlock_135" ExportPath=/Script/UMG.TextBlock'"/Game/Widgets/WBP_SaveLoad.WBP_SaveLoad:WidgetTree.TextBlock_135"'
+         Text=NSLOCTEXT("[4741DD52F1E42FD1B37F1D81C42928D3]", "137EE0B84084AAA3804CE6B94729BF41", "UNKNOWN ORGAN")
+         Font=(Size=50)
+         Slot=/Script/UMG.VerticalBoxSlot'"WBP_SaveLoad:WidgetTree.VerticalBox_84.VerticalBoxSlot_13"'
+      End Object
+      Begin Object Name="TextBlock_145" ExportPath=/Script/UMG.TextBlock'"/Game/Widgets/WBP_SaveLoad.WBP_SaveLoad:WidgetTree.TextBlock_145"'
+         Text=NSLOCTEXT("[4741DD52F1E42FD1B37F1D81C42928D3]", "68112AA5400091912988A283E4A63506", "Inspect your trinkets, and defend them against the unknown.")
+         Font=(Size=18)
+         Slot=/Script/UMG.VerticalBoxSlot'"WBP_SaveLoad:WidgetTree.VerticalBox_84.VerticalBoxSlot_1"'
+      End Object
+      Begin Object Name="TextBlock_50" ExportPath=/Script/UMG.TextBlock'"/Game/Widgets/WBP_SaveLoad.WBP_SaveLoad:WidgetTree.TextBlock_50"'
+         Text=NSLOCTEXT("[4741DD52F1E42FD1B37F1D81C42928D3]", "9F7750AC420AE7F64B0537B8E86F4688", "Dissect and clean organs to find treasure. ")
+         Font=(Size=18)
+         Slot=/Script/UMG.VerticalBoxSlot'"WBP_SaveLoad:WidgetTree.VerticalBox_84.VerticalBoxSlot_0"'
+      End Object
+      Begin Object Name="TextBlock_67" ExportPath=/Script/UMG.TextBlock'"/Game/Widgets/WBP_SaveLoad.WBP_SaveLoad:WidgetTree.TextBlock_67"'
+         Text=NSLOCTEXT("[4741DD52F1E42FD1B37F1D81C42928D3]", "C47DABEB46DEE03BC6745B8DD93F8191", "TREASURES OF")
+         Font=(Size=50)
+         Slot=/Script/UMG.VerticalBoxSlot'"WBP_SaveLoad:WidgetTree.VerticalBox_84.VerticalBoxSlot_9"'
+      End Object
+      RootWidget=/Script/UMG.CanvasPanel'"CanvasPanel_32"'
+   End Object
+   Begin Object Name="EventGraph" ExportPath=/Script/Engine.EdGraph'"/Game/Widgets/WBP_SaveLoad.WBP_SaveLoad:EventGraph"'
+      Begin Object Name="K2Node_Event_0" ExportPath=/Script/BlueprintGraph.K2Node_Event'"/Game/Widgets/WBP_SaveLoad.WBP_SaveLoad:EventGraph.K2Node_Event_0"'
+         EventReference=(MemberParent=/Script/CoreUObject.Class'"/Script/UMG.UserWidget"',MemberName="PreConstruct")
+         bOverrideFunction=True
+         EnabledState=Disabled
+         bCommentBubblePinned=True
+         bCommentBubbleVisible=True
+         NodeComment="This node is disabled and will not be called.\nDrag off pins to build functionality."
+         NodeGuid=234A76A547D84ED83105A9A59223D26D
+         CustomProperties Pin (PinId=3B1286D54F77B1A25039439A4AB2E4EB,PinName="OutputDelegate",Direction="EGPD_Output",PinType.PinCategory="delegate",PinType.PinSubCategory="",PinType.PinSubCategoryObject=None,PinType.PinSubCategoryMemberReference=(MemberParent=/Script/CoreUObject.Class'"/Script/UMG.UserWidget"',MemberName="PreConstruct"),PinType.PinValueType=(),PinType.ContainerType=None,PinType.bIsReference=False,PinType.bIsConst=False,PinType.bIsWeakPointer=False,PinType.bIsUObjectWrapper=False,PinType.bSerializeAsSinglePrecisionFloat=False,PersistentGuid=00000000000000000000000000000000,bHidden=False,bNotConnectable=False,bDefaultValueIsReadOnly=False,bDefaultValueIsIgnored=False,bAdvancedView=False,bOrphanedPin=False,)
+         CustomProperties Pin (PinId=AEB1EF944CBE296716804D928DD65C29,PinName="then",Direction="EGPD_Output",PinType.PinCategory="exec",PinType.PinSubCategory="",PinType.PinSubCategoryObject=None,PinType.PinSubCategoryMemberReference=(),PinType.PinValueType=(),PinType.ContainerType=None,PinType.bIsReference=False,PinType.bIsConst=False,PinType.bIsWeakPointer=False,PinType.bIsUObjectWrapper=False,PinType.bSerializeAsSinglePrecisionFloat=False,PersistentGuid=00000000000000000000000000000000,bHidden=False,bNotConnectable=False,bDefaultValueIsReadOnly=False,bDefaultValueIsIgnored=False,bAdvancedView=False,bOrphanedPin=False,)
+         CustomProperties Pin (PinId=2C9C921D4D00CBCD585B9B91008FF521,PinName="IsDesignTime",PinToolTip="Is Design Time\nBoolean",Direction="EGPD_Output",PinType.PinCategory="bool",PinType.PinSubCategory="",PinType.PinSubCategoryObject=None,PinType.PinSubCategoryMemberReference=(),PinType.PinValueType=(),PinType.ContainerType=None,PinType.bIsReference=False,PinType.bIsConst=False,PinType.bIsWeakPointer=False,PinType.bIsUObjectWrapper=False,PinType.bSerializeAsSinglePrecisionFloat=False,DefaultValue="false",AutogeneratedDefaultValue="false",PersistentGuid=00000000000000000000000000000000,bHidden=False,bNotConnectable=False,bDefaultValueIsReadOnly=False,bDefaultValueIsIgnored=False,bAdvancedView=False,bOrphanedPin=False,)
+      End Object
+      Begin Object Name="K2Node_Event_1" ExportPath=/Script/BlueprintGraph.K2Node_Event'"/Game/Widgets/WBP_SaveLoad.WBP_SaveLoad:EventGraph.K2Node_Event_1"'
+         EventReference=(MemberParent=/Script/CoreUObject.Class'"/Script/UMG.UserWidget"',MemberName="Construct")
+         bOverrideFunction=True
+         NodePosY=208
+         EnabledState=Disabled
+         bCommentBubblePinned=True
+         bCommentBubbleVisible=True
+         NodeComment="This node is disabled and will not be called.\nDrag off pins to build functionality."
+         NodeGuid=C9BB67CA42A3F933B834F492FF265E64
+         CustomProperties Pin (PinId=597F1FCF46574B0C05974399C8371B4C,PinName="OutputDelegate",Direction="EGPD_Output",PinType.PinCategory="delegate",PinType.PinSubCategory="",PinType.PinSubCategoryObject=None,PinType.PinSubCategoryMemberReference=(MemberParent=/Script/CoreUObject.Class'"/Script/UMG.UserWidget"',MemberName="Construct"),PinType.PinValueType=(),PinType.ContainerType=None,PinType.bIsReference=False,PinType.bIsConst=False,PinType.bIsWeakPointer=False,PinType.bIsUObjectWrapper=False,PinType.bSerializeAsSinglePrecisionFloat=False,PersistentGuid=00000000000000000000000000000000,bHidden=False,bNotConnectable=False,bDefaultValueIsReadOnly=False,bDefaultValueIsIgnored=False,bAdvancedView=False,bOrphanedPin=False,)
+         CustomProperties Pin (PinId=3B681D6B462B3DA1BA0303B57143D428,PinName="then",Direction="EGPD_Output",PinType.PinCategory="exec",PinType.PinSubCategory="",PinType.PinSubCategoryObject=None,PinType.PinSubCategoryMemberReference=(),PinType.PinValueType=(),PinType.ContainerType=None,PinType.bIsReference=False,PinType.bIsConst=False,PinType.bIsWeakPointer=False,PinType.bIsUObjectWrapper=False,PinType.bSerializeAsSinglePrecisionFloat=False,PersistentGuid=00000000000000000000000000000000,bHidden=False,bNotConnectable=False,bDefaultValueIsReadOnly=False,bDefaultValueIsIgnored=False,bAdvancedView=False,bOrphanedPin=False,)
+      End Object
+      Begin Object Name="K2Node_Event_2" ExportPath=/Script/BlueprintGraph.K2Node_Event'"/Game/Widgets/WBP_SaveLoad.WBP_SaveLoad:EventGraph.K2Node_Event_2"'
+         EventReference=(MemberParent=/Script/CoreUObject.Class'"/Script/UMG.UserWidget"',MemberName="Tick")
+         bOverrideFunction=True
+         NodePosY=416
+         EnabledState=Disabled
+         bCommentBubblePinned=True
+         bCommentBubbleVisible=True
+         NodeComment="This node is disabled and will not be called.\nDrag off pins to build functionality."
+         NodeGuid=A8D7F67D4FFC73E85D4E7393AC9DC54E
+         CustomProperties Pin (PinId=B4144F054D6B89554A650D86C011C166,PinName="OutputDelegate",Direction="EGPD_Output",PinType.PinCategory="delegate",PinType.PinSubCategory="",PinType.PinSubCategoryObject=None,PinType.PinSubCategoryMemberReference=(MemberParent=/Script/CoreUObject.Class'"/Script/UMG.UserWidget"',MemberName="Tick"),PinType.PinValueType=(),PinType.ContainerType=None,PinType.bIsReference=False,PinType.bIsConst=False,PinType.bIsWeakPointer=False,PinType.bIsUObjectWrapper=False,PinType.bSerializeAsSinglePrecisionFloat=False,PersistentGuid=00000000000000000000000000000000,bHidden=False,bNotConnectable=False,bDefaultValueIsReadOnly=False,bDefaultValueIsIgnored=False,bAdvancedView=False,bOrphanedPin=False,)
+         CustomProperties Pin (PinId=1B9F336049AEB7BE6090C3B2D95E242E,PinName="then",Direction="EGPD_Output",PinType.PinCategory="exec",PinType.PinSubCategory="",PinType.PinSubCategoryObject=None,PinType.PinSubCategoryMemberReference=(),PinType.PinValueType=(),PinType.ContainerType=None,PinType.bIsReference=False,PinType.bIsConst=False,PinType.bIsWeakPointer=False,PinType.bIsUObjectWrapper=False,PinType.bSerializeAsSinglePrecisionFloat=False,PersistentGuid=00000000000000000000000000000000,bHidden=False,bNotConnectable=False,bDefaultValueIsReadOnly=False,bDefaultValueIsIgnored=False,bAdvancedView=False,bOrphanedPin=False,)
+         CustomProperties Pin (PinId=C107461342BD688E4F94E2A1C93C8D9D,PinName="MyGeometry",PinToolTip="My Geometry\nGeometry Structure\n\nThe space allotted for this widget",Direction="EGPD_Output",PinType.PinCategory="struct",PinType.PinSubCategory="",PinType.PinSubCategoryObject=/Script/CoreUObject.ScriptStruct'"/Script/SlateCore.Geometry"',PinType.PinSubCategoryMemberReference=(),PinType.PinValueType=(),PinType.ContainerType=None,PinType.bIsReference=False,PinType.bIsConst=False,PinType.bIsWeakPointer=False,PinType.bIsUObjectWrapper=False,PinType.bSerializeAsSinglePrecisionFloat=False,PersistentGuid=00000000000000000000000000000000,bHidden=False,bNotConnectable=False,bDefaultValueIsReadOnly=False,bDefaultValueIsIgnored=False,bAdvancedView=False,bOrphanedPin=False,)
+         CustomProperties Pin (PinId=D04189F04A7FE0CD83BF41999B7D4F99,PinName="InDeltaTime",PinToolTip="In Delta Time\nFloat (single-precision)\n\nReal time passed since last tick",Direction="EGPD_Output",PinType.PinCategory="real",PinType.PinSubCategory="float",PinType.PinSubCategoryObject=None,PinType.PinSubCategoryMemberReference=(),PinType.PinValueType=(),PinType.ContainerType=None,PinType.bIsReference=False,PinType.bIsConst=False,PinType.bIsWeakPointer=False,PinType.bIsUObjectWrapper=False,PinType.bSerializeAsSinglePrecisionFloat=False,DefaultValue="0.0",AutogeneratedDefaultValue="0.0",PersistentGuid=00000000000000000000000000000000,bHidden=False,bNotConnectable=False,bDefaultValueIsReadOnly=False,bDefaultValueIsIgnored=False,bAdvancedView=False,bOrphanedPin=False,)
+      End Object
+      Schema=/Script/CoreUObject.Class'"/Script/BlueprintGraph.EdGraphSchema_K2"'
+      Nodes(0)=/Script/BlueprintGraph.K2Node_Event'"K2Node_Event_0"'
+      Nodes(1)=/Script/BlueprintGraph.K2Node_Event'"K2Node_Event_1"'
+      Nodes(2)=/Script/BlueprintGraph.K2Node_Event'"K2Node_Event_2"'
+      bAllowDeletion=False
+      GraphGuid=A64885FD403DB6439D017B9D9E63A2C4
+   End Object
+   TickPrediction=WillTick
+   TickPredictionReason="Native"
+   WidgetTree="WidgetTree"
+   BlueprintSystemVersion=2
+   UbergraphPages(0)=/Script/Engine.EdGraph'"EventGraph"'
+   CategorySorting(0)="Event Graph"
+   LastEditedDocuments(0)=(EditedObjectPath="/Game/Widgets/WBP_SaveLoad.WBP_SaveLoad:EventGraph")
+   bLegacyNeedToPurgeSkelRefs=False
+   BlueprintGuid=14267BA942ABA79E93B61AB9FF464071
+End Object

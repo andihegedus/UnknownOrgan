@@ -24,7 +24,7 @@ class UCurveFloat;
 class UDataTable;
 
 UCLASS()
-class AOrganRinse : public AActor
+class UNKNOWN_API AOrganRinse : public AActor
 {
 	GENERATED_BODY()
 	

@@ -57,19 +57,19 @@ struct FToyAssetData
 	UMaterial* ColorwayMaterial;
 	
 	UPROPERTY(EditAnywhere, Category="Numeric Data")
-	int32 Quantity;
+	int32 Quantity = 0;
 };
 
 USTRUCT()
 struct FToyData : public FTableRowBase
 {
 	GENERATED_BODY()
-	
+
 	UPROPERTY(EditAnywhere, Category="Item Data")
 	FName ID;
 
 	UPROPERTY(EditAnywhere, Category="Item Data")
-	EToyType ToyType;
+	EToyType ToyType = EToyType::Talkers;
 
 	UPROPERTY(EditAnywhere, Category="Item Data")
 	FToyTextData ToyTextData;

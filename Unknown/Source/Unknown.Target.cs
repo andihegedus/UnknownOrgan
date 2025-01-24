@@ -2,6 +2,7 @@
 
 using UnrealBuildTool;
 using System.Collections.Generic;
+using EpicGames.Core;
 
 public class UnknownTarget : TargetRules
 {
@@ -11,5 +12,6 @@ public class UnknownTarget : TargetRules
 		DefaultBuildSettings = BuildSettingsVersion.V2;
 		IncludeOrderVersion = EngineIncludeOrderVersion.Unreal5_1;
 		ExtraModuleNames.Add("Unknown");
+		Name = "Unknown";
 	}
 }

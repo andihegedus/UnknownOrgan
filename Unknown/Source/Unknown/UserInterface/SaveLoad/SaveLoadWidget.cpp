@@ -8,7 +8,7 @@
 #include "Unknown/System/UnknownHUD.h"
 
 
-void USaveLoadWidget::NativeOnInitialized()
+void UNKNOWN_API USaveLoadWidget::NativeOnInitialized()
 {
 	Super::NativeOnInitialized();
 

@@ -11,7 +11,7 @@ class UButton;
 class AUnknownHUD;
 
 UCLASS()
-class USaveLoadWidget : public UUserWidget
+class UNKNOWN_API USaveLoadWidget : public UUserWidget
 {
 	GENERATED_BODY()
 	

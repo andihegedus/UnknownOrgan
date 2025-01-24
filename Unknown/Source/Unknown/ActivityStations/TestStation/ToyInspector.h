@@ -13,7 +13,7 @@ class UMaterial;
 class UAnimMontage;
 
 UCLASS()
-class AToyInspector : public AActor
+class UNKNOWN_API AToyInspector : public AActor
 {
 	GENERATED_BODY()
 	
