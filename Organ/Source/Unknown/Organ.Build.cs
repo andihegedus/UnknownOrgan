@@ -17,13 +17,15 @@ public class Organ : ModuleRules
 			"Slate",
 			"SlateCore",
 			"InputCore",
-			"EditorFramework",
+			
+#if WITH_EDITOR
+		"EditorFramework",
 			"EditorStyle",
 			"UnrealEd",
+#endif
 			"EnhancedInput",
 			"ApplicationCore",
-			"UMG",
-			"Organ"
+			"UMG"
 		});
 
 		// Uncomment if you are using Slate UI

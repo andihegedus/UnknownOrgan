@@ -3,19 +3,14 @@
 #include "PController.h"
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
-#include "InterchangeTranslatorBase.h"
 #include "Camera/CameraComponent.h"
-#include "Components/BoxComponent.h"
 #include "Engine/LocalPlayer.h"
 #include "GameFramework/SpringArmComponent.h"
-#include "Kismet/KismetSystemLibrary.h"
 #include "Unknown/UnknownGameInstance.h"
 #include "Unknown/ActivityStations/DefendStation/Monster.h"
 #include "Unknown/ActivityStations/RinseStation/OrganRinse.h"
 #include "Unknown/ActivityStations/TestStation/ToyInspector.h"
 #include "Unknown/System/UnknownHUD.h"
-#include "Unknown/UserInterface/Interaction/OrganCutterWidget.h"
-#include "Unknown/UserInterface/Inventory/PlayerInventoryWidget.h"
 
 APCharacter::APCharacter()
 {
