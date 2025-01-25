@@ -91,11 +91,11 @@ void AMonster::MonsterTimer()
 		
 		GetWorld()->GetTimerManager().SetTimer(MonsterProwlTimerHandle, this, &AMonster::MonsterTimer, 1.f, true);
 
-		if (MonsterTimerLoopCount < 20.f)
+		if (MonsterTimerLoopCount < 25.f)
 		{
 			MonsterTimerLoopCount += 1.f;
 		}
-		else if (MonsterTimerLoopCount >= 20.f)
+		else if (MonsterTimerLoopCount >= 25.f)
 		{
 			if (MonsterPositionID > 0 && MonsterPositionID < 3)
 			{
@@ -137,6 +137,11 @@ void AMonster::MonsterTimer()
 
 							GameInstance->AcquiredToyIDs.RemoveAt(RandomInt);
 
+							if (PlayerCharacter)
+							{
+								PlayerCharacter->OnInventoryStateUpdated.Broadcast();
+							}
+
 							UE_LOG(LogTemp, Warning, TEXT("AMonster: Monster removed item from inventory!"));
 						}
 					}
@@ -163,11 +168,11 @@ void AMonster::MonsterTimer()
 		GetWorld()->GetTimerManager().ClearTimer(MonsterProwlTimerHandle);
 		GetWorld()->GetTimerManager().SetTimer(MonsterIdleTimerHandle, this, &AMonster::MonsterTimer, 1.f, true);
 
-		if (MonsterTimerLoopCount < 20.f)
+		if (MonsterTimerLoopCount < 120.f)
 		{
 			MonsterTimerLoopCount += 1.f;
 		}
-		else if (MonsterTimerLoopCount >=  20.f)
+		else if (MonsterTimerLoopCount >=  120.f)
 		{
 			GetWorld()->GetTimerManager().ClearTimer(MonsterIdleTimerHandle);
 			bIsProwling = true;

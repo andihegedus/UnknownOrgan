@@ -14,6 +14,7 @@ class APCharacter;
 class APController;
 class UImage;
 class UHorizontalBox;
+class AUnknownHUD;
 
 UCLASS()
 class ORGAN_API URinseObjectsWidget : public UUserWidget
@@ -36,6 +37,9 @@ public:
 
 	UPROPERTY()
 	APController* PlayerController;
+
+	UPROPERTY(EditAnywhere)
+	AUnknownHUD* HUD;
 
 	UPROPERTY(VisibleAnywhere, meta = (BindWidget))
 	UImage* TreasureImage;

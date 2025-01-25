@@ -3,6 +3,8 @@
 #include "Components/Button.h"
 #include "Unknown/PlayerCharacter/PCharacter.h"
 #include "Unknown/PlayerCharacter/PController.h"
+#include "Unknown/System/UnknownHUD.h"
+#include "Unknown/UserInterface/Inventory/PlayerInventoryWidget.h"
 
 
 void URinseObjectsWidget::NativeOnInitialized()
@@ -32,6 +34,8 @@ void URinseObjectsWidget::NativeOnInitialized()
 		UE_LOG(LogTemp, Warning, TEXT("URinseObjectsWidget: PlayerCharacter not valid."));
 	}
 
+	HUD = Cast<AUnknownHUD>(GetWorld()->GetFirstPlayerController()->GetHUD());
+
 	CloseButton->OnClicked.AddDynamic(this, &URinseObjectsWidget::CloseWidget);
 }
 
@@ -44,6 +48,13 @@ void URinseObjectsWidget::CloseWidget()
 {
 	this->SetVisibility(ESlateVisibility::Collapsed);
 	PlayerCharacter->OnInventoryStateUpdated.Broadcast();
+
+	if (HUD)
+	{
+		HUD->PlayerInventoryWidget->LeftArrowButton->SetColorAndOpacity(FLinearColor::White);
+		HUD->PlayerInventoryWidget->LeftArrowButton->SetIsEnabled(true);
+	}
+	
 	UE_LOG(LogTemp, Warning, TEXT("URinseObjectsWidget: CloseWidget fired!"));
 }
 

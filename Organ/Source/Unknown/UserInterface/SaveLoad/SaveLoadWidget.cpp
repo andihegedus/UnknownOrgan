@@ -1,11 +1,14 @@
 ﻿#include "SaveLoadWidget.h"
 
 #include "Components/Button.h"
+#include "Components/HorizontalBox.h"
 #include "GameFramework/PlayerController.h"
 #include "Unknown/UnknownGameInstance.h"
 #include "Unknown/PlayerCharacter/PCharacter.h"
 #include "Unknown/PlayerCharacter/PController.h"
 #include "Unknown/System/UnknownHUD.h"
+#include "Unknown/UserInterface/Interaction/TutorialWidget.h"
+#include "Unknown/UserInterface/Inventory/PlayerInventoryWidget.h"
 
 
 void ORGAN_API USaveLoadWidget::NativeOnInitialized()
@@ -53,15 +56,23 @@ void USaveLoadWidget::NewGame()
 	if (GameInstance)
 	{
 		GameInstance->CreateSaveFile();
+
+		if (GameInstance->bIsInTutorial)
+		{
+			if (HUD)
+			{
+				HUD->ShowHideSaveLoadWidget();
+				HUD->PlayerInventoryWidget->TutorialWidget->CutBox->SetVisibility(ESlateVisibility::Visible);
+				HUD->PlayerInventoryWidget->RightArrowButton->SetColorAndOpacity(FLinearColor::Gray);
+				HUD->PlayerInventoryWidget->RightArrowButton->SetIsEnabled(false);
+				HUD->PlayerInventoryWidget->LeftArrowButton->SetColorAndOpacity(FLinearColor::Gray);
+				HUD->PlayerInventoryWidget->LeftArrowButton->SetIsEnabled(false);
+			}
+		}
 	}
 	else
 	{
 		UE_LOG(LogTemp, Warning, TEXT("USaveLoadWidget: GameInstance not valid."));
-	}
-
-	if (HUD)
-	{
-		HUD->ShowHideSaveLoadWidget();
 	}
 }
 

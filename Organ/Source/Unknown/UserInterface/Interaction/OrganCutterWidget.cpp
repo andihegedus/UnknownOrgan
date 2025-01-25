@@ -7,6 +7,8 @@
 #include "Unknown/UnknownGameInstance.h"
 #include "Unknown/PlayerCharacter/PCharacter.h"
 #include "Unknown/PlayerCharacter/PController.h"
+#include "Unknown/System/UnknownHUD.h"
+#include "Unknown/UserInterface/Inventory/PlayerInventoryWidget.h"
 
 
 void UOrganCutterWidget::NativeOnInitialized()
@@ -37,6 +39,8 @@ void UOrganCutterWidget::NativeOnInitialized()
 	}
 
 	GameInstance = Cast<UUnknownGameInstance>(GetWorld()->GetGameInstance());
+
+	HUD = Cast<AUnknownHUD>(GetWorld()->GetFirstPlayerController()->GetHUD());
 	
 	OrganCutterSlider->OnValueChanged.AddDynamic(this, &UOrganCutterWidget::CloseAndDestroy);
 	OrganSlider2->OnValueChanged.AddDynamic(this, &UOrganCutterWidget::CloseAndDestroy);
@@ -122,17 +126,33 @@ void UOrganCutterWidget::CloseAndDestroy(float Value)
 		{
 			GameInstance->bOrganDissected = bOrganDissected;
 		}
-
-		if (!OrganSlider2->IsVisible() && !OrganSlider3->IsVisible() && !OrganImage->IsVisible())
-		{
-			OrganImage4->SetVisibility(ESlateVisibility::Visible);
+	}
+	if (OrganSlider3->GetValue() >= 1 && OrganSlider2->GetValue() >= 1)
+	{
+		OrganImage4->SetVisibility(ESlateVisibility::Visible);
 			
-			bOrganDissected = true;
+		bOrganDissected = true;
 
-			if (GameInstance)
+		if (GameInstance)
+		{
+			GameInstance->bOrganDissected = bOrganDissected;
+		}
+
+		if (HUD)
+		{
+			if (HUD->PlayerInventoryWidget)
 			{
-				GameInstance->bOrganDissected = bOrganDissected;
+				HUD->PlayerInventoryWidget->LeftArrowButton->SetColorAndOpacity(FLinearColor::White);
+				HUD->PlayerInventoryWidget->LeftArrowButton->SetIsEnabled(true);
 			}
+			else
+			{
+				UE_LOG(LogTemp, Warning, TEXT("UOrganCutterWidget: HUD->PlayerInventoryWidget not valid!"));
+			}
+		}
+		else
+		{
+			UE_LOG(LogTemp, Warning, TEXT("UOrganCutterWidget: HUD not valid!"));
 		}
 	}
 }

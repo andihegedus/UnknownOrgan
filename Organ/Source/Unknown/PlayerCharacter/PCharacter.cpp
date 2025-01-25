@@ -4,6 +4,8 @@
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
 #include "Camera/CameraComponent.h"
+#include "Components/Button.h"
+#include "Components/HorizontalBox.h"
 #include "Engine/LocalPlayer.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "Unknown/UnknownGameInstance.h"
@@ -11,6 +13,8 @@
 #include "Unknown/ActivityStations/RinseStation/OrganRinse.h"
 #include "Unknown/ActivityStations/TestStation/ToyInspector.h"
 #include "Unknown/System/UnknownHUD.h"
+#include "Unknown/UserInterface/Interaction/TutorialWidget.h"
+#include "Unknown/UserInterface/Inventory/PlayerInventoryWidget.h"
 
 APCharacter::APCharacter()
 {
@@ -54,7 +58,6 @@ void APCharacter::Tick(float DeltaSeconds)
 		if (GameInstance->MonsterPositionID == 1 || GameInstance->MonsterPositionID == 2 || GameInstance->MonsterPositionID == 3 || GameInstance->MonsterPositionID == 0)
 		{
 			OnMonsterStateUpdated.Broadcast();
-			//OnInventoryStateUpdated.Broadcast();
 		}
 	}
 
@@ -418,7 +421,7 @@ void APCharacter::CheckForInteraction()
 					
 						SwatCount++;
 						
-						if (SwatCount > 5)
+						if (SwatCount > 20)
 						{
 							Monster->bIsRetreating = true;
 

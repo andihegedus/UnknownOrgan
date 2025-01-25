@@ -2,6 +2,7 @@
 
 #include "Data/SaveData.h"
 #include "Kismet/GameplayStatics.h"
+#include "PlayerCharacter/PCharacter.h"
 
 UUnknownGameInstance::UUnknownGameInstance()
 {
@@ -11,7 +12,9 @@ void UUnknownGameInstance::Init()
 {
 	Super::Init();
 
-	LoadGame();
+	bIsInTutorial = false;
+
+	
 }
 
 void UUnknownGameInstance::CreateSaveFile()
@@ -49,6 +52,13 @@ void UUnknownGameInstance::LoadGame()
 	if (GameSaveInstance != nullptr)
 	{
 		AcquiredToyIDs = GameSaveInstance->SavedIDs;
+
+		PlayerCharacter = Cast<APCharacter>(GetWorld()->GetFirstPlayerController()->GetPawn());
+
+		if (PlayerCharacter)
+		{
+			PlayerCharacter->OnInventoryStateUpdated.Broadcast();
+		}
 	}
 	else if (!UGameplayStatics::DoesSaveGameExist("Save1", 0))
 	{

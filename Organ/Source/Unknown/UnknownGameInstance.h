@@ -6,6 +6,7 @@
 
 class USaveData;
 class FName;
+class APCharacter;
 
 UCLASS()
 class ORGAN_API UUnknownGameInstance : public UGameInstance
@@ -30,6 +31,9 @@ public:
 	// PROPERTIES & VARIABLES
 	// -----------------------------
 
+	UPROPERTY()
+	APCharacter* PlayerCharacter;
+	
 	UPROPERTY()
 	USaveData* GameSaveInstance;
 

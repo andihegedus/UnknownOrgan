@@ -4,6 +4,7 @@
 #include "Blueprint/UserWidget.h"
 #include "PlayerInventoryWidget.generated.h"
 
+class UTutorialWidget;
 class UMonsterStateLoggerWidget;
 class UShelfInventoryWidget;
 class UHorizontalBox;
@@ -54,6 +55,15 @@ public:
 	UPROPERTY(VisibleAnywhere, meta = (BindWidget))
 	UOrganCutterWidget* OrganCutter;
 
+	UPROPERTY(VisibleAnywhere, meta = (BindWidget))
+	UTutorialWidget* TutorialWidget;
+
+	UPROPERTY(VisibleAnywhere, meta = (BindWidget))
+	UButton* LeftArrowButton;
+
+	UPROPERTY(VisibleAnywhere, meta = (BindWidget))
+	UButton* RightArrowButton;
+
 
 protected:
 	// FUNCTIONS
@@ -67,12 +77,7 @@ protected:
 	
 	// PROPERTIES & VARIABLES
 	// -----------------------------
-	UPROPERTY(VisibleAnywhere, meta = (BindWidget))
-	UButton* LeftArrowButton;
-
-	UPROPERTY(VisibleAnywhere, meta = (BindWidget))
-	UButton* RightArrowButton;
-
+	
 	UPROPERTY(VisibleAnywhere, meta = (BindWidget))
 	UShelfInventoryWidget* ShelfInventory;
 

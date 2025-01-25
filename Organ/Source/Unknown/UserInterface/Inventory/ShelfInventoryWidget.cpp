@@ -8,6 +8,7 @@
 #include "Components/WrapBox.h"
 #include "Unknown/UnknownGameInstance.h"
 #include "Unknown/ActivityStations/RinseStation/OrganRinse.h"
+#include "Unknown/ActivityStations/TestStation/ToyInspector.h"
 #include "Unknown/Data/ItemDataStructs.h"
 #include "Unknown/PlayerCharacter/PCharacter.h"
 #include "Unknown/PlayerCharacter/PController.h"
@@ -50,6 +51,8 @@ void UShelfInventoryWidget::NativeConstruct()
 
 void UShelfInventoryWidget::UpdateWidget()
 {
+	UE_LOG(LogTemp, Warning, TEXT("UShelfInventoryWidget: Update widget fired!"));
+	
 	GameInstance = Cast<UUnknownGameInstance>(GetWorld()->GetGameInstance());
 	
 	if (GameInstance)
@@ -80,6 +83,15 @@ void UShelfInventoryWidget::UpdateWidget()
 						if (PlayerCharacter->OrganRinse)
 						{
 							const FToyData* ToyData = PlayerCharacter->OrganRinse->ToyDataTable->FindRow<FToyData>(GameInstance->AcquiredToyIDs[i], GameInstance->AcquiredToyIDs[i].ToString());
+
+							ShelfSlot->ToyName->SetText(ToyData->ToyTextData.NameText);
+							IconBrushTexture = ToyData->ToyAssetData.Icon;
+							ShelfSlot->ToyImage->SetBrushFromTexture(IconBrushTexture);
+							ShelfSlot->ToyID->SetText(ToyData->ToyTextData.IDText);
+						}
+						else if (PlayerCharacter->ToyInspector)
+						{
+							const FToyData* ToyData = PlayerCharacter->ToyInspector->ToyDataTable->FindRow<FToyData>(GameInstance->AcquiredToyIDs[i], GameInstance->AcquiredToyIDs[i].ToString());
 
 							ShelfSlot->ToyName->SetText(ToyData->ToyTextData.NameText);
 							IconBrushTexture = ToyData->ToyAssetData.Icon;

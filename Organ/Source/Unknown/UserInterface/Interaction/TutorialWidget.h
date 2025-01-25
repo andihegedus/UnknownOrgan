@@ -2,21 +2,17 @@
 
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
-#include "OrganCutterWidget.generated.h"
+#include "TutorialWidget.generated.h"
 
-
-class APCharacter;
-class APController;
-class USlider;
-class UTextBlock;
-class UImage;
 class UButton;
 class UHorizontalBox;
+class APCharacter;
+class APController;
 class UUnknownGameInstance;
 class AUnknownHUD;
 
 UCLASS()
-class ORGAN_API UOrganCutterWidget : public UUserWidget
+class UTutorialWidget : public UUserWidget
 {
 	GENERATED_BODY()
 	
@@ -24,14 +20,21 @@ public:
 	// FUNCTIONS
 	// -----------------------------
 
-	UFUNCTION()
-	void ExtrudeNewOrgan();
+	virtual void NativeOnInitialized() override;
+
+	virtual void NativeConstruct() override;
 
 	UFUNCTION()
-	void CloseAndDestroy(float Value);
+	void CloseCutTutorialBox();
 
-	void ResetCutter();
-	
+	UFUNCTION()
+	void CloseRinseTutorialBox();
+
+	UFUNCTION()
+	void CloseDefendTutorialBox();
+
+	UFUNCTION()
+	void CloseInspectTutorialBox();
 
 	// PROPERTIES & VARIABLES
 	// -----------------------------
@@ -49,45 +52,27 @@ public:
 	AUnknownHUD* HUD;
 
 	UPROPERTY(VisibleAnywhere, meta = (BindWidget))
-	USlider* OrganCutterSlider;
+	UHorizontalBox* CutBox;
 
 	UPROPERTY(VisibleAnywhere, meta = (BindWidget))
-	USlider* OrganSlider2;
+	UHorizontalBox* RinseBox;
 
 	UPROPERTY(VisibleAnywhere, meta = (BindWidget))
-	USlider* OrganSlider3;
+	UHorizontalBox* DefendBox;
 
-	bool bOrganExtruded;
+	UPROPERTY(VisibleAnywhere, meta = (BindWidget))
+	UHorizontalBox* InspectBox;
 
-	bool bOrganDissected;
+	UPROPERTY(VisibleAnywhere, meta = (BindWidget))
+	UButton* CutCloseButton;
 
-	protected:
-	// FUNCTIONS
-	// -----------------------------
-
-	virtual void NativeOnInitialized() override;
-
-	virtual void NativeConstruct() override;
-	
-
-	// PROPERTIES & VARIABLES
-	// -----------------------------
+	UPROPERTY(VisibleAnywhere, meta = (BindWidget))
+	UButton* RinseCloseButton;
 	
 	UPROPERTY(VisibleAnywhere, meta = (BindWidget))
-	UHorizontalBox* MeatBox;
+	UButton* DefendCloseButton;
+
+	UPROPERTY(VisibleAnywhere, meta = (BindWidget))
+	UButton* InspectCloseButton;
 	
-	UPROPERTY(VisibleAnywhere, meta = (BindWidget))
-	UImage* OrganImage;
-
-	UPROPERTY(VisibleAnywhere, meta = (BindWidget))
-	UImage* OrganImage2;
-
-	UPROPERTY(VisibleAnywhere, meta = (BindWidget))
-	UImage* OrganImage3;
-
-	UPROPERTY(VisibleAnywhere, meta = (BindWidget))
-	UImage* OrganImage4;
-
-	UPROPERTY(VisibleAnywhere, meta = (BindWidget))
-	UButton* ExtrudeOrganButton;
 };
