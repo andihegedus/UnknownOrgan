@@ -44,6 +44,7 @@ void ORGAN_API USaveLoadWidget::NativeOnInitialized()
 
 	NewGameButton->OnClicked.AddDynamic(this, &USaveLoadWidget::NewGame);
 	LoadGameButton->OnClicked.AddDynamic(this, &USaveLoadWidget::LoadGame);
+	CloseGameButton->OnClicked.AddDynamic(this, &USaveLoadWidget::CloseGame);
 }
 
 void USaveLoadWidget::NativeConstruct()
@@ -90,5 +91,13 @@ void USaveLoadWidget::LoadGame()
 	if (HUD)
 	{
 		HUD->ShowHideSaveLoadWidget();
+	}
+}
+
+void USaveLoadWidget::CloseGame()
+{
+	if (PlayerController)
+	{
+		PlayerController->ConsoleCommand("quit");
 	}
 }
